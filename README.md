@@ -38,7 +38,7 @@
 - Super + Q -> Close active window 
 - Super + W -> Open Firefox 
 
-# Hypr Mode Toggles
+# Hypr Modes - The Special Sauce
 - Super + F -> Fullscreen 
 - Super + Shift + F -> Pseudo fullscreen 
 - Super + Alt + F -> "Frosted Glass" Mode: More blur in windows
