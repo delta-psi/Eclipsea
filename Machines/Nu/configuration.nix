@@ -1,0 +1,277 @@
+{ inputs, config, pkgs, stylix, ... }:
+
+{
+  imports =
+    [ 
+      ./hardware-configuration.nix
+      # ../../Modules/Theming/matugen.nix
+    ];
+
+  # Bootloader
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+      };
+      efi.canTouchEfiVariables = true;
+    };
+    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-zen4;
+    kernelModules = [
+      "nvidia"
+      "nvidia_modeset"
+      "nvidia_uvm"
+      "nvidia_drm"
+    ];
+    kernelParams = [
+      "video=2560x1080@60"
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+      "nvidia_drm.modeset=1"
+      "nvidia_drm.fbdev=1"
+      "nvidia.NVred_PreserveVideoMemoryAllocations=1"
+      "fbcon=nodefer"
+    ];
+    plymouth = {
+      enable = true;
+      theme = "lone";
+      themePackages = with pkgs; [
+      	(adi1090x-plymouth-themes.override {
+	        selected_themes = [ "lone" ];
+	      })
+      ];
+    };
+    consoleLogLevel = 3;
+    initrd = {
+      verbose = false;
+      systemd.enable = true;
+    };
+    loader.timeout = 0;
+  };
+
+  hardware = {
+    nvidia = {
+      open = false;
+      modesetting.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+  };
+
+  networking = {
+    hostName = "nu"; 
+    networkmanager.enable = true;
+  };
+
+  # Set your time zone.
+  time.timeZone = "America/Detroit";
+
+  # Select internationalisation properties.
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
+  };
+
+  services = {
+    # Scheduler
+    scx.enable = true;
+    
+    # Open the OpenSSH daemon
+    openssh.enable = true;
+
+    # Configure keymap in X11
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+      # videoDrivers = [
+      #   "nvidia"
+      # ];
+    };
+
+    # Enable SDDM login
+    displayManager = {
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+        # theme = 
+      };
+    };
+  };
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users = {
+    users = {
+      delta = {
+        isNormalUser = true;
+        description = "delta";
+        extraGroups = [ "networkmanager" "wheel" "video" ];
+        shell = pkgs.fish;
+        packages = with pkgs; [
+        ];
+      };
+    };
+    defaultUserShell = pkgs.fish;
+  };
+
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      inputs.nix-cachyos-kernel.overlays.default
+    ];
+  };
+
+  environment = {
+    systemPackages = with pkgs; [
+      kitty
+      fish
+      neovim
+      (zathura.override {
+        plugins = [ zathuraPkgs.zathura_pdf_mupdf ];
+      })
+      pokemon-colorscripts
+      texliveFull
+      xdotool
+      imagemagick
+      tree
+      tmux
+      btop
+      nh
+      fzf
+      git
+      zoxide
+      yazi
+      fastfetch
+      jq
+      swww
+      nushell
+      wl-clipboard
+      fortune
+      figlet
+      ripgrep
+      lazygit
+      tmatrix
+      gh 
+      sops
+      age
+      ssh-to-age
+
+      sweet-nova
+      sweet
+      sweet-folders
+      
+      inputs.matugen.packages.${stdenv.hostPlatform.system}.default
+      quickshell
+      qt6.qtdeclarative
+      qt5.qtdeclarative
+
+    ];
+    sessionVariables = {
+      # XCURSOR_SIZE = "24";
+      # XCURSOR_THEME = "Sweet-cursors";
+      NIXOS_OZONE_WL = "1";
+      WLR_NO_HARDWARE_CURSORS = "1";
+    };
+  };
+
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.caskaydia-cove
+      noto-fonts
+      noto-fonts-color-emoji
+      noto-fonts-cjk-sans
+      dejavu_fonts
+      liberation_ttf
+    ];
+    enableDefaultPackages= true;
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = [ "JetBrainsMono Nerd Font" ];
+        sansSerif = [ "Noto Sans" ];
+        monospace = [ "JetBrainsMono Nerd Font Mono" ];
+      };
+    };
+  };
+
+  programs = {
+
+    ssh = {
+      startAgent = true;
+    };
+
+    fish = {
+      enable = true;
+    };
+
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+      withUWSM = true;
+    };
+
+    nh = {
+      enable = true;
+      flake = "/home/delta/Configs/Eclipsea";
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 7d --keep 5 --optimise";
+      };
+    };
+
+    firefox.enable = true;
+  };
+
+  nix = {
+    settings = {
+      experimental-features = [ 
+        "nix-command" 
+        "flakes" 
+      ];
+      substituters = [
+        "https://attic.xuyh0120.win/lantian"
+      ];
+      trusted-substituters = [
+        "https://attic.xuyh0120.win/lantian"
+      ];
+      trusted-public-keys = [
+        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+      ];
+    };
+  };
+
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+  };
+
+  sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    age.keyFile = "/home/delta/.config/sops/age/keys.txt";
+
+    secrets.github_token = {
+      owner = "delta";
+      mode = "0400";
+    };
+  };
+
+  system.stateVersion = "25.05"; 
+
+}

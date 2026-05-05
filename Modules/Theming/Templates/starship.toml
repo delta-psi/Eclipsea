@@ -1,0 +1,204 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](primary)\
+$os\
+$username\
+[](bg:primary2 fg:primary)\
+$directory\
+[](bg:tertiary2 fg:primary2)\
+$git_branch\
+$git_status\
+[](fg:tertiary2 bg:tertiary)\
+$c\
+$rust\
+$golang\
+$nix_shell\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:tertiary2 bg:primary2)\
+$conda\
+[](fg:primary2 bg:primary)\
+$time\
+[ ](fg:primary)\
+$line_break\
+$character"""
+
+right_format = """
+$cmd_duration"""
+
+palette = 'matugen'
+
+[os]
+disabled = false
+style = "bg:primary fg:crust"
+
+[os.symbols]
+NixOS = ""
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+style_user = "bg:primary fg:crust"
+style_root = "bg:primary fg:crust"
+format = '[ $user]($style)'
+
+[directory]
+style = "bg:primary2 fg:crust"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:tertiary2"
+format = '[[ $symbol $branch ](fg:crust bg:tertiary2)]($style)'
+
+[git_status]
+style = "bg:tertiary2"
+format = '[[($all_status$ahead_behind )](fg:crust bg:tertiary2)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:tertiary2"
+format = '[[ $symbol( $version) ](fg:crust bg:tertiary2)]($style)'
+
+[nix_shell]
+symbol = " "
+style = "bg:tertiary2"
+format = '[[ $symbol( $version) ](fg:crust bg:tertiary2)]($style)'
+
+[c]
+symbol = " "
+style = "bg:tertiary2"
+format = '[[ $symbol( $version) ](fg:crust bg:tertiary2)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:tertiary2"
+format = '[[ $symbol( $version) ](fg:crust bg:tertiary2)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:tertiary2"
+format = '[[ $symbol( $version) ](fg:crust bg:tertiary2)]($style)'
+
+[php]
+symbol = ""
+style = "bg:tertiary2"
+format = '[[ $symbol( $version) ](fg:crust bg:tertiary2)]($style)'
+
+[java]
+symbol = " "
+style = "bg:tertiary2"
+format = '[[ $symbol( $version) ](fg:crust bg:tertiary2)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:tertiary2"
+format = '[[ $symbol( $version) ](fg:crust bg:tertiary2)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:tertiary2"
+format = '[[ $symbol( $version) ](fg:crust bg:tertiary2)]($style)'
+
+[python]
+symbol = ""
+style = "bg:tertiary2"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:tertiary2)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:primary2"
+format = '[[ $symbol( $context) ](fg:crust bg:primary2)]($style)'
+
+[conda]
+symbol = "  "
+style = "fg:crust bg:primary2"
+format = '[$symbol$environment ]($style)'
+ignore_base = false
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:primary"
+format = '[[  $time ](fg:crust bg:primary)]($style)'
+
+[line_break]
+disabled = true
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:primary)'
+error_symbol = '[❯](bold fg:error)'
+vimcmd_symbol = '[❮](bold fg:primary)'
+vimcmd_replace_one_symbol = '[❮](bold fg:tertiary)'
+vimcmd_replace_symbol = '[❮](bold fg:tertiary)'
+vimcmd_visual_symbol = '[❮](bold fg:tertiary2)'
+
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+style = "bg:tertiary"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+[palettes.matugen]
+crust = "{{colors.surface_dim.dark.hex}}"
+mantle = "{{colors.surface_container_lowest.dark.hex}}"
+base = "{{colors.surface_container_low.dark.hex}}"
+surface0 = "{{colors.surface_container.dark.hex}}"
+surface1 = "{{colors.surface_container_high.dark.hex}}"
+surface2 = "{{colors.surface_container_highest.dark.hex}}"
+overlay0 = "{{colors.surface_bright.dark.hex}}"
+overlay1 = "{{colors.outline_variant.dark.hex}}"
+overlay2 = "{{colors.surface_variant.dark.hex}}"
+subtext0 = "{{colors.outline.dark.hex}}"
+subtext1 = "{{colors.on_surface_variant.dark.hex}}"
+text = "{{colors.on_surface.dark.hex}}"
+error = "{{colors.error.light.hex}}"
+source = "{{colors.source_color.dark.hex}}"
+primary = "{{colors.primary.dark.hex}}"
+primary2 = "{{colors.on_primary_container.dark.hex}}" 
+inverse_primary = "{{colors.inverse_primary.dark.hex}}"
+secondary = "{{colors.secondary.dark.hex}}"
+tertiary = "{{colors.tertiary.dark.hex}}"
+tertiary2 = "{{colors.tertiary_fixed_dim.dark.hex}}"
+background = "{{colors.background.dark.hex}}"
+foreground = "{{colors.inverse_surface.dark.hex}}"
+tint = "{{colors.surface_tint.dark.hex}}"
+base0 = "{{base16.base0d.default.hex}}"
+base1 = "{{base16.base0b.default.hex}}"
+base2 = "{{base16.base09.default.hex}}"
