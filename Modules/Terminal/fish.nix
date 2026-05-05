@@ -16,13 +16,14 @@
         end
       end
 
-      # if status --is-interactive 
-      #   fastfetch && echo && ls && echo
-      # end
-
       if not set -q NVIM
         fastfetch && echo
       end
+
+      function git_commit
+        read --prompt "echo 'Commit Message: '" input
+        git add . && git commit -m $input
+      end 
 
       # Integrade zoxide
       zoxide init fish | source
@@ -37,6 +38,11 @@
       rebuild = "sudo nixos-rebuild switch --flake .#nu";
       build = "sudo nixos-rebuild build --flake .#nu";
       clean = "nh clean all --keep 5 --keep-since 7d --optimise";
+
+      # Git
+      gs = "git status";
+      gc = "git_commit";
+      gp = "git push";
     };
 
   };

@@ -33,6 +33,20 @@
 - Theming: Matugen, awww, quickshell, sweet-nova 
 - CLIs: btop, tmatrix, figlet, gh, git, nh, wl-clipboard, imagemagick, tree, fzf, yazi, zoxide, fastfetch, tmux, jq, ripgrep, lazygit, fortune, sops, age, ssh-to-age
 
+# Keybindings
+- Super + T -> Open Kitty 
+- Super + Q -> Close active window 
+- Super + W -> Open Firefox 
+
+# Hypr Mode Toggles
+- Super + F -> Fullscreen 
+- Super + Shift + F -> Pseudo fullscreen 
+- Super + Alt + F -> "Frosted Glass" Mode: More blur in windows
+- Super + Z -> "Zen Mode": Fullscreen with tiling (multiple windows)
+- Super + Alt + S -> "Square Mode": Square corners instead of rounding
+- Super + Alt + O -> "Opaque Mode": Fully opaque windows 
+- **Note**: These Hypr modes (other than normal fullscreen) are composable, so you may combine these. For example, you can change your windows to just Zen mode, or Zen & Frosted, Square & Opaque, Pseudo fullscreen & Square & Opaque, etc. These are dynamic, togglable modes that don't override each other. These modes were created so window styling could be changed without having to rebuild. Frosted mode is nice for reading, zen is nice for maximizing screen usage and diminishing distractions, opaque is good for videos without going fullscreen, etc. 
+
 # Contributing
 - For the love of Odin can someone please just tell me how to get the frame with rounded corners as seen in Caelestia shell?
 
