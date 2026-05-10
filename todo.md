@@ -1,3 +1,32 @@
+# To Do 
+- Finish Hyprland Configuration 
+- Fix matugen colors (scrap and replace with whatever Caelestia & Noctalia shells do?)
+- Finish Neovim Configuration 
+    - Complete config for Markdown/Notes/Obsidian replacement
+        - Make snacks.indent not render in Markdown files
+    - Complete config for $\LaTeX$ writing 
+        - PDF Viewer pane if possibe, Zathura if not 
+        - Figure out BibLaTeX as well
+    - Complete config for Data Science
+        - Programming in R
+            - Line by line execution?
+        - Jupyter Notebooks
+        - Variables pane
+        - Plotting/Graphs pane
+    - Complete config for Python programming 
+- Make Quickshell configuration declarative/part of Nix flake 
+- Make Bash/Python script in Nix to pull # TODO sections from beginning of all Nix files to generate this todo list 
+- Make Nix module to export keybinds from all apps/programs to a single file 
+    - Make Quickshell togglable window to display all keybinds
+        - Formatted by App/Program, then Headings (and subheadings?)
+
+# Questions
+- For Quickshell, should I just fork Caelestia and modify it? 
+    - Keybinds window 
+    - Better icons (sweet is the only answer)
+    - No defaulting schemes/vibrancy when switching wallpapers
+    - Better workspace icons 
+
 # Eclipsea (Dendritic Nix Configuration)
 
 - System optimization
@@ -73,4 +102,11 @@
 14. Server & Remote operations/deployments with Nomad
     - Forgejo, Minecraft
 15. Make positron nixpkgs or flake for configuration
+
+$$
+\sum^{n}_{i=1} \dfrac{1}{n^{2}} = (F \cup C_{k})^{ Y\circ U}
+$$
+
+
+
 

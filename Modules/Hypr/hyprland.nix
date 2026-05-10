@@ -2,7 +2,25 @@
 # Hyprland Configuration
 # =====================================
 
-{ pkgs, lib, ... }: 
+# TODO: 
+# - Tidy up special workspaces 
+#   - Add xray to them 
+#   - Lower opacity? 
+#   - Larger gaps? 
+#   - Different animation 
+#     - Special workspaces slide down from top 'over' normal workspaces 
+#     - Special workspace to special workspace in horizontal alignment
+# - More work on window moving animations 
+# - More work on window decorations
+# [X] Smaller borders and gaps on square mode 
+# - Add borderless Hypr mode(?)
+# - Keybinds 
+#   - Switch windows from tiled <-> floating 
+#   - Grab & move and resize windows via keybinds/mouse 
+#   - Resize windows 
+
+
+{ pkgs, ... }: 
 
 {
   home.packages = with pkgs; [
@@ -32,9 +50,9 @@
           else 
             # Disable zen mode but keep square mode on 
             if [ -f "/tmp/hypr_square" ]; then 
-              hyprctl keyword general:gaps_in 8 
-              hyprctl keyword general:gaps_out 16 
-              hyprctl keyword general:border_size 4 
+              hyprctl keyword general:gaps_in 4 
+              hyprctl keyword general:gaps_out 8
+              hyprctl keyword general:border_size 2 
               hyprctl keyword decoration:rounding 0 
             else 
               # Disable zen mode 
@@ -64,6 +82,9 @@
           if [ -f "/tmp/hypr_square" ]; then 
             # Enable square mode 
             hyprctl keyword decoration:rounding 0 
+            hyprctl keyword decoration:border_size 2
+            hyprctl keyword decoration:gaps_in 4 
+            hyprctl keyword decoration:gaps_out 8
           else
             # Disable square mode but keep zen mode on 
             if [ -f "/tmp/hypr_zen" ]; then 
@@ -343,8 +364,13 @@
         # layout = {
         # };
         # workspace = [
-          # "name:zen, gapsin:10, gapsout:10, rounding:15, bordersize:3, shadow:true"
+        #   "name:zen, gapsin:10, gapsout:10, rounding:15, bordersize:3, shadow:true"
         # ];
+        workspace = [
+          "special:idle, xray:true, on-created-empty: kitty --class idle-term $idle"
+          "special:systemStats, xray:true, on-created-empty: kitty --class btop-term btop"
+          "special:clock, xray:true, on-created-empty: kitty --class clock-term era"
+        ];
 
         # Variables
         "$mod" = "SUPER";
@@ -353,6 +379,7 @@
         "$browser" = "firefox";
         "$music" = "spotify";
         "$communication" = "vesktop";
+        "$idle" = "terminal-rain --lightning-color magenta --speed fast --thunder";
 
         # Keybinds
         bind = [
@@ -360,7 +387,9 @@
           # General binds
           "$mod, T, exec, $terminal"
           "$mod SHIFT, T, exec, $mini-term"
-          # "$mod SHIFT, T, exec, $terminal --class kitty-floating -o remember_window_size=no -o initial_window_width=900 -o initial_window_height=550"
+          "$mod, I, togglespecialworkspace, idle"
+          "$mod, B, togglespecialworkspace, systemStats"
+          "$mod, C, togglespecialworkspace, clock"
           "$mod, Q, killactive"
           "$mod, W, exec, $browser"
 
@@ -404,9 +433,13 @@
           "$mod, S, togglespecialworkspace, magic"
           "$mod SHIFT, S, movetoworkspace, special:magic"
           "$mod, M, togglespecialworkspace, music"
-          "$mod SHIFT, M, movetoworkspace, special:music"
+          # "$mod SHIFT, M, movetoworkspace, special:music"
           "$mod, D, togglespecialworkspace, communication"
-          "$mod SHIFT, D, togglespecialworkspace, special:communication"
+          # "$mod SHIFT, D, movetoworkspace, special:communication"
+          # "$mod, B, togglespecialworkspace, systemStats"
+          # "$mod SHIFT, B, movetoworkspace, special:systemStats"
+          # "$mod, I, togglespecialworkspace, idle"
+          # "$mod SHIFT, I, togglespecialworkspace, special:idle"
 
           # Change focused window 
           "$mod, H, movefocus, l"
@@ -440,9 +473,25 @@
           opacity = "0.90";
         };
 
+        # windowrule = {
+        #   name = "idle-term";
+        #   "match:class" = "^(idle-term)";
+        #   xray = "true";
+        # };
+
+        # windowrule = {
+        #   name = "idle";
+        #   "match:class" = 
+        # };
+
         exec-once = [
-          "swww-daemon &"
-          "swww img --transition-type wave /home/delta/Pictures/Wallpapers/anime-petals-in-water.jpg"
+          # Cursors 
+          "hyprctl setcursor Sweet-cursors 24"
+          "gsettings set org.gnome.desktop.interface cursor-theme 'Sweet-cursors'"
+          "gsettings set org.gnome.desktop.interface cursor-size 24"
+
+          "awww-daemon &"
+          "awww img --transition-type wave /home/delta/Pictures/Wallpapers/anime-petals-in-water.jpg"
           "qs"
         ];
       };

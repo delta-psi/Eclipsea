@@ -1,5 +1,5 @@
 
-{ configs, pkgs, lib, ... }:
+{ ... }:
 
 {
 
@@ -28,9 +28,17 @@
       # Integrade zoxide
       zoxide init fish | source
     '';
+    # functions = {
+    #   # enable = true;
+    #   ls = {
+    #     body = ''
+    #       nu -c "ls $argv"
+    #     '';
+    #   };
+    # };
     shellAliases = {
-      # ls = "eza --icons=always";
       ls = "nu -c ls";
+      la = "nu -c \"ls -a\"";
       # fastfetch = "fastfetch --kitty (printf '%s\n' ../../Assets/Logos/*.png | shuf -n 1)";
       # fastfetch = "bash ~/.config/fastfetch/random-logo.sh";
       reload = "cd ~ && clear && fastfetch && echo";
@@ -43,6 +51,10 @@
       gs = "git status";
       gc = "git_commit";
       gp = "git push";
+
+      # Fun stuff
+      idle = "terminal-rain --lightning-color magenta --speed fast --thunder";
+      clk = "era";
     };
 
   };

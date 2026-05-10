@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, stylix, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports =
@@ -108,11 +108,27 @@
     displayManager = {
       sddm = {
         enable = true;
-        wayland.enable = true;
-        # theme = 
+        wayland.enable = false;
+        package = pkgs.kdePackages.sddm;
+        # theme = "Elegant";
+        settings = {
+          Theme.CursorTheme = "Sweet-cursors";
+        };
+        # extraPackages = with pkgs; [
+        #   elegant-sddm
+        # ];
       };
     };
   };
+
+  systemd.tmpfiles.rules = 
+    let 
+      user = "delta";
+      iconPath = ../../Assets/.face.icon;
+    in [
+      "f+ /var/lib/AccountsService/users/${user}  0600 root root -  [User]\\nIcon=/var/lib/AccountsService/icons/${user}\\n"
+      "L+ /var/lib/AccountsService/icons/${user}  -    -    -    -  ${iconPath}"
+    ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
@@ -122,8 +138,8 @@
         description = "delta";
         extraGroups = [ "networkmanager" "wheel" "video" ];
         shell = pkgs.fish;
-        packages = with pkgs; [
-        ];
+        # packages = with pkgs; [
+        # ];
       };
     };
     defaultUserShell = pkgs.fish;
@@ -158,7 +174,7 @@
       yazi
       fastfetch
       jq
-      swww
+      awww
       nushell
       wl-clipboard
       fortune
@@ -170,15 +186,27 @@
       sops
       age
       ssh-to-age
+      mermaid-cli
+      ffmpeg
+      unzip
 
       sweet-nova
       sweet
       sweet-folders
+      elegant-sddm
       
       inputs.matugen.packages.${stdenv.hostPlatform.system}.default
       quickshell
       qt6.qtdeclarative
+      kdePackages.qt5compat
       qt5.qtdeclarative
+      kdePackages.qtmultimedia
+      kdePackages.qtsvg
+      kdePackages.qtvirtualkeyboard
+      qt5.qtgraphicaleffects
+
+      inputs.terminal-rain.packages.${stdenv.hostPlatform.system}.terminal-rain-lightning
+      era
 
     ];
     sessionVariables = {
@@ -211,6 +239,22 @@
   };
 
   programs = {
+
+    silentSDDM = {
+      enable = true;
+      theme = "lifedeath";
+      profileIcons = {
+        delta = "/home/.face.icon";
+      };
+      # backgrounds = {
+      #   lifedeath = "/home/delta/Pictures/SDDM_Backgrounds/death-and-life.mp4";
+      # };
+      # settings = {
+      #   "LoginScreen" = {
+      #     background = "death-and-life.mp4";
+      #   };
+      # };
+    };
 
     ssh = {
       startAgent = true;

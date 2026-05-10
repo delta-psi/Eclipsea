@@ -32,6 +32,26 @@
         "type": "github"
       }
     },
+    "calmSDDM": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778276656,
+        "narHash": "sha256-KU6Aky0yD4v7iZE/0Lbr4vc7lMX6cdDbdWFnz/HO1+o=",
+        "owner": "delta-psi",
+        "repo": "CalmSDDM",
+        "rev": "7ab444f5fcfca614f5db6f8d3f54e6e5446c961e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "delta-psi",
+        "repo": "CalmSDDM",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -211,6 +231,21 @@
         "type": "indirect"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1777954456,
+        "narHash": "sha256-hGdgeU2Nk87RAuZyYjyDjFL6LK7dAZN5RE9+hrDTkDU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "549bd84d6279f9852cae6225e372cc67fb91a4c1",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -235,12 +270,14 @@
     },
     "root": {
       "inputs": {
+        "calmSDDM": "calmSDDM",
         "home-manager": "home-manager",
         "matugen": "matugen",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "terminal-rain": "terminal-rain"
       }
     },
     "sops-nix": {
@@ -290,6 +327,24 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "terminal-rain": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1777995268,
+        "narHash": "sha256-BkgHbgtllmUYTPlnu1M/ckK4hm6+g8sPCcf4op/5lAw=",
+        "owner": "delta-psi",
+        "repo": "terminal-rain-lightning-flake",
+        "rev": "0e9d56f083b1975b6d62962c49649d1be6419f7f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "delta-psi",
+        "repo": "terminal-rain-lightning-flake",
         "type": "github"
       }
     }

@@ -30,10 +30,20 @@
       url = "github:/InioX/Matugen";
     };
 
+    # Sops-nix (secrets)
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Silent SDDM Theme 
+    calmSDDM = {
+      url = "github:delta-psi/CalmSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # terminal-rain-lightning flake
+    terminal-rain.url = "github:delta-psi/terminal-rain-lightning-flake";
 
     # quickshell = {
     #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
@@ -42,7 +52,7 @@
 
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nix-cachyos-kernel, nixvim, matugen, sops-nix, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, nix-cachyos-kernel, nixvim, matugen, sops-nix, calmSDDM, terminal-rain, ... }: {
     nixosConfigurations = {
       nu = nixpkgs.lib.nixosSystem {
         specialArgs = {
@@ -59,6 +69,7 @@
           nixvim.nixosModules.nixvim
           matugen.nixosModules.default
           sops-nix.nixosModules.sops
+          calmSDDM.nixosModules.default 
           home-manager.nixosModules.home-manager
           ({ config, ... }: {
             home-manager = {

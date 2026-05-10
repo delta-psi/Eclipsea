@@ -38,7 +38,7 @@
       }
 
       # 1. Set wallpaper via swww
-      stfu swww img --transition-type wave --transition-step 90 "$FULL_PATH"
+      stfu awww img --transition-type wave --transition-step 90 "$FULL_PATH"
 
       # 2. Run matugen
       # stfu matugen -q -t scheme-vibrant --prefer darkness image "$FULL_PATH"

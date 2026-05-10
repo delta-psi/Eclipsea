@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 
@@ -12,7 +12,7 @@
 
     iconTheme = {
       package = pkgs.sweet-nova;
-      name = "Sweet-Nova";
+      name = "Sweet-cursors";
     };
 
     font = {
