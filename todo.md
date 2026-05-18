@@ -103,9 +103,6 @@
     - Forgejo, Minecraft
 15. Make positron nixpkgs or flake for configuration
 
-$$
-\sum^{n}_{i=1} \dfrac{1}{n^{2}} = (F \cup C_{k})^{ Y\circ U}
-$$
 
 
 

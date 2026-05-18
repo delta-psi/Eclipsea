@@ -4,12 +4,14 @@
 # TODO: 
 # - markview or render-markdown 
 #   - obsidian.nvim?
+#   - Neorg for obsidian replacement!!
 # - Configure VimTex 
 #   - Auto-save -> auto-compile -> auto-update PDF
 #   - Have to use Zathura, or find a way to have PDF viewer inside Neovim
 # - Not in Nixvim: 
 #   - doodle.nvim (Obsidian graph view)
 #   - mdmath.nvim (Inline LaTeX rendering using Kitty Graphics Protocol)
+#   - makrdown-latex-render (best embedded LaTeX renderer for Markdown in Neovim)
 # - fugit2 (git UI)
 # - flash (?)
 # - fidget (?)
@@ -17,12 +19,26 @@
 # - nix
 # - otter 
 # - Customize lualine, bufferline/tabs 
+#   - Lualine theme based on bubbles 
+# - Neoscroll/snacks scroll 
+#   - Configure so it doesn't mess with normal vim motions 
+# - nvim surround 
+# - blink-cmp? 
+# - LSP: change nix lsp from nil_ls -> nixd to add documentation of rthings (like nixvim)
+# - treesitter-textobjects: select inner/outer of functions/classes, jump between them 
+# - gitsigns: add line blame 
+# - flash for jumping between spots 
+# - todo-comments for comments that actually do shit 
+# - trouble for diagnostics but better 
+
 
 
 {
   programs.nixvim = {
     enable = true;
+    waylandSupport = true;
     nixpkgs.config.allowUnfree = true;
+    performance.byteCompileLua.enable = true;
     colorschemes = {
       base16 = {
         enable = true;
@@ -80,13 +96,31 @@
           explorer = {
             enabled = true;
           };
+          terminal = {
+            enabled = true;
+          };
           lazygit = {
             enabled = true;
           };
           gh.enabled = true;
           git.enabled = true;
-          picker.enabled = true;
+          picker = {
+            enabled = true;
+          };
+          notifier = {
+            enabled = true;
+            style = "fancy";
+          };
           scroll.enabled = false;
+          bufdelete = {
+            enabled = true;
+          };
+          words = {
+            enabled = true;
+          };
+          toggle = {
+            enabled = true;
+          };
           styles = {
             image = {
               col = 0;
@@ -211,8 +245,83 @@
         };
       };
       
-      lualine.enable = true;
+      lualine = {
+        enable = true;
+        settings = {
+          options = {
+            theme = {
+              __raw = ''
+                (function()
+                  local colors = {
+                    blue   = '#80a0ff',
+                    cyan   = '#79dac8',
+                    black  = '#080808',
+                    white  = '#c6c6c6',
+                    red    = '#ff5189',
+                    violet = '#d183e8',
+                    grey   = '#303030',
+                  }
+                  return {
+                    normal = {
+                      a = { fg = colors.black,  bg = colors.violet, gui = "italic,bold" },
+                      b = { fg = colors.white,  bg = colors.grey, gui = "italic" },
+                      c = { fg = colors.white, gui = "italic" },
+                    },
+                    insert  = { a = { fg = colors.black, bg = colors.blue, gui = "italic,bold" } },
+                    visual  = { a = { fg = colors.black, bg = colors.cyan, gui = "italic,bold" } },
+                    replace = { a = { fg = colors.black, bg = colors.red, gui = "italic,bold" } },
+                    inactive = {
+                      a = { fg = colors.white, bg = colors.black, gui = "italic" },
+                      b = { fg = colors.white, bg = colors.black, gui = "italic" },
+                      c = { fg = colors.white, gui = "italic" },
+                    },
+                  }
+                end)()
+              '';
+            };
+            component_separators = "";
+            section_separators = {
+              left  = "";
+              right = "";
+            };
+          };
+          sections = {
+            lualine_a = [
+              { __unkeyed-1 = "mode"; separator = { left = ""; }; right_padding = 2; }
+            ];
+            lualine_b = [ "filename" "branch" ];
+            lualine_c = [ "fileformat" ];
+            lualine_x = [ "diff" ];
+            lualine_y = [ "filetype" "encoding" ];
+            lualine_z = [
+              { __unkeyed-1 = "location"; separator = { right = ""; }; left_padding = 2; }
+            ];
+          };
+          inactive_sections = {
+            lualine_a = [ "filename" ];
+            lualine_b = [];
+            lualine_c = [];
+            lualine_x = [];
+            lualine_y = [];
+            lualine_z = [ "location" ];
+          };
+          tabline = {
+            lualine_a = [
+              { __unkeyed-1 = "buffers"; separator = { left = ""; right = ""; }; } 
+            ];
+            lualine_b = [];
+            lualine_c = [];
+            lualine_x = [];
+            lualine_y = [];
+            lualine_z = [
+              # { __unkeyed-1 = "tabs"; separator = { left = ""; right = ""; }; }
+            ];
+          };
+        };
+      };
       colorizer.enable = true;
+      hardtime.enable = true;
+      precognition.enable = true;
 
       auto-session = {
         enable = true;
@@ -223,12 +332,12 @@
       };
 
       telescope = {
-	      enable = true;
-	      extensions.fzf-native.enable = true;
-        keymaps = {
-          "<leader>ff" = "find_files";
-          "<leader>fg" = "live_grep";
-        };
+       enable = true;
+       extensions.fzf-native.enable = true;
+        # keymaps = {
+        #   "<leader>ff" = "find_files";
+        #   "<leader>fg" = "live_grep";
+        # };
       };
 
       treesitter = {
@@ -329,10 +438,10 @@
         };
       };
 
-      lspkind = {
-        enable = true;
-        cmp.enable = true;
-      };
+      # lspkind = {
+      #   enable = true;
+      #   cmp.enable = true;
+      # };
 
       conform-nvim = {
         enable = true;
@@ -355,24 +464,34 @@
 
       otter.enable = true;
 
-      cmp = {
+      blink-cmp = {
         enable = true;
-        autoEnableSources = true;
         settings = {
-          sources = [
-            { name = "nvim_lsp"; }
-            { name = "path"; }
-            { name = "buffer"; }
-            { name = "luasnip"; }
-          ];
-          mapping = {
-            "<C-space>" = "cmp.mapping.complete()";
-            "<CR>" = "cmp.mapping.confirm({ select = true })";
-            "<Tab>" = "cmp.mapping.select_next_item()";
-            "<S-Tab>" = "cmp.mapping.select_prev_item()";
+          completion = {
+            documentation = {
+              auto_show = true;
+            };
           };
         };
       };
+      # cmp = {
+      #   enable = true;
+      #   autoEnableSources = true;
+      #   settings = {
+      #     sources = [
+      #       { name = "nvim_lsp"; }
+      #       { name = "path"; }
+      #       { name = "buffer"; }
+      #       { name = "luasnip"; }
+      #     ];
+      #     mapping = {
+      #       "<C-space>" = "cmp.mapping.complete()";
+      #       "<CR>" = "cmp.mapping.confirm({ select = true })";
+      #       "<Tab>" = "cmp.mapping.select_next_item()";
+      #       "<S-Tab>" = "cmp.mapping.select_prev_item()";
+      #     };
+      #   };
+      # };
 
       vimtex = {
         enable = true;
@@ -449,20 +568,166 @@
         enable = true;
       };
 
-      bufferline.enable = true;
+      bufferline = {
+        enable = false;
+        settings = {
+          highlights = {
+                  # Fill bar background (the empty space between/around tabs)
+            fill = {
+              bg = "#080808";  # black
+            };
+
+            # Unselected tabs
+            background = {
+              fg = "#c6c6c6";  # white
+              bg = "#303030";  # grey
+            };
+
+            # Selected tab
+            buffer_selected = {
+              fg = "#080808";  # black
+              bg = "#d183e8";  # violet
+              bold = true;
+              italic = true;
+            };
+
+            # Visible but not selected (e.g. in a split)
+            buffer_visible = {
+              fg = "#c6c6c6";  # white
+              bg = "#303030";  # grey
+            };
+
+            # Separators for unselected tabs
+            separator = {
+              fg = "#080808";  # matches fill — outer curve blends into bar
+              bg = "#303030";  # matches background — inner curve blends into tab
+            };
+
+            # Separators for selected tab
+            separator_selected = {
+              fg = "#080808";  # matches fill
+              bg = "#d183e8";  # matches selected tab
+            };
+
+            # Separators for visible but unfocused tabs
+            separator_visible = {
+              fg = "#080808";  # matches fill
+              bg = "#303030";  # matches background
+            };
+
+            # The little indicator line under the selected tab
+            indicator_selected = {
+              fg = "#d183e8";  # violet
+              bg = "#d183e8";  # violet — hides it so the pill shape is clean
+            };
+
+            # Modified (unsaved) indicator dots
+            modified = {
+              fg = "#ff5189";  # red, matching lualine's red
+              bg = "#303030";
+            };
+            modified_selected = {
+              fg = "#ff5189";  # red
+              bg = "#d183e8";  # violet
+            };
+            modified_visible = {
+              fg = "#ff5189";
+              bg = "#303030";
+            };
+
+            # Close buttons
+            close_button = {
+              fg = "#c6c6c6";
+              bg = "#303030";
+            };
+            close_button_selected = {
+              fg = "#080808";
+              bg = "#d183e8";
+            };
+            close_button_visible = {
+              fg = "#c6c6c6";
+              bg = "#303030";
+            };
+
+            # Tab (if you have tabpages enabled)
+            tab = {
+              fg = "#c6c6c6";
+              bg = "#303030";
+            };
+            tab_selected = {
+              fg = "#080808";
+              bg = "#d183e8";
+              bold = true;
+            };
+            tab_separator = {
+              fg = "#080808";
+              bg = "#303030";
+            };
+            tab_separator_selected = {
+              fg = "#080808";
+              bg = "#d183e8";
+            };
+            tab_close = {
+              fg = "#c6c6c6";
+              bg = "#080808";
+            };
+          };
+          #   buffer_selected = {
+          #     bg = "#363a4f";
+          #   };
+          #   fill = {
+          #     bg = "#1e2030";
+          #   };
+          #   numbers_selected = {
+          #     bg = "#363a4f";
+          #   };
+          #   separator = {
+          #     fg = "#13e4d6";
+          #     bg = "#1e2030";
+          #   };
+          #   separator_selected = {
+          #     fg = "#13e4d6";
+          #     bg = "#363a4f";
+          #   };
+          #   separator_visible = {
+          #     fg = "#1e2030";
+          #     bg = "#1e2030";
+          #   };
+          #   tab_selected = {
+          #     bg = "#13e4d6";
+          #   };
+          # };
+          options = {
+            # separator_style = ["" ""];
+            separator_style = [
+              ""
+              ""
+            ];
+          };
+        };
+      };
 
       which-key = {
         enable = true;
         settings = {
-          icons.group = "";
-        };
-      };
+          preset = "helix";
+          delay = 300;
+          win = {
+            border = "rounded";
+            padding = [ 1 2 ];
+            # wo = {
+            #   winblend = 10;
+            # };
+          };
+          icons = {
+            mappings = true;
+            group = "+";
+            breadcrumb = "»";
+            separator = "➜";
+          };
+          show_help = true;
+          show_keys = true;
 
-      toggleterm = {
-        enable = true;
-        settings = {
-          direction = "horizontal";
-          open_mapping = "[[<C-\\>]]";
         };
       };
 
@@ -475,9 +740,12 @@
         enable = true;
       };
 
-      notify = {
-        enable = true;
-      };
+      # notify = {
+      #   enable = true;
+      #   settings = "#00000000";
+      #   stages = "fade";
+      #   timeout = "3000";
+      # };
 
       noice = {
         enable = true;
@@ -485,13 +753,14 @@
         settings = {
           presets = {
             bottom_search = false;
-            command_palette = false;
+            command_palette = true;
             inc_rename = false;
             long_message_to_split = false;
-            lsp_doc_border = false;
+            lsp_doc_border = true;
           };
           cmdline = {
             enabled = true;
+            view = "cmdline_popup";
           };
           messages = {
             enabled = true;
@@ -501,6 +770,43 @@
           };
           popupmenu = {
             enabled = true;
+            backend = "nui";
+            kind_icons = { };
+          };
+          views = {
+            cmdline_popup = {
+              position = {
+                row = "50%";
+                col = "50%";
+              };
+              size = {
+                width = 60;
+                height = "auto";
+              };
+            };
+            popupmenu = {
+              relative = "editor";
+              zindex = 65;
+              position = {
+                row = "53%";
+                col = "50%";
+              };
+              size = {
+                width = 60;
+                height = "auto";
+                max_height = 10;
+              };
+              border = {
+                style = "rounded";
+                padding = [ 0 1 ];
+              };
+              win_options = {
+                winhighlight = {
+                  Normal = "NormalFloat";
+                  FloatBorder = "FloatBorder";
+                };
+              };
+            };
           };
         };
       };
@@ -522,25 +828,37 @@
       lazyredraw = false;
       pumblend = 0;
       winblend = 0;
+      wildoptions = "pum";
+      winborder = "rounded";
+      # pumheight = 10;
+      wildmode = "longest:full,full";
+      completeopt = [ "menu" "menuone" "noselect" "noinsert" ];
       fillchars = {
         eob = " ";
       };
     };
 
     keymaps = [
-      { mode = "n"; key = "<S-l>"; action = "<cmd>BufferLineCycleNext<cr>"; }
-      { mode = "n"; key = "<S-h>"; action = "<cmd>BufferLineCyclePrev<cr>"; }
+      { mode = "n"; key = "<S-l>"; action = ":bnext<cr>"; options.desc = "Next Buffer"; }
+      { mode = "n"; key = "<S-h>"; action = ":bprev<cr>"; options.desc = "Previous Buffer"; }
 
-      { mode = "n"; key = "<leader>v"; action = "<cmd>vsplit<cr>"; }
-      { mode = "n"; key = "<leader>s"; action = "<cmd>split<cr>"; }
+      { mode = "n"; key = "<leader>v"; action = "<cmd>vsplit<cr>"; options.desc = "Vertical Split"; }
+      { mode = "n"; key = "<leader>s"; action = "<cmd>split<cr>"; options.desc = "Horizontal Split"; }
 
-      { mode = "n"; key = "<leader>e"; action = "<cmd>lua Snacks.explorer()<cr>"; }
+      { mode = "n"; key = "<leader>e"; action = "<cmd>lua Snacks.explorer()<cr>"; options.desc = "File Tree"; }
+      { mode = [ "n" "t" ]; key = "<C-\\>"; action = "<cmd> lua Snacks.terminal.toggle()<cr>"; options.desc = "Toggle Terminal"; } 
+      { mode = "n"; key = "<leader>bd"; action = "<cmd> lua Snacks.bufdelete()<cr>"; options.desc = "Delete current buffer"; }
+      # { mode = "n"; key = "<leader>lr"; action.__raw = ''function() require("markdown-latex-render.render").rerender_buf() end''; }
+      { mode = "n"; key = "<leader><space>"; action = "<cmd>lua Snacks.picker.smart()<cr>"; options.desc = "File Explorer"; }
+      { mode = "n"; key = "<leader>h"; action = "<cmd>lua Snacks.notifier.show_history()<cr>"; options.desc = "Show notifcations history"; }
 
       # Resize with arrows
       { mode = "n"; key = "<C-Up>"; action = "<cmd>resize -2<cr>"; }
       { mode = "n"; key = "<C-Down>"; action = "<cmd>resize +2<cr>"; }
       { mode = "n"; key = "<C-Left>"; action = "<cmd>vertical resize -2<cr>"; }
       { mode = "n"; key = "<C-Right>"; action = "<cmd>vertical resize +2<cr>"; }
+
+      { mode = "n"; key = "<leader>d"; action = "<cmd>lua vim.diagnostic.open_float()<cr>"; options.desc = "Show Diagnostic"; }
     ];
 
     extraConfigVim = ''
@@ -555,17 +873,70 @@
       trash-cli
     ];
 
+    extraPlugins = with pkgs.vimUtils; [
+      # (buildVimPlugin {
+      #   name = "plenary";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "nvim-lua";
+      #     repo = "plenary.nvim";
+      #     rev = "HEAD";
+      #     sha256 = "sha256-nkfETDkPiE+Kd2BWYZijgUp9bP8RgFwRmvqJz2BMuq4=";
+      #   };
+      #   doCheck = false;
+      # })
+      # (buildVimPlugin {
+      #   name = "markdown-latex-render.nvim";
+      #   pname = "markdown-latex-render.nvim";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "Prometheus1400";
+      #     repo = "markdown-latex-render.nvim";
+      #     rev = "HEAD";
+      #     sha256 = "sha256-66QMvQ4dTf1GYGfScH0AvuvoZdUqOnqDhCYxNPmAC6Q=";
+      #   };
+      #   doCheck = false;
+      # })
+      # (buildVimPlugin {
+      #   name = "triforce.nvim";
+      #   pname = "triforce.nvim";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "gisketch";
+      #     repo = "triforce.nvim";
+      #     rev = "HEAD";
+      #     sha256 = "sha256-YY+bq5TuVhl+P2poOYN7k9eLp7SE+nM/hkLF3375eOE=";
+      #   };
+      #   doCheck = false;
+      # })
+      # (buildVimPlugin {
+      #   name = "volt";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "nvzone";
+      #     repo = "volt";
+      #     rev = "HEAD";
+      #     sha256 = "sha256-5Xao1+QXZOvqwCXL6zWpckJPO1LDb8I7wtikMRFQ3Jk=";
+      #   };
+      # })
+      # (buildVimPlugin {
+      #   name = "typr";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "nvzone";
+      #     repo = "typr";
+      #     rev = "HEAD";
+      #     sha256 = "sha256-PNkoz91RmlZnRrdStAz5b7pGaWv27UOQU/9abYNP/5E=";
+      #   };
+      #   doCheck = false;
+      # })
+    ];
+
     extraConfigLua = ''
       vim.g.vimtex_compiler_progname = 'nvr'
       vim.g.tex_flavor = 'latex'
-    '';
 
-    # extraPlugins = with pkgs; [
-    #   (vimUtils.buildVimPlugin {
-    #     name = "markdown-latex-render-nvim";
-    #
-    #   })
-    # ];
+      -- require("plenary").setup()
+      -- require("markdown-latex-render").setup()
+      -- require("volt").setup()
+      -- require("triforce").setup()
+      -- require("typr").setup()
+    '';
 
     autoCmd = [
       {
@@ -582,6 +953,10 @@
         event = [ "ColorScheme" "BufEnter" ];
         pattern = "*";
         command = "highlight Normal guibg=NONE | highlight NormalFloat guibg=NONE | highlight ToggleTerm guibg=NONE | highlight SnacksExplorerNormal guibg=NONE";
+      }
+      {
+        event = [ "CursorHold" ];
+        callback.__raw = "function() vim.diagnostic.open_float(nil, { focus = false }) end";
       }
     ];
 
@@ -655,7 +1030,7 @@
       "WinBarNC"                  = { bg = "NONE"; };
 
       # Notify 
-      "NotifyBackground"          = { bg = "NONE"; };
+      # "NotifyBackground"          = { bg = "NONE"; };
 
       # End of buffer
       "EndOfBuffer"               = { bg = "NONE"; };

@@ -4,7 +4,6 @@
   imports =
     [ 
       ./hardware-configuration.nix
-      # ../../Modules/Theming/matugen.nix
     ];
 
   # Bootloader
@@ -57,6 +56,7 @@
     nvidia = {
       open = false;
       modesetting.enable = true;
+      nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
@@ -188,6 +188,7 @@
       mermaid-cli
       ffmpeg
       unzip
+      vlc
 
       sweet-nova
       sweet
@@ -195,6 +196,7 @@
       elegant-sddm
       
       inputs.matugen.packages.${stdenv.hostPlatform.system}.default
+      wallust
       quickshell
       qt6.qtdeclarative
       kdePackages.qt5compat
@@ -207,12 +209,16 @@
       inputs.terminal-rain.packages.${stdenv.hostPlatform.system}.terminal-rain-lightning
       era
 
+      python314
+
     ];
     sessionVariables = {
       # XCURSOR_SIZE = "24";
       # XCURSOR_THEME = "Sweet-cursors";
       NIXOS_OZONE_WL = "1";
       WLR_NO_HARDWARE_CURSORS = "1";
+      # XDG_SESSION_TYPE = "wayland";
+      XDG_CURRENT_DESKTOP = "Hyprland";
     };
   };
 
@@ -269,6 +275,14 @@
 
     firefox.enable = true;
   };
+
+  # xdg.portal = {
+  #   enable = true;
+  #   config.common.default = [
+  #     "hyprland"
+  #     "gtk"
+  #   ];
+  # };
 
   nix = {
     settings = {

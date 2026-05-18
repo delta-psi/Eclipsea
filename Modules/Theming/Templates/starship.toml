@@ -93,6 +93,13 @@ symbol = ""
 style = "bg:tertiary2"
 format = '[[ $symbol( $version) ](fg:crust bg:tertiary2)]($style)'
 
+# [custom.nix]
+# when = "ls *.nix 2>/dev/null | head -1"
+# # command = "nix --version 2>/dev/null | awk '{print $3}'"
+# symbol = " "
+# style = "bg:tertiary2"
+# format = '[[ $symbol ](fg:crust bg:tertiary2)]($style)'
+
 [nix_shell]
 symbol = " "
 style = "bg:tertiary2"
