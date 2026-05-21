@@ -231,6 +231,7 @@
       noto-fonts-cjk-sans
       dejavu_fonts
       liberation_ttf
+      julia-mono
     ];
     enableDefaultPackages= true;
     fontconfig = {

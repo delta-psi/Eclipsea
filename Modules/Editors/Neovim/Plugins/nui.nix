@@ -1,0 +1,6 @@
+
+{
+  nui = {
+    enable = true;
+  };
+}

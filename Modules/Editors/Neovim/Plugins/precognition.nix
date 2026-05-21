@@ -1,0 +1,4 @@
+
+{
+  precognition.enable = true;
+}

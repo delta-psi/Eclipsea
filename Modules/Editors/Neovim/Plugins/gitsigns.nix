@@ -1,0 +1,4 @@
+
+{
+  gitsigns.enable = true;
+}

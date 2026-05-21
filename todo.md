@@ -103,6 +103,33 @@
     - Forgejo, Minecraft
 15. Make positron nixpkgs or flake for configuration
 
+$$
+\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
+$$
+
+I love $\LaTeX$ and $\Delta$ is one of my favorite greek letters, and $x^{2} = x$ is an underrated property. 
+
+Hi, $x^3$ and $a_{0}$ are awesome too. 
+
+Hello, I am $\Delta$ 
+
+I am making $x^5$ the new prime suspect of studying polynomials. 
+
+Here is an example of a sequence that I have no idea how to handle, but I am pretty sure it converges to $0$: 
+$$
+\sum^{\infty}_{n = 1} \dfrac{1}{n^{2}}
+$$
+And here is a sequence: 
+$$\langle a_0, a_1, \ldots, a_n \rangle$$
+
+
+
+
+
+
+
+
+Bing bing, this be some bullsheet lolz. But, here's a $\Psi$ for your troubles. 
 
 
 
