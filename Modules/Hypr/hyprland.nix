@@ -3,6 +3,8 @@
 # =====================================
 
 # TODO: 
+# - Redo config with lua 
+#   - Rewrite hypr mode scripts
 # - Tidy up special workspaces 
 #   - Add xray to them 
 #   - Lower opacity? 
@@ -16,8 +18,9 @@
 # - Add borderless Hypr mode(?)
 # - Keybinds 
 #   - Switch windows from tiled <-> floating 
-#   - Grab & move and resize windows via keybinds/mouse 
+#   - Grab & move windows via keybinds/mouse 
 #   - Resize windows 
+#   - Toggle floating (auto set to specific starting size, which can be changed via above keybinds)
 
 
 { pkgs, lib, ... }: 

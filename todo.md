@@ -1,6 +1,8 @@
 # To Do 
 - Finish Hyprland Configuration 
+    - Have quickshell inherit opacity and colors from hyprland/wallust
 - Fix matugen colors (scrap and replace with whatever Caelestia & Noctalia shells do?)
+    - Replace with wallust - configure this, export colors to everything
 - Finish Neovim Configuration 
     - Complete config for Markdown/Notes/Obsidian replacement
         - Make snacks.indent not render in Markdown files
