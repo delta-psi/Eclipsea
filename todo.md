@@ -18,6 +18,7 @@
     - Complete config for Python programming 
 - Make Quickshell configuration declarative/part of Nix flake 
 - Make Bash/Python script in Nix to pull # TODO sections from beginning of all Nix files to generate this todo list 
+- Replace all Bash scripts with Lua (or Python)
 - Make Nix module to export keybinds from all apps/programs to a single file 
     - Make Quickshell togglable window to display all keybinds
         - Formatted by App/Program, then Headings (and subheadings?)

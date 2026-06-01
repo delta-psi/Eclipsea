@@ -42,13 +42,13 @@
           # Frost Mode 
           if [ -f "/tmp/hypr_frost" ]; then 
             # Enable frost mode 
-            hyprctl keyword decoration:blur:size 8 
+            hyprctl keyword decoration:blur:size 7 
             hyprctl keyword decoration:blur:passes 5 
             hyprctl keyword decoration:active_opacity 0.85 
             hyprctl keyword decoration:inactive_opacity 0.80 
           else 
             # Disable frost mode
-            hyprctl keyword decoration:blur:size 8 
+            hyprctl keyword decoration:blur:size 7 
             hyprctl keyword decoration:blur:passes 2 
             hyprctl keyword decoration:active_opacity 0.85 
             hyprctl keyword decoration:inactive_opacity 0.80 

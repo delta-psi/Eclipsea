@@ -26,6 +26,12 @@
           };
         };
       };
+      bigfile = {
+        enabled = true;
+      };
+      health = {
+        enabled = true;
+      };
       explorer = {
         enabled = true;
       };

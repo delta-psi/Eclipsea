@@ -37,12 +37,13 @@
         fi 
       }
 
-      # 1. Set wallpaper via swww
+      # 1. Set wallpaper via awww
       stfu awww img --transition-type wave --transition-step 90 "$FULL_PATH"
 
       # 2. Run matugen
       # stfu matugen -q -t scheme-vibrant --prefer darkness image "$FULL_PATH"
-      stfu matugen -q -t scheme-vibrant --prefer saturation --base16-backend wal --source-color-index 0 image "$FULL_PATH"
+      # stfu matugen -q -t scheme-vibrant --prefer saturation --base16-backend wal --source-color-index 0 image "$FULL_PATH"
+      stfu wallust run -p saliencedark16 -I background "$FULL_PATH"
 
       # 3. Re-apply hyprland modes 
       if [ -f "$HYPR_MODES" ]; then 

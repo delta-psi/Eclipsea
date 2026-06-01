@@ -28,23 +28,15 @@
       # Integrade zoxide
       zoxide init fish | source
     '';
-    # functions = {
-    #   # enable = true;
-    #   ls = {
-    #     body = ''
-    #       nu -c "ls $argv"
-    #     '';
-    #   };
-    # };
     shellAliases = {
       ls = "nu -c ls";
       la = "nu -c \"ls -a\"";
-      # fastfetch = "fastfetch --kitty (printf '%s\n' ../../Assets/Logos/*.png | shuf -n 1)";
-      # fastfetch = "bash ~/.config/fastfetch/random-logo.sh";
       reload = "cd ~ && clear && fastfetch && echo";
       ec = "cd ~/Configs/Eclipsea && tree -d";
-      rebuild = "sudo nixos-rebuild switch --flake .#nu";
-      build = "sudo nixos-rebuild build --flake .#nu";
+      # rebuild = "sudo nixos-rebuild switch --flake .#nu";
+      rebuild = "nh os switch . -H nu";
+      build = "nh os boot . -H nu";
+      # build = "sudo nixos-rebuild build --flake .#nu";
       clean = "nh clean all --keep 5 --keep-since 7d --optimise";
 
       # Git

@@ -189,6 +189,7 @@
       ffmpeg
       unzip
       vlc
+      smassh
 
       sweet-nova
       sweet

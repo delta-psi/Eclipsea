@@ -13,7 +13,8 @@
 
     # Startup
     "awww-daemon &"
-    "awww img --transition-type wave /home/delta/Pictures/Wallpapers/anime-petals-in-water.jpg"
+    # "awww img --transition-type wave --transition-step 90 /home/delta/Pictures/Wallpapers/anime-petals-in-water.jpg"
+    "awww restore"
     "qs"
   ];
 
