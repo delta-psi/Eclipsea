@@ -16,7 +16,7 @@
       efi.canTouchEfiVariables = true;
     };
     # kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-zen4;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
     kernelModules = [
       "nvidia"
       "nvidia_modeset"
@@ -58,6 +58,10 @@
       modesetting.enable = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
     };
   };
 
@@ -190,6 +194,9 @@
       unzip
       vlc
       smassh
+      tukai
+      ffmpeg
+      overskride
 
       sweet-nova
       sweet
@@ -258,6 +265,17 @@
 
     fish = {
       enable = true;
+    };
+
+    uwsm = {
+      enable = true;
+      waylandCompositors = {
+        hyprland = {
+          prettyName = "Hyprland";
+          comment = "Hyprland compositor managed by UWSM";
+          binPath = "/run/current-system/sw/bin/Hyprland";
+        };
+      };
     };
 
     hyprland = {

@@ -1,4 +1,27 @@
 # To Do 
+- Migrate Hyprland to Lua config 
+    - Finish Hyprland Config 
+- Finish Neovim Config 
+    - Snacks ecosystem, LaTeX and Data Science workflows
+- Terminal Config
+    - Kitty
+    - Starship
+    - Fish + Nushell 
+    - CLIs 
+- Theming with Wallust 
+    - Port colors -> 
+        - Hyprland 
+        - Quickshell 
+        - Kitty 
+        - Starship 
+        - Neovim 
+        - Zen Browser 
+        - Vesktop 
+        - Spicetify
+- Make ISO to install full config on Laptop
+    - Push all repo changes and such 
+    - Make machine config for laptop 
+
 - Finish Hyprland Configuration 
     - Have quickshell inherit opacity and colors from hyprland/wallust
 - Fix matugen colors (scrap and replace with whatever Caelestia & Noctalia shells do?)
@@ -105,6 +128,26 @@
 14. Server & Remote operations/deployments with Nomad
     - Forgejo, Minecraft
 15. Make positron nixpkgs or flake for configuration
+
+## Machines 
+
+- Reorganize desk setups 
+
+### Main Setup 
+
+- Take off books & shelves 
+- Make this shit cleannnnn 
+- Make lamps symmetrical
+- Add Lightbar over monitor 
+- Add drawers for stuff 
+- Rebuild PC in Fractal Terra Case 
+- Split keyboard 
+
+### Gaming Setup 
+
+- Add monitor shelf 
+- Reorient monitors (stacked)
+- 
 
 $$
 \int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
