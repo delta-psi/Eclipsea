@@ -45,28 +45,12 @@ let
       opts
     ];
   };
-  submap = name: binds: {
-    _args = [
-      name 
-      (lua ''
-        function()
-          ${lib.concatStringsSep "\n " binds}
-        end
-      '')
-    ];
-  };
   submapBind = key: action: ''
     hl.bind("${key}", ${action})
   '';
   submapBindR = key: action: ''
     hl.bind("${key}", ${action}, { repeating = true })
   '';
-  # submap = name: binds: {
-  #   _args = [
-  #     name
-  #     lua binds
-  #   ];
-  # };
   workspaceBinds = lib.concatMap(i: 
     let key = toString(lib.mod i 10);
     in [
@@ -74,8 +58,108 @@ let
       (bind  "${mod} + SHIFT + ${key}" (dsp.moveToWorkspace i))
     ]
   ) (lib.range 1 10);
+  defaults = {
+    gaps_in = 8;
+    gaps_out = 16;
+    border_size = 4;
+    rounding = 30;
+    blur_size = 7;
+    blur_passes = 2;
+    active_opacity = "0.85";
+    inactive_opacity = "0.80";
+  };
+  applyMode = ''
+    -- Zen Mode 
+    if active.zen then 
+      hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 } })
+      hl.config({ decoration = { rounding = 0 } })
+    elseif active.square then 
+      hl.config({ general = { gaps_in = 4, gaps_out = 8, border_size = 2 } })
+      hl.config({ decoration = { rounding = 0 } })
+    else 
+      hl.config({ general = { gaps_in = ${toString defaults.gaps_in}, gaps_out = ${toString defaults.gaps_out}, border_size = ${toString defaults.border_size} } })
+      hl.config({ decoration = { rounding = ${toString defaults.rounding}}})
+    end 
+
+    -- Square Mode 
+    if active.square then 
+      hl.config({ general = { gaps_in = 4, gaps_out = 8, border_size = 2 } })
+      hl.config({ decoration = { rounding = 0 } })
+    elseif active.zen then 
+      hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 } })
+      hl.config({ decoration = { rounding = 0 } })
+    else 
+      hl.config({ general = { gaps_in = ${toString defaults.gaps_in}, gaps_out = ${toString defaults.gaps_out}, border_size = ${toString defaults.border_size} } })
+      hl.config({ decoration = { rounding = ${toString defaults.rounding}}})
+    end 
+
+    -- Frost Mode 
+    if active.frost then 
+      hl.config({ decoration = { blur = { size = 7, passes = 5 } } })
+    else 
+      hl.config({ decoration = { blur = { size = ${toString defaults.blur_size}, passes = ${toString defaults.blur_passes} } } })
+    end 
+
+    -- Opaque Mode 
+    if active.opaque then 
+      hl.config({ decoration = { active_opacity = 1.0, inactive_opacity = 1.0 } })
+    else 
+      hl.config({ decoration = { active_opacity = ${defaults.active_opacity}, inactive_opacity = ${defaults.inactive_opacity} } })
+    end 
+  '';
+
+  toggleMode = name: ''
+    active.${name} = not active.${name}
+    apply()
+  '';
 in
 {
+  active = {
+    _var = lua "{ zen = false, square = false, frost = false, opaque = false }";
+  };
+
+  apply = {
+    _var = lua ''
+      function() 
+        ${applyMode}
+      end
+    '';
+  };
+
+  toggle_zen = {
+    _var = lua ''
+      function() 
+        ${vars.shellToggle}
+        ${toggleMode "zen"}
+      end
+    '';
+  };
+
+  toggle_square = {
+    _var = lua ''
+      function() 
+        ${vars.shellCurveToggle}
+        ${toggleMode "square"}
+      end
+    '';
+  };  
+
+  toggle_frost = {
+    _var = lua ''
+      function() 
+        ${toggleMode "frost"}
+      end
+    '';
+  };  
+
+  toggle_opaque = {
+    _var = lua ''
+      function() 
+        ${toggleMode "opaque"}
+      end
+    '';
+  };
+
   bind = [
 
     # Open Applications 
@@ -94,10 +178,10 @@ in
     (bind "${mod} + CONTROL + B" (dsp.exec "${vars.shellToggle}"))
 
     # Hypr Modes
-    (bind "${mod} + Z" (dsp.exec "${vars.shellToggle} ; ~/.config/hypr/zen.sh"))
-    (bind "${mod} + ALT + F" (dsp.exec "~/.config/hypr/frost.sh"))
-    (bind "${mod} + ALT + S" (dsp.exec "${vars.shellCurveToggle} ; ~/.config/hypr/square.sh"))
-    (bind "${mod} + ALT + O" (dsp.exec "~/.config/hypr/opaque.sh"))
+    # (bind "${mod} + Z" (dsp.exec "${vars.shellToggle} ; ~/.config/hypr/zen.sh"))
+    # (bind "${mod} + ALT + F" (dsp.exec "~/.config/hypr/frost.sh"))
+    # (bind "${mod} + ALT + S" (dsp.exec "${vars.shellCurveToggle} ; ~/.config/hypr/square.sh"))
+    # (bind "${mod} + ALT + O" (dsp.exec "~/.config/hypr/opaque.sh"))
 
     # Special Workspaces & Movements
     (bind "${mod} + S" (dsp.toggleSpecial "magic")) 
@@ -136,10 +220,12 @@ in
     (bindOpts "${mod} + mouse:272" dsp.drag { mouse = true; })
     (bindOpts "${mod} + mouse:273" dsp.resize { mouse = true; })
 
-    # Submap: Keys resize 
+    # Submaps
     (bind "${mod} + R" (dsp.submap "resize"))
     (bind "${mod} + P" (dsp.submap "music"))
     (bind "${mod} + F" (dsp.submap "window"))
+    (bind "${mod} + ALT + M" (dsp.submap "hypr-mode")
+
 
   ] 
   ++ workspaceBinds;
@@ -171,6 +257,16 @@ in
         (submapBind "F" (dsp.fullscreen "fullscreen"))
         (submapBind "M" (dsp.fullscreen "maximized"))
         (submapBind "T" dsp.float)
+      ];
+    }
+    {
+      _args = [
+        "hypr-modes"
+        (submapBind "Z" (lua "toggle_zen"))
+        (submapBind "S" (lua "toggle_square"))
+        (submapBind "F" (lua "toggle_frost"))
+        (submapBind "O" (lua "toggle_opaque"))
+       
       ];
     }
   ];

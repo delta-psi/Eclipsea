@@ -1,3 +1,25 @@
+
+# TODO: 
+#   - Finish Hyprland Configuration
+#   - Setup Gaming config 
+#   - Add (& configure):  
+#     - Zen Browser
+#     - Spotify (Spicetify)
+#     - Vesktop 
+#     - Dolphin 
+#   - Add machines to flake 
+#     - Laptop: Phi 
+#     - Gaming PC: Alpha 
+#       - Caelestia/Noctalia Shell (?)
+#     - Mac Mini: Mu 
+#       - Configure settings (debloat as much as possible)
+#       - Minecraft Servers 
+#       - WireGuard/Pi-Hole 
+#       - Forgejo 
+#       - Headscale/Tailscale 
+#       - Sunshine/Moonlight 
+
+
 {
   description = "Eclipsea NixOS Configuration";
 

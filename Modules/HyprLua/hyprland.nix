@@ -78,7 +78,7 @@
             (import ./cursor)
           ];
         }
-        (import ./env.nix)
+        # (import ./env.nix)
         (import ./exec.nix)
         # (import ./variables.nix)
         (import ./sources.nix)

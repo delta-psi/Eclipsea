@@ -4,7 +4,7 @@
 
 {
   imports = [
-    ../Modules/Hypr
+    ../Modules/HyprLua
     ../Modules/Theming
     ../Modules/Terminal
     ../Modules/Editors
