@@ -35,23 +35,42 @@
 
 { lib, ... }:
 
-# let 
-#   lua = lib.generators.mkLuaInline;
-# in
+let 
+  lua = lib.generators.mkLuaInline;
+  vars = import ./variables.nix;
+  args = { inherit lib lua vars; };
+
+  configs = map(f: args) [
+    ./general.nix
+    ./decorations.nix
+    ./animations.nix
+    ./misc.nix
+  ];
+
+  general_settings = map (f: args) [
+    ./exec.nix
+    ./keybinds.nix
+    ./monitors.nix
+    ./layers.nix
+    ./windowrules.nix
+    ./workspaces.nix
+  ];
+in 
 {
+
   # home.packages = with pkgs; [
   #   hyprpicker
   #   wayland
   # ];
 
-  _module.args = {
-    lua = lib.generators.mkLuaInline;
-  };
+  # _module.args = {
+  #   lua = lib.generators.mkLuaInline;
+  # };
 
-  imports = [
-    ./hypr-modes.nix
-    ./variables.nix
-  ];
+  # imports = [
+  #   # ./hypr-modes.nix
+  #   ./variables.nix
+  # ];
 
   wayland = {
     # systemd.target = "hyprland-session.target";
@@ -66,27 +85,29 @@
       settings = lib.mkMerge [
         {
           config = lib.mkMerge [
-            (import ./general)
+            configs
+            # (import ./general)
             # snap 
-            (import ./decoration)
+            # (import ./decoration)
               # blur, shadow, glow, motion_blur
-            (import ./animations)
-            (import ./dwindle)
-            (import ./misc)
-            (import ./input)
+            # (import ./animations)
+            # (import ./dwindle)
+            # (import ./misc)
+            # (import ./input)
              # touch_pad
-            (import ./cursor)
+            # (import ./cursor)
           ];
         }
+        general_settings
         # (import ./env.nix)
-        (import ./exec.nix)
+        # (import ./exec.nix)
         # (import ./variables.nix)
-        (import ./sources.nix)
-        (import ./keybinds.nix)
-        (import ./monitors.nix)
-        (import ./layers.nix)
-        (import ./windowrules.nix)
-        (import ./workspaces.nix)
+        # (import ./sources.nix)
+        # (import ./keybinds.nix)
+        # (import ./monitors.nix)
+        # (import ./layers.nix)
+        # (import ./windowrules.nix)
+        # (import ./workspaces.nix)
       ];
 
       # settings = lib.mkMerge [

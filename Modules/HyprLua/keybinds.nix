@@ -224,7 +224,7 @@ in
     (bind "${mod} + R" (dsp.submap "resize"))
     (bind "${mod} + P" (dsp.submap "music"))
     (bind "${mod} + F" (dsp.submap "window"))
-    (bind "${mod} + ALT + M" (dsp.submap "hypr-mode")
+    (bind "${mod} + ALT + M" (dsp.submap "hypr-mode"))
 
 
   ] 
