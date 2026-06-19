@@ -1,4 +1,6 @@
 
+{ ... }: 
+
 {
   window_rule = {
     name = "mini-term";

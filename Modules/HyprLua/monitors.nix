@@ -1,4 +1,6 @@
 
+{ ... }:
+
 {
   monitor = [{
     output = "HDMI-A-1";

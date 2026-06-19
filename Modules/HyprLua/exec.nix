@@ -8,6 +8,7 @@ let
       (lua ''
         function()
           ${builtins.concatStringsSep "\n" (map (cmd: ''hl.exec_cmd("${cmd}")'') cmds)}
+        end
       '')
     ];
   };

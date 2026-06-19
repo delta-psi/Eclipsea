@@ -40,21 +40,21 @@ let
   vars = import ./variables.nix;
   args = { inherit lib lua vars; };
 
-  configs = map(f: args) [
+  configs = lib.mkMerge (map (f: import f args) [
     ./general.nix
     ./decorations.nix
     ./animations.nix
     ./misc.nix
-  ];
+  ]);
 
-  general_settings = map (f: args) [
+  general_settings = lib.mkMerge (map (f: import f args) [
     ./exec.nix
     ./keybinds.nix
     ./monitors.nix
     ./layers.nix
     ./windowrules.nix
     ./workspaces.nix
-  ];
+  ]);
 in 
 {
 
@@ -84,8 +84,9 @@ in
 
       settings = lib.mkMerge [
         {
-          config = lib.mkMerge [
-            configs
+          config = configs;
+          # config = lib.mkMerge [
+          #   configs
             # (import ./general)
             # snap 
             # (import ./decoration)
@@ -96,7 +97,7 @@ in
             # (import ./input)
              # touch_pad
             # (import ./cursor)
-          ];
+          # ];
         }
         general_settings
         # (import ./env.nix)
@@ -109,22 +110,6 @@ in
         # (import ./windowrules.nix)
         # (import ./workspaces.nix)
       ];
-
-      # settings = lib.mkMerge [
-      #   (import ./animations.nix)
-      #   (import ./decorations.nix)
-      #   (import ./env.nix)
-      #   (import ./exec.nix)
-      #   (import ./general.nix)
-      #   (import ./keybinds.nix)
-      #   (import ./layers.nix)
-      #   (import ./misc.nix)
-      #   (import ./monitors.nix)
-      #   (import ./sources.nix)
-      #   (import ./variables.nix)
-      #   (import ./windowrules.nix)
-      #   (import ./workspaces.nix)
-      # ];
     };
   };
 }

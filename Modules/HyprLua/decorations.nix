@@ -1,3 +1,5 @@
+{ ... }:
+
 {
   decoration = {
     rounding = 30;

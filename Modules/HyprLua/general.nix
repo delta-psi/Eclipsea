@@ -1,3 +1,5 @@
+{ ... }:
+
 {
   general = {
     border_size = 4;

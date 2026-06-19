@@ -26,11 +26,12 @@ let
     focusWorkspace = ws: lua ''hl.dsp.focus({ workspace = "${toString ws}" })'';
     moveToWorkspace = ws: lua ''hl.dsp.window.move({ workspace = "${toString ws}" })'';
     drag = lua "hl.dsp.window.drag()";
-    resize = { dir ? null }: 
-      if dir == null 
-      then lua "hl.dsp.window.resize()"
-      else lua ''hl.dsp.window.resize("${dir}")'';
-    submap = name: lua ''hl.dsp.submap("${name}")'';
+    resize = lua "hl.dsp.window.resize()";
+    # resize = { dir ? null }: 
+    #   if dir == null 
+    #   then lua "hl.dsp.window.resize({ mouse = true })"
+    #   else lua ''hl.dsp.window.resize("${dir}")'';
+    # submap = name: lua ''hl.dsp.submap("${name}")'';
   };
   bind = keys: dispatcher: {
     _args = [
@@ -45,120 +46,146 @@ let
       opts
     ];
   };
-  submapBind = key: action: ''
-    hl.bind("${key}", ${action})
-  '';
-  submapBindR = key: action: ''
-    hl.bind("${key}", ${action}, { repeating = true })
-  '';
+  # submap = name: func: {
+  #   _args = [
+  #     name
+  #     lua ''
+  #       function()
+  #         ${func}
+  #       end
+  #     ''
+  #   ];
+  # };
+  # submapBind = key: action: {
+  #   _args = [
+  #     key
+  #     action
+  #   ];
+  # };
+  # submapBindR = key: action: {
+  #   _args = [
+  #     key
+  #     action
+  #   ];
+  # };
+  # unwrapLua  = val: 
+  #   if builtins.isAttrs val && val ? _type && val._type == "lua-inline"
+  #   then val.expr
+  #   else val;
+  # submapBind = key: action: ''
+  #   hl.bind("${key}", ${action})
+  # '';
+  # submapBindR = key: action: ''
+  #   hl.bind("${key}", ${action}, { repeating = true })
+  # '';
   workspaceBinds = lib.concatMap(i: 
     let key = toString(lib.mod i 10);
     in [
-      (bind  "${mod} + ${key}" (dsp.focusWorkspace i))
-      (bind  "${mod} + SHIFT + ${key}" (dsp.moveToWorkspace i))
+      (bind "${mod} + ${key}" (dsp.focusWorkspace i))
+      (bind "${mod} + SHIFT + ${key}" (dsp.moveToWorkspace i))
     ]
   ) (lib.range 1 10);
-  defaults = {
-    gaps_in = 8;
-    gaps_out = 16;
-    border_size = 4;
-    rounding = 30;
-    blur_size = 7;
-    blur_passes = 2;
-    active_opacity = "0.85";
-    inactive_opacity = "0.80";
-  };
-  applyMode = ''
-    -- Zen Mode 
-    if active.zen then 
-      hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 } })
-      hl.config({ decoration = { rounding = 0 } })
-    elseif active.square then 
-      hl.config({ general = { gaps_in = 4, gaps_out = 8, border_size = 2 } })
-      hl.config({ decoration = { rounding = 0 } })
-    else 
-      hl.config({ general = { gaps_in = ${toString defaults.gaps_in}, gaps_out = ${toString defaults.gaps_out}, border_size = ${toString defaults.border_size} } })
-      hl.config({ decoration = { rounding = ${toString defaults.rounding}}})
-    end 
-
-    -- Square Mode 
-    if active.square then 
-      hl.config({ general = { gaps_in = 4, gaps_out = 8, border_size = 2 } })
-      hl.config({ decoration = { rounding = 0 } })
-    elseif active.zen then 
-      hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 } })
-      hl.config({ decoration = { rounding = 0 } })
-    else 
-      hl.config({ general = { gaps_in = ${toString defaults.gaps_in}, gaps_out = ${toString defaults.gaps_out}, border_size = ${toString defaults.border_size} } })
-      hl.config({ decoration = { rounding = ${toString defaults.rounding}}})
-    end 
-
-    -- Frost Mode 
-    if active.frost then 
-      hl.config({ decoration = { blur = { size = 7, passes = 5 } } })
-    else 
-      hl.config({ decoration = { blur = { size = ${toString defaults.blur_size}, passes = ${toString defaults.blur_passes} } } })
-    end 
-
-    -- Opaque Mode 
-    if active.opaque then 
-      hl.config({ decoration = { active_opacity = 1.0, inactive_opacity = 1.0 } })
-    else 
-      hl.config({ decoration = { active_opacity = ${defaults.active_opacity}, inactive_opacity = ${defaults.inactive_opacity} } })
-    end 
-  '';
-
-  toggleMode = name: ''
-    active.${name} = not active.${name}
-    apply()
-  '';
+  # defaults = {
+  #   gaps_in = 8;
+  #   gaps_out = 16;
+  #   border_size = 4;
+  #   rounding = 30;
+  #   blur_size = 7;
+  #   blur_passes = 2;
+  #   active_opacity = "0.85";
+  #   inactive_opacity = "0.80";
+  # };
+  # applyMode = ''
+  #   -- Zen Mode 
+  #   if active.zen then 
+  #     hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 } })
+  #     hl.config({ decoration = { rounding = 0 } })
+  #   elseif active.square then 
+  #     hl.config({ general = { gaps_in = 4, gaps_out = 8, border_size = 2 } })
+  #     hl.config({ decoration = { rounding = 0 } })
+  #   else 
+  #     hl.config({ general = { gaps_in = ${toString defaults.gaps_in}, gaps_out = ${toString defaults.gaps_out}, border_size = ${toString defaults.border_size} } })
+  #     hl.config({ decoration = { rounding = ${toString defaults.rounding}}})
+  #   end 
+  #
+  #   -- Square Mode 
+  #   if active.square then 
+  #     hl.config({ general = { gaps_in = 4, gaps_out = 8, border_size = 2 } })
+  #     hl.config({ decoration = { rounding = 0 } })
+  #   elseif active.zen then 
+  #     hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 } })
+  #     hl.config({ decoration = { rounding = 0 } })
+  #   else 
+  #     hl.config({ general = { gaps_in = ${toString defaults.gaps_in}, gaps_out = ${toString defaults.gaps_out}, border_size = ${toString defaults.border_size} } })
+  #     hl.config({ decoration = { rounding = ${toString defaults.rounding}}})
+  #   end 
+  #
+  #   -- Frost Mode 
+  #   if active.frost then 
+  #     hl.config({ decoration = { blur = { size = 7, passes = 5 } } })
+  #   else 
+  #     hl.config({ decoration = { blur = { size = ${toString defaults.blur_size}, passes = ${toString defaults.blur_passes} } } })
+  #   end 
+  #
+  #   -- Opaque Mode 
+  #   if active.opaque then 
+  #     hl.config({ decoration = { active_opacity = 1.0, inactive_opacity = 1.0 } })
+  #   else 
+  #     hl.config({ decoration = { active_opacity = ${defaults.active_opacity}, inactive_opacity = ${defaults.inactive_opacity} } })
+  #   end 
+  # '';
+  #
+  # toggleMode = name: ''
+  #   active.${name} = not active.${name}
+  #   apply()
+  # '';
 in
 {
-  active = {
-    _var = lua "{ zen = false, square = false, frost = false, opaque = false }";
-  };
-
-  apply = {
-    _var = lua ''
-      function() 
-        ${applyMode}
-      end
-    '';
-  };
-
-  toggle_zen = {
-    _var = lua ''
-      function() 
-        ${vars.shellToggle}
-        ${toggleMode "zen"}
-      end
-    '';
-  };
-
-  toggle_square = {
-    _var = lua ''
-      function() 
-        ${vars.shellCurveToggle}
-        ${toggleMode "square"}
-      end
-    '';
-  };  
-
-  toggle_frost = {
-    _var = lua ''
-      function() 
-        ${toggleMode "frost"}
-      end
-    '';
-  };  
-
-  toggle_opaque = {
-    _var = lua ''
-      function() 
-        ${toggleMode "opaque"}
-      end
-    '';
-  };
+  # active = {
+  #   _var = lua "{ zen = false, square = false, frost = false, opaque = false }";
+  # };
+  #
+  # apply = {
+  #   _var = lua ''
+  #     function() 
+  #       ${applyMode}
+  #     end
+  #   '';
+  # };
+  #
+  # toggle_zen = {
+  #   _var = lua ''
+  #     function() 
+  #       ${vars.shellToggle}
+  #       ${toggleMode "zen"}
+  #     end
+  #   '';
+  # };
+  #
+  # toggle_square = {
+  #   _var = lua ''
+  #     function() 
+  #       ${vars.shellCurveToggle}
+  #       ${toggleMode "square"}
+  #     end
+  #   '';
+  # };  
+  #
+  # toggle_frost = {
+  #   _var = lua ''
+  #     function() 
+  #       ${toggleMode "frost"}
+  #     end
+  #   '';
+  # };  
+  #
+  # toggle_opaque = {
+  #   _var = lua ''
+  #     function() 
+  #       ${toggleMode "opaque"}
+  #     end
+  #   '';
+  # };
 
   bind = [
 
@@ -178,10 +205,10 @@ in
     (bind "${mod} + CONTROL + B" (dsp.exec "${vars.shellToggle}"))
 
     # Hypr Modes
-    # (bind "${mod} + Z" (dsp.exec "${vars.shellToggle} ; ~/.config/hypr/zen.sh"))
-    # (bind "${mod} + ALT + F" (dsp.exec "~/.config/hypr/frost.sh"))
-    # (bind "${mod} + ALT + S" (dsp.exec "${vars.shellCurveToggle} ; ~/.config/hypr/square.sh"))
-    # (bind "${mod} + ALT + O" (dsp.exec "~/.config/hypr/opaque.sh"))
+    (bind "${mod} + Z" (dsp.exec "${vars.shellToggle} ; ~/.config/hypr/zen.sh"))
+    (bind "${mod} + ALT + F" (dsp.exec "~/.config/hypr/frost.sh"))
+    (bind "${mod} + ALT + S" (dsp.exec "${vars.shellCurveToggle} ; ~/.config/hypr/square.sh"))
+    (bind "${mod} + ALT + O" (dsp.exec "~/.config/hypr/opaque.sh"))
 
     # Special Workspaces & Movements
     (bind "${mod} + S" (dsp.toggleSpecial "magic")) 
@@ -204,10 +231,10 @@ in
     (bind "${mod} + SHIFT + L" (dsp.swap "right"))
 
     # Window Actions (Float, Drag, Resize, Splits, Fullscreen)
-    (bind "${mod} + Q" dsp.close)
-    # (bind "${mod} + F" (dsp.fullscreen "fullscreen"))
-    # (bind "${mod} + SHIFT + F" (dsp.fullscreen "maximized"))
-    # (bind "${mod} + ALT + F" dsp.float)
+    (bind "${mod} + Q" (dsp.close))
+    (bind "${mod} + F" (dsp.fullscreen "fullscreen"))
+    (bind "${mod} + SHIFT + F" (dsp.fullscreen "maximized"))
+    (bind "${mod} + ALT + F" (dsp.float))
     (bind "${mod} + V" (dsp.layout "togglesplit"))
 
     # Volume
@@ -217,58 +244,73 @@ in
     (bindOpts "XF86AudioMicMute" (dsp.exec "wpctl set-mute u/DEFAULT_AUDIO_SOURCE@ toggle") { locked = true; })
 
     # Mouse move/resize
-    (bindOpts "${mod} + mouse:272" dsp.drag { mouse = true; })
-    (bindOpts "${mod} + mouse:273" dsp.resize { mouse = true; })
+    (bindOpts "${mod} + mouse:272" (dsp.drag) {mouse = true; })
+    (bindOpts "${mod} + mouse:273" (dsp.resize) {mouse = true; })
 
     # Submaps
-    (bind "${mod} + R" (dsp.submap "resize"))
-    (bind "${mod} + P" (dsp.submap "music"))
-    (bind "${mod} + F" (dsp.submap "window"))
-    (bind "${mod} + ALT + M" (dsp.submap "hypr-mode"))
+    # (bind "${mod} + R" (dsp.submap "resize"))
+    # (bind "${mod} + P" (dsp.submap "music"))
+    # (bind "${mod} + F" (dsp.submap "window"))
+    # (bind "${mod} + ALT + M" (dsp.submap "hypr-mode"))
 
 
   ] 
   ++ workspaceBinds;
 
   # Submaps
-  define_submap = [
-    {
-      _args = [
-        "resize"
-        (submapBindR "L" "hl.dsp.window.resize({ x = 10, y = 0, relative = true })")
-        (submapBindR "H" "hl.dsp.window.resize({ x = -10, y = 0, relative = true })")
-        (submapBindR "K" "hl.dsp.window.resize({ x = 0, y = 10, relative = true })")
-        (submapBindR "J" "hl.dsp.window.resize({ x = 0, y = -10, relative = true })")
-        (submapBind "escape" ''hl.dsp.submap("reset")'')
-      ];
-    }
-    {
-      _args = [
-        "music"
-        (submapBind "L" ''hl.dsp.exec("playerctl next")'')
-        (submapBind "H"  ''hl.dsp.exec("playerctl previous")'')
-        (submapBind "space" ''hl.dsp.exec("playerctl play-pause")'')
-        (submapBind "escape" ''hl.dsp.submap("reset")'')
-      ];
-    }
-    {
-      _args = [
-        "window"
-        (submapBind "F" (dsp.fullscreen "fullscreen"))
-        (submapBind "M" (dsp.fullscreen "maximized"))
-        (submapBind "T" dsp.float)
-      ];
-    }
-    {
-      _args = [
-        "hypr-modes"
-        (submapBind "Z" (lua "toggle_zen"))
-        (submapBind "S" (lua "toggle_square"))
-        (submapBind "F" (lua "toggle_frost"))
-        (submapBind "O" (lua "toggle_opaque"))
-       
-      ];
-    }
-  ];
+  # define_submap = [
+  #   (submap "resize" 
+  #     ''
+  #       hl.bind("L", hl.dsp.window.resize({ x = 10, y = 0, relative = true }))
+  #       hl.bind("H", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
+  #       hl.bind("K", hl.dsp.window.resize({ x = 0, y = 10, relative = true }))
+  #       hl.bind("J", hl.dsp.window.resize({ x = 0, y = -10, relative = true }))
+  #     ''
+      # (submapBind "L" (lua "hl.dsp.window.resize({ x = 10, y = 0, relative = true })"))
+      # (submapBindR "H" (lua "hl.dsp.window.resize({ x = -10, y = 0, relative = true })"))
+      # (submapBindR "K" (lua "hl.dsp.window.resize({ x = 0, y = 10, relative = true })"))
+      # (submapBindR "J" (lua "hl.dsp.window.resize({ x = 0, y = -10, relative = true })"))
+      # (submapBind "escape" (lua ''hl.dsp.submap("reset")''))
+    # )
+  #   {
+  #     _args = [
+  #       "resize"
+  #       (submapBindR "L" (lua "hl.dsp.window.resize({ x = 10, y = 0, relative = true })"))
+  #       (submapBindR "H" (lua "hl.dsp.window.resize({ x = -10, y = 0, relative = true })"))
+  #       (submapBindR "K" (lua "hl.dsp.window.resize({ x = 0, y = 10, relative = true })"))
+  #       (submapBindR "J" (lua "hl.dsp.window.resize({ x = 0, y = -10, relative = true })"))
+  #       (submapBind "escape" (lua ''hl.dsp.submap("reset")''))
+  #     ];
+  #   }
+  #   {
+  #     _args = [
+  #       "music"
+  #       (submapBind "L" (lua ''hl.dsp.exec("playerctl next")''))
+  #       (submapBind "H"  (lua ''hl.dsp.exec("playerctl previous")''))
+  #       (submapBind "space" (lua ''hl.dsp.exec("playerctl play-pause")''))
+  #       (submapBind "escape" (lua ''hl.dsp.submap("reset")''))
+  #     ];
+  #   }
+  #   {
+  #     _args = [
+  #       "window"
+  #       (lua ''function()
+  #         (${submapBind} "F" (dsp.fullscreen "fullscreen"))
+  #         (${submapBind} "M" (dsp.fullscreen "maximized"))
+  #         (${submapBind} "T" dsp.float)
+  #         end
+  #       '')
+  #     ];
+  #   }
+  #   {
+  #     _args = [
+  #       "hypr-modes"
+  #         (${submapBind} "Z" (lua "toggle_zen"))
+  #         (${submapBind} "S" (lua "toggle_square"))
+  #         (${submapBind} "F" (lua "toggle_frost"))
+  #         (${submapBind} "O" (${lua "toggle_opaque"}))
+  #     ];
+  #   }
+  # ];
   
 }
