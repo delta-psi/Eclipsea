@@ -61,7 +61,23 @@
     };
     bluetooth = {
       enable = true;
-      powerOnBoot = false;
+      powerOnBoot = true;
+      settings = {
+        Policy = {
+          AutoEnable = true;
+        };
+        LE = {
+          MinConnectionInterval = 7;
+          MaxConnectionInterval = 9;
+          ConnectionLatency = 0;
+        };
+      };
+    };
+    logitech = {
+      wireless = {
+        enable = true;
+        enableGraphical = true;
+      };
     };
   };
 
@@ -95,6 +111,10 @@
     
     # Open the OpenSSH daemon
     openssh.enable = true;
+
+    blueman = {
+      enable = true;
+    };
 
     # Configure keymap in X11
     xserver = {
@@ -197,6 +217,11 @@
       tukai
       ffmpeg
       overskride
+      vesktop
+      cava
+      wev
+      hyprpicker
+
 
       sweet-nova
       sweet

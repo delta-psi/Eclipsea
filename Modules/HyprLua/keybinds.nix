@@ -11,8 +11,7 @@
 
 let 
   mod = "SUPER";
-  # terminal = "kitty";
-  # browser = "firefox"; # Soon to be Zen browser 
+  modes = import ./hypr-modes.nix {inherit lua vars; };
   dsp = {
     exec = cmd: lua ''hl.dsp.exec_cmd("${cmd}")'';
     close = lua "hl.dsp.window.close()";
@@ -46,6 +45,198 @@ let
       opts
     ];
   };
+
+  # zenMode = lua ''
+  #   function()
+  #     hyprModes.zen = not hyprModes.zen
+  #     -- local gaps = hl.get_config("general.gaps_in")
+  #     hl.dispatch(hl.dsp.exec_cmd("${vars.shellToggle}"))
+  #     if hyprModes.zen then 
+  #       hl.config({
+  #         general = {
+  #           border_size = 0,
+  #           gaps_in = 0,
+  #           gaps_out = 0
+  #         },
+  #         decoration = {
+  #           rounding = 0,
+  #           dim_inactive = false;
+  #           shadow = {
+  #             enabled = false
+  #           },
+  #           glow = {
+  #             enabled = false
+  #           }
+  #         }
+  #       })
+  #     else
+  #       if hyprModes.square then 
+  #         hl.config({
+  #           general = {
+  #             border_size = 2,
+  #             gaps_in = 4,
+  #             gaps_out = 8
+  #           },
+  #           decoration = {
+  #             rounding = 0,
+  #             dim_inactive = true;
+  #             shadow = {
+  #               enabled = true
+  #             },
+  #             glow = {
+  #               enabled = true
+  #             }
+  #           }
+  #         })
+  #       else 
+  #         hl.config({
+  #           general = {
+  #             border_size = 4,
+  #             gaps_in = 8,
+  #             gaps_out = 16
+  #           },
+  #           decoration = {
+  #             rounding = 30,
+  #             dim_inactive = true;
+  #             shadow = {
+  #               enabled = true
+  #             },
+  #             glow = {
+  #               enabled = true
+  #             }
+  #           }
+  #         })
+  #       end
+  #     end
+  #   end
+  # '';
+  # frostMode = lua ''
+  #   function()
+  #     local blur = hl.get_config("decoration.blur.passes")
+  #     if blur ~= 5 then 
+  #       hl.config({
+  #         decoration = {
+  #           blur = {
+  #             passes = 5
+  #           }
+  #         }
+  #       })
+  #     else 
+  #       hl.config({
+  #         decoration = {
+  #           blur = {
+  #             passes = 2
+  #           }
+  #         }
+  #       })
+  #     end
+  #   end
+  # '';
+  #
+  # opaqueMode = lua ''
+  #   function()
+  #     local opacity = hl.get_config("decoration.active_opacity")
+  #     if opacity ~= 1.00 then 
+  #       hl.config({
+  #         decoration = {
+  #           active_opacity = 1.00,
+  #           inactive_opacity = 1.00
+  #         }
+  #       })
+  #     else
+  #       hl.config({
+  #         decoration = {
+  #           active_opacity = 0.85,
+  #           inactive_opacity = 0.80
+  #         }
+  #       })
+  #     end 
+  #   end
+  # '';
+  #
+  # squareMode = lua ''
+  #   function()
+  #     hyprModes.square = not hyprModes.square
+  #     hl.dispatch(hl.dsp.exec_cmd("${vars.shellCurveToggle}"))
+  #     if hyprModes.square then 
+  #       -- local border = hl.get_config("general.border_size")
+  #       hl.config({
+  #         general = {
+  #           border_size = 2,
+  #           gaps_in = 4,
+  #           gaps_out = 8
+  #         },
+  #         decoration = {
+  #           rounding = 0
+  #         }
+  #       })
+  #     else 
+  #       if hyprModes.zen then 
+  #         hl.config({
+  #           general = {
+  #             border_size= 0,
+  #             gaps_in = 0,
+  #             gaps_out = 0
+  #           },
+  #           decoration = {
+  #             rounding = 0
+  #           }
+  #         })
+  #       else
+  #         hl.config({
+  #           general = {
+  #             border_size = 4,
+  #             gaps_in = 8,
+  #             gaps_out = 16
+  #           },
+  #           decoration = {
+  #             rounding = 30
+  #           }
+  #         })
+  #       end
+  #     end
+  #   end
+  # '';
+  #
+  # # Glass Mode: Blur Passes = 1, Blur Size = 1
+  # glassMode = lua ''
+  #   function()
+  #     -- local blur = hl.get_config("decoration.blur.passes")
+  #     -- if blur ~=
+  #     hyprModes.glass = not hyprModes.glass
+  #     if hyprModes.glass then
+  #       hl.config({
+  #         decoration = {
+  #           blur = {
+  #             size = 1,
+  #             passes = 1
+  #           }
+  #         }
+  #       })
+  #     else 
+  #       if hyprModes.frost then 
+  #         hl.config({
+  #           decoration = {
+  #             blur = {
+  #               size = 7,
+  #               passes = 5
+  #             }
+  #           }
+  #         })
+  #       else 
+  #         hl.config({
+  #           decoration = {
+  #             blur = {
+  #               size = 7,
+  #               passes = 2
+  #             }
+  #           }
+  #         })
+  #       end 
+  #     end 
+  #   end
+  # '';
+  #
   # submap = name: func: {
   #   _args = [
   #     name
@@ -85,113 +276,16 @@ let
       (bind "${mod} + SHIFT + ${key}" (dsp.moveToWorkspace i))
     ]
   ) (lib.range 1 10);
-  # defaults = {
-  #   gaps_in = 8;
-  #   gaps_out = 16;
-  #   border_size = 4;
-  #   rounding = 30;
-  #   blur_size = 7;
-  #   blur_passes = 2;
-  #   active_opacity = "0.85";
-  #   inactive_opacity = "0.80";
-  # };
-  # applyMode = ''
-  #   -- Zen Mode 
-  #   if active.zen then 
-  #     hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 } })
-  #     hl.config({ decoration = { rounding = 0 } })
-  #   elseif active.square then 
-  #     hl.config({ general = { gaps_in = 4, gaps_out = 8, border_size = 2 } })
-  #     hl.config({ decoration = { rounding = 0 } })
-  #   else 
-  #     hl.config({ general = { gaps_in = ${toString defaults.gaps_in}, gaps_out = ${toString defaults.gaps_out}, border_size = ${toString defaults.border_size} } })
-  #     hl.config({ decoration = { rounding = ${toString defaults.rounding}}})
-  #   end 
-  #
-  #   -- Square Mode 
-  #   if active.square then 
-  #     hl.config({ general = { gaps_in = 4, gaps_out = 8, border_size = 2 } })
-  #     hl.config({ decoration = { rounding = 0 } })
-  #   elseif active.zen then 
-  #     hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 } })
-  #     hl.config({ decoration = { rounding = 0 } })
-  #   else 
-  #     hl.config({ general = { gaps_in = ${toString defaults.gaps_in}, gaps_out = ${toString defaults.gaps_out}, border_size = ${toString defaults.border_size} } })
-  #     hl.config({ decoration = { rounding = ${toString defaults.rounding}}})
-  #   end 
-  #
-  #   -- Frost Mode 
-  #   if active.frost then 
-  #     hl.config({ decoration = { blur = { size = 7, passes = 5 } } })
-  #   else 
-  #     hl.config({ decoration = { blur = { size = ${toString defaults.blur_size}, passes = ${toString defaults.blur_passes} } } })
-  #   end 
-  #
-  #   -- Opaque Mode 
-  #   if active.opaque then 
-  #     hl.config({ decoration = { active_opacity = 1.0, inactive_opacity = 1.0 } })
-  #   else 
-  #     hl.config({ decoration = { active_opacity = ${defaults.active_opacity}, inactive_opacity = ${defaults.inactive_opacity} } })
-  #   end 
-  # '';
-  #
-  # toggleMode = name: ''
-  #   active.${name} = not active.${name}
-  #   apply()
-  # '';
-in
-{
-  # active = {
-  #   _var = lua "{ zen = false, square = false, frost = false, opaque = false }";
-  # };
-  #
-  # apply = {
-  #   _var = lua ''
-  #     function() 
-  #       ${applyMode}
-  #     end
-  #   '';
-  # };
-  #
-  # toggle_zen = {
-  #   _var = lua ''
-  #     function() 
-  #       ${vars.shellToggle}
-  #       ${toggleMode "zen"}
-  #     end
-  #   '';
-  # };
-  #
-  # toggle_square = {
-  #   _var = lua ''
-  #     function() 
-  #       ${vars.shellCurveToggle}
-  #       ${toggleMode "square"}
-  #     end
-  #   '';
-  # };  
-  #
-  # toggle_frost = {
-  #   _var = lua ''
-  #     function() 
-  #       ${toggleMode "frost"}
-  #     end
-  #   '';
-  # };  
-  #
-  # toggle_opaque = {
-  #   _var = lua ''
-  #     function() 
-  #       ${toggleMode "opaque"}
-  #     end
-  #   '';
-  # };
 
+in 
+{
   bind = [
 
     # Open Applications 
     (bind "${mod} + T" (dsp.exec "uwsm app -- ${vars.terminal}"))
-    # (bind "${mod} + SHIFT + T" (dsp.exec "uwsm app -- ")) # mini-floating terminal window (for fastfetch & quick commands)
+    # (bind "${mod} + SHIFT + T" (dsp.exec "uwsm app -- kitty --class kitty-floating")) # mini-floating terminal window (for fastfetch & quick commands)
+    (bind "${mod} + SHIFT + T" (dsp.exec "uwsm app -- ${vars.miniterm}"))
+    # (bind "${mod} + ALT + T" (dsp.exec "uwsm app -- kitty -o background_opacity=0"))
     (bind "${mod} + W" (dsp.exec "uwsm app -- ${vars.browser}"))
     (bind "${mod} + I" (dsp.toggleSpecial "idle"))
     (bind "${mod} + B" (dsp.toggleSpecial "systemStats"))
@@ -199,16 +293,21 @@ in
 
 
     # Tools 
-    (bind "${mod} + ALT + H" (dsp.exec "uwsm app -- hyprpicker --autocopty --format=hex"))
+    (bind "${mod} + ALT + H" (dsp.exec "uwsm app -- hyprpicker --autocopy --format=hex"))
 
     # Quickshell Commands
     (bind "${mod} + CONTROL + B" (dsp.exec "${vars.shellToggle}"))
 
     # Hypr Modes
-    (bind "${mod} + Z" (dsp.exec "${vars.shellToggle} ; ~/.config/hypr/zen.sh"))
-    (bind "${mod} + ALT + F" (dsp.exec "~/.config/hypr/frost.sh"))
-    (bind "${mod} + ALT + S" (dsp.exec "${vars.shellCurveToggle} ; ~/.config/hypr/square.sh"))
-    (bind "${mod} + ALT + O" (dsp.exec "~/.config/hypr/opaque.sh"))
+    # (bind "${mod} + Z" (dsp.exec "${vars.shellToggle} ; $HOME/.config/hypr/zen.sh"))
+    # (bind "${mod} + ALT + F" (dsp.exec "$HOME/.config/hypr/frost.sh"))
+    # (bind "${mod} + ALT + S" (dsp.exec "${vars.shellCurveToggle} ; $HOME/.config/hypr/square.sh"))
+    # (bind "${mod} + ALT + O" (dsp.exec "$HOME/.config/hypr/opaque.sh"))
+    (bind "${mod} + Z" modes.zenMode)
+    (bind "${mod} + ALT + F" modes.frostMode)
+    (bind "${mod} + ALT + S" modes.squareMode)
+    (bind "${mod} + ALT + O" modes.opaqueMode)
+    (bind "${mod} + ALT + G" modes.glassMode)
 
     # Special Workspaces & Movements
     (bind "${mod} + S" (dsp.toggleSpecial "magic")) 
@@ -234,14 +333,14 @@ in
     (bind "${mod} + Q" (dsp.close))
     (bind "${mod} + F" (dsp.fullscreen "fullscreen"))
     (bind "${mod} + SHIFT + F" (dsp.fullscreen "maximized"))
-    (bind "${mod} + ALT + F" (dsp.float))
+    (bind "${mod} + CONTROL + F" (dsp.float))
     (bind "${mod} + V" (dsp.layout "togglesplit"))
 
     # Volume
-    (bindOpts "XF86AudioRaiseVolume" (dsp.exec "wpctl set-volume @ 5%+") { locked = true; repeating = true; })
-    (bindOpts "XF86AudioLowerVolume" (dsp.exec "wpctl set-volume @ 5%-") { locked = true; repeating = true; })
-    (bindOpts "XF86AudioMute" (dsp.exec "wpctl set-mute @ toggle") { locked = true; })
-    (bindOpts "XF86AudioMicMute" (dsp.exec "wpctl set-mute u/DEFAULT_AUDIO_SOURCE@ toggle") { locked = true; })
+    (bindOpts "XF86AudioRaiseVolume" (dsp.exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") { locked = true; repeating = true; })
+    (bindOpts "XF86AudioLowerVolume" (dsp.exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") { locked = true; repeating = true; })
+    (bindOpts "XF86AudioMute" (dsp.exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") { locked = true; })
+    (bindOpts "XF86AudioMicMute" (dsp.exec "wpctl set-mute @DEFAULT_AUDIO_SOURCl@ toggle") { locked = true; })
 
     # Mouse move/resize
     (bindOpts "${mod} + mouse:272" (dsp.drag) {mouse = true; })
@@ -271,7 +370,8 @@ in
       # (submapBindR "K" (lua "hl.dsp.window.resize({ x = 0, y = 10, relative = true })"))
       # (submapBindR "J" (lua "hl.dsp.window.resize({ x = 0, y = -10, relative = true })"))
       # (submapBind "escape" (lua ''hl.dsp.submap("reset")''))
-    # )
+  #   )
+  # ];
   #   {
   #     _args = [
   #       "resize"

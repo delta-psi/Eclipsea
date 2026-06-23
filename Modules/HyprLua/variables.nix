@@ -2,15 +2,13 @@
 # { ... }:
 
 {
-  # _module.args.vars = {
   mod = "SUPER";
   terminal = "kitty";
   browser = "firefox"; # Eventually zen browser
   communication = "vesktop";
   music = "spotify";
-  mini-term = "kitty --class kitty-floating -o -remember_window_size=no -o initial_window_width=900 -o initial_window_height = 550";
+  miniterm = "kitty --class kitty-floating -o remember_window_size=no -o initial_window_width=900 -o initial_window_height=550";
   idle = "terminal-rain --lightning-color magenta --speed fast --thunder";
   shellToggle = "qs ipc call togglePanels barBezelToggle";
   shellCurveToggle = "qs ipc call layout toggleSquareMode";
-  # };
 }

@@ -34,6 +34,12 @@
       sync_to_monitor = true;
       repaint_delay = "10";
       input_delay = "3";
+      background_opacity = 0.1;
+      dynamic_background_opacity = "yes";
+    };
+    keybindings = {
+      "ctrl+shift+t" = "set_background_opacity 0.1";
+      "ctrl+shift+o" = "set_background_opacity 1.0";
     };
   };
 

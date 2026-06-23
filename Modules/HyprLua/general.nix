@@ -1,41 +1,29 @@
-{ ... }:
+
+{ lua, ... }:
 
 {
   general = {
     border_size = 4;
     gaps_in = 8;
     gaps_out = 16;
-    # float_gaps = ;
-    # gaps_workspaces = ;
-    "col.inactive_border" = "rgba(ffffff22)";
-    # "col.active_border" = "rgba(00eaffff) rgba(a020f0ff) 45deg";
-    # "col.nogroup_border" = ;
-    # "col.nogroup_border_active" = ;
+    "col.inactive_border" = "rgba(ffffff33)"; # 22
+    "col.active_border" = lua ''{ colors = { "rgba(00eaffff)", "rgba(a020f0ff)" }, angle = 45 }'';
     layout = "dwindle";
-    # no_focus_fallback = ;
-    # resize_on_border = ;
-    # extend_border_grab_area = ;
-    # hover_icon_on_border = ;
     allow_tearing = false;
-    # resize_corner = ;
-    # modal_parent_blocking = ;
-    # locale = ;
-    # snap = {
-    #   enable = true;
+    snap = {
+      enabled = true;
     #   window_gap = ;
     #   monitor_gap = ;
     #   border_overlap = ;
     #   respect_gaps = ;
-    # };
+    };
   };
 
   dwindle = {
     preserve_split = true;
-    pseudotile = true;
+    # pseudotile = true;
     smart_split = false;
     smart_resizing = true;
   };
-
-
 }
 

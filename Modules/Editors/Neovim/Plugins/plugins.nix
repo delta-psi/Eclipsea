@@ -20,7 +20,7 @@
     (import ./noice.nix)
     (import ./nui.nix)
     (import ./nvim-autopairs.nix)
-    (import ./nvim-r.nix)
+    # (import ./nvim-r.nix)
     (import ./otter.nix)
     (import ./precognition.nix)
     (import ./snacks.nix)

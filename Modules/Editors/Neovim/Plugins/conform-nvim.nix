@@ -2,7 +2,7 @@
 {
   conform-nvim = {
     enable = true;
-    formattersByFt = {
+    settings.formatters_by_ft = {
       python = [ "black" ];
       c = [ "clang-format" ];
       cpp = [ "clang-format" ];

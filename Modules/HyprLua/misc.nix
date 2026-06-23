@@ -3,7 +3,7 @@
 
 {
   cursor = {
-    no_hardware_cursors = true;
+    no_hardware_cursors = 1;
   };
 
   misc = {
@@ -11,7 +11,6 @@
     disable_splash_rendering = true;
     disable_scale_notification = false;
     force_default_wallpaper = 0;
-    # vfr = true;
     vrr = 1;
     animate_manual_resizes = true;
     animate_mouse_windowdragging = true;
