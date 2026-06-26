@@ -8,6 +8,7 @@
     ../Modules/Theming
     ../Modules/Terminal
     ../Modules/Editors
+    ../Modules/Music
   ];
 
   home = {

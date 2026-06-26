@@ -67,6 +67,11 @@
     # terminal-rain-lightning flake
     terminal-rain.url = "github:delta-psi/terminal-rain-lightning-flake";
 
+    # Spicetify-Nix
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+    };
+
     # quickshell = {
     #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -74,7 +79,7 @@
 
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nix-cachyos-kernel, nixvim, matugen, sops-nix, calmSDDM, terminal-rain, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, nix-cachyos-kernel, nixvim, matugen, sops-nix, calmSDDM, terminal-rain, spicetify-nix, ... }: {
     nixosConfigurations = {
       nu = nixpkgs.lib.nixosSystem {
         specialArgs = {
@@ -112,6 +117,7 @@
                     # Remote
                     # stylix.homeModules.stylix
                     nixvim.homeModules.nixvim
+                    spicetify-nix.homeManagerModules.spicetify
                     # sops-nix.homeManagerModules.sops
                   ];
                 };

@@ -1,0 +1,6 @@
+
+{
+  imprts = [
+    ./spicetify.nix
+  ];
+}

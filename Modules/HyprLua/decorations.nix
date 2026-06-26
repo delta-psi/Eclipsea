@@ -31,19 +31,19 @@
 
     shadow = {
       enabled = true;
-      range = 8;
-      render_power = 3;
+      range = 6; # 8
+      render_power = 3; # 3
       # sharp = ;
-      color = "rgba(00eaff33)";
+      # color = "rgba(00eaff33)";
       color_inactive = "rgba(ffffff00)";
       # offset = ;
       # scale = ;
     };
     glow = {
       enabled = true;
-      range = 8;
+      range = 4;
       render_power = 4;
-      color = "rgba(00eaff33)";
+      # color = "rgba(00eaff33)";
       color_inactive = "rgba(ffffff00)";
     };
   };

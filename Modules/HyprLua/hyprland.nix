@@ -47,6 +47,8 @@ in
       xwayland.enable = true;
 
       extraConfig = ''
+        require("colors")
+
         hyprModes = {
           zen = false,
           square = false,
