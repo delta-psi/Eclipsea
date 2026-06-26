@@ -1,5 +1,5 @@
 
-{ pkgs, inputs, config, ... }: 
+{ inputs, config, ... }: 
 
 {
   imports = [
@@ -8,7 +8,7 @@
 
   xdg.configFile = {
     "matugen/templates/kitty.conf".text = builtins.readFile ./Templates/kitty.conf;
-    "matugen/templates/hypr.conf".text = builtins.readFile ./Templates/hypr.conf;
+    "matugen/templates/hypr.lua".text = builtins.readFile ./Templates/hypr.lua;
     "matugen/templates/starship.toml".text = builtins.readFile ./Templates/starship.toml;
     "matugen/config.toml".text = ''
       [config]
@@ -36,8 +36,8 @@
       # output_path = '~/.config/gtk-4.0/colors.css'
       
       [templates.hyprland]
-      input_path = '${config.xdg.configHome}/matugen/templates/hypr.conf'
-      output_path = '${config.xdg.configHome}/hypr/colors.conf'
+      input_path = '${config.xdg.configHome}/matugen/templates/hypr.lua'
+      output_path = '${config.xdg.configHome}/hypr/colors.lua'
       post_hook = 'hyprctl reload'
 
       [templates.kitty]

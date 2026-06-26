@@ -21,6 +21,7 @@ let
   ]);
 
   general_settings = lib.mkMerge (map (f: import f args) [
+    # ./sources.nix
     ./exec.nix
     ./keybinds.nix
     ./animations.nix

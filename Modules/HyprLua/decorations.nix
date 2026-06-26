@@ -8,7 +8,7 @@
     inactive_opacity = 0.85;
     fullscreen_opacity = 1;
     dim_inactive = true;
-    dim_strength = 0.2;
+    dim_strength = 0.3;
 
     blur = {
       enabled = true;

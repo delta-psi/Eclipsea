@@ -5,7 +5,6 @@
   zenMode = lua ''
     function()
       hyprModes.zen = not hyprModes.zen
-      -- local gaps = hl.get_config("general.gaps_in")
       hl.dispatch(hl.dsp.exec_cmd("${vars.shellToggle}"))
       if hyprModes.zen then 
         hl.config({
@@ -15,7 +14,14 @@
             gaps_out = 0
           },
           decoration = {
-            rounding = 0
+            rounding = 0,
+            dim_inactive = false,
+            shadow = {
+              enabled = false
+            },
+            glow = {
+              enabled = false
+            }
           }
         })
       else
@@ -27,7 +33,14 @@
               gaps_out = 8
             },
             decoration = {
-              rounding = 0
+              rounding = 0,
+              dim_inactive = false,
+              shadow = {
+                enabled = true
+              },
+              glow = {
+                enabled = true
+              }
             }
           })
         else 
@@ -38,17 +51,27 @@
               gaps_out = 16
             },
             decoration = {
-              rounding = 30
+              rounding = 30,
+              dim_inactive = false,
+              shadow = {
+                enabled = true
+              },
+              glow = {
+                enabled = true
+              }
             }
           })
         end
       end
     end
   '';
+
   frostMode = lua ''
     function()
-      local blur = hl.get_config("decoration.blur.passes")
-      if blur ~= 5 then 
+      -- local blur = hl.get_config("decoration.blur.passes")
+      -- if blur ~= 5 then 
+      hyprModes.frost = not hyprModes.frost
+      if hyprModes.frost then 
         hl.config({
           decoration = {
             blur = {
@@ -70,8 +93,8 @@
 
   opaqueMode = lua ''
     function()
-      local opacity = hl.get_config("decoration.active_opacity")
-      if opacity ~= 1.00 then 
+      hyprModes.opaque = not hyprModes.opaque
+      if hyprModes.opaque then
         hl.config({
           decoration = {
             active_opacity = 1.00,
@@ -130,6 +153,42 @@
           })
         end
       end
+    end
+  '';
+
+  glassMode = lua ''
+    function()
+      hyprModes.glass = not hyprModes.glass
+      if hyprModes.glass then
+        hl.config({
+          decoration = {
+            blur = {
+              size = 1,
+              passes = 1
+            }
+          }
+        })
+      else 
+        if hyprModes.frost then 
+          hl.config({
+            decoration = {
+              blur = {
+                size = 7,
+                passes = 5
+              }
+            }
+          })
+        else 
+          hl.config({
+            decoration = {
+              blur = {
+                size = 7,
+                passes = 2
+              }
+            }
+          })
+        end 
+      end 
     end
   '';
 }

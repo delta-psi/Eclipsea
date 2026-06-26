@@ -1,17 +1,15 @@
 
 # CURRENT: Make clean way to make submap keybindings using helper function in let ... in block 
-#   - Resizing windows via keys
 #   - Music: Pause/Play, Previous, Next
-#   - Hyprland/Envionment Stuff 
-#     - Hypr Modes, Hyprpicker, Quickshell, ...
-#     - Window Manipulation: Fullscreen, maximized, floating 
-# NEXT: Replace `uwsm -- ` with `app2unit -- `
+#   - Hypr Modes 
+#   - Add Notifications for Hyprland Submap Activation
+# NEXT: Replace `uwsm -- ` with `app -- `
 
 { lib, lua, vars, ... }:
 
 let 
   mod = "SUPER";
-  modes = import ./hypr-modes.nix {inherit lua vars; };
+  modes = import ./hypr-modes.nix { inherit lua vars; };
   dsp = {
     exec = cmd: lua ''hl.dsp.exec_cmd("${cmd}")'';
     close = lua "hl.dsp.window.close()";
@@ -26,18 +24,16 @@ let
     moveToWorkspace = ws: lua ''hl.dsp.window.move({ workspace = "${toString ws}" })'';
     drag = lua "hl.dsp.window.drag()";
     resize = lua "hl.dsp.window.resize()";
-    # resize = { dir ? null }: 
-    #   if dir == null 
-    #   then lua "hl.dsp.window.resize({ mouse = true })"
-    #   else lua ''hl.dsp.window.resize("${dir}")'';
-    # submap = name: lua ''hl.dsp.submap("${name}")'';
+    submap = name: lua ''hl.dsp.submap("${name}")'';
   };
+
   bind = keys: dispatcher: {
     _args = [
       keys
       dispatcher
     ];
   };
+
   bindOpts = keys: dispatcher: opts: {
     _args = [
       keys
@@ -46,229 +42,17 @@ let
     ];
   };
 
-  # zenMode = lua ''
-  #   function()
-  #     hyprModes.zen = not hyprModes.zen
-  #     -- local gaps = hl.get_config("general.gaps_in")
-  #     hl.dispatch(hl.dsp.exec_cmd("${vars.shellToggle}"))
-  #     if hyprModes.zen then 
-  #       hl.config({
-  #         general = {
-  #           border_size = 0,
-  #           gaps_in = 0,
-  #           gaps_out = 0
-  #         },
-  #         decoration = {
-  #           rounding = 0,
-  #           dim_inactive = false;
-  #           shadow = {
-  #             enabled = false
-  #           },
-  #           glow = {
-  #             enabled = false
-  #           }
-  #         }
-  #       })
-  #     else
-  #       if hyprModes.square then 
-  #         hl.config({
-  #           general = {
-  #             border_size = 2,
-  #             gaps_in = 4,
-  #             gaps_out = 8
-  #           },
-  #           decoration = {
-  #             rounding = 0,
-  #             dim_inactive = true;
-  #             shadow = {
-  #               enabled = true
-  #             },
-  #             glow = {
-  #               enabled = true
-  #             }
-  #           }
-  #         })
-  #       else 
-  #         hl.config({
-  #           general = {
-  #             border_size = 4,
-  #             gaps_in = 8,
-  #             gaps_out = 16
-  #           },
-  #           decoration = {
-  #             rounding = 30,
-  #             dim_inactive = true;
-  #             shadow = {
-  #               enabled = true
-  #             },
-  #             glow = {
-  #               enabled = true
-  #             }
-  #           }
-  #         })
-  #       end
-  #     end
-  #   end
-  # '';
-  # frostMode = lua ''
-  #   function()
-  #     local blur = hl.get_config("decoration.blur.passes")
-  #     if blur ~= 5 then 
-  #       hl.config({
-  #         decoration = {
-  #           blur = {
-  #             passes = 5
-  #           }
-  #         }
-  #       })
-  #     else 
-  #       hl.config({
-  #         decoration = {
-  #           blur = {
-  #             passes = 2
-  #           }
-  #         }
-  #       })
-  #     end
-  #   end
-  # '';
-  #
-  # opaqueMode = lua ''
-  #   function()
-  #     local opacity = hl.get_config("decoration.active_opacity")
-  #     if opacity ~= 1.00 then 
-  #       hl.config({
-  #         decoration = {
-  #           active_opacity = 1.00,
-  #           inactive_opacity = 1.00
-  #         }
-  #       })
-  #     else
-  #       hl.config({
-  #         decoration = {
-  #           active_opacity = 0.85,
-  #           inactive_opacity = 0.80
-  #         }
-  #       })
-  #     end 
-  #   end
-  # '';
-  #
-  # squareMode = lua ''
-  #   function()
-  #     hyprModes.square = not hyprModes.square
-  #     hl.dispatch(hl.dsp.exec_cmd("${vars.shellCurveToggle}"))
-  #     if hyprModes.square then 
-  #       -- local border = hl.get_config("general.border_size")
-  #       hl.config({
-  #         general = {
-  #           border_size = 2,
-  #           gaps_in = 4,
-  #           gaps_out = 8
-  #         },
-  #         decoration = {
-  #           rounding = 0
-  #         }
-  #       })
-  #     else 
-  #       if hyprModes.zen then 
-  #         hl.config({
-  #           general = {
-  #             border_size= 0,
-  #             gaps_in = 0,
-  #             gaps_out = 0
-  #           },
-  #           decoration = {
-  #             rounding = 0
-  #           }
-  #         })
-  #       else
-  #         hl.config({
-  #           general = {
-  #             border_size = 4,
-  #             gaps_in = 8,
-  #             gaps_out = 16
-  #           },
-  #           decoration = {
-  #             rounding = 30
-  #           }
-  #         })
-  #       end
-  #     end
-  #   end
-  # '';
-  #
-  # # Glass Mode: Blur Passes = 1, Blur Size = 1
-  # glassMode = lua ''
-  #   function()
-  #     -- local blur = hl.get_config("decoration.blur.passes")
-  #     -- if blur ~=
-  #     hyprModes.glass = not hyprModes.glass
-  #     if hyprModes.glass then
-  #       hl.config({
-  #         decoration = {
-  #           blur = {
-  #             size = 1,
-  #             passes = 1
-  #           }
-  #         }
-  #       })
-  #     else 
-  #       if hyprModes.frost then 
-  #         hl.config({
-  #           decoration = {
-  #             blur = {
-  #               size = 7,
-  #               passes = 5
-  #             }
-  #           }
-  #         })
-  #       else 
-  #         hl.config({
-  #           decoration = {
-  #             blur = {
-  #               size = 7,
-  #               passes = 2
-  #             }
-  #           }
-  #         })
-  #       end 
-  #     end 
-  #   end
-  # '';
-  #
-  # submap = name: func: {
-  #   _args = [
-  #     name
-  #     lua ''
-  #       function()
-  #         ${func}
-  #       end
-  #     ''
-  #   ];
-  # };
-  # submapBind = key: action: {
-  #   _args = [
-  #     key
-  #     action
-  #   ];
-  # };
-  # submapBindR = key: action: {
-  #   _args = [
-  #     key
-  #     action
-  #   ];
-  # };
-  # unwrapLua  = val: 
-  #   if builtins.isAttrs val && val ? _type && val._type == "lua-inline"
-  #   then val.expr
-  #   else val;
-  # submapBind = key: action: ''
-  #   hl.bind("${key}", ${action})
-  # '';
-  # submapBindR = key: action: ''
-  #   hl.bind("${key}", ${action}, { repeating = true })
-  # '';
+  floater = lua ''
+    function()
+      local win = hl.get_active_window()
+      hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+      if win.floating then 
+        hl.dispatch(hl.dsp.window.resize({ x = 1200, y = 800, relative = false, window = "activewindow" }))
+        hl.dispatch(hl.dsp.window.center())
+      end 
+    end
+  '';
+ 
   workspaceBinds = lib.concatMap(i: 
     let key = toString(lib.mod i 10);
     in [
@@ -283,7 +67,6 @@ in
 
     # Open Applications 
     (bind "${mod} + T" (dsp.exec "uwsm app -- ${vars.terminal}"))
-    # (bind "${mod} + SHIFT + T" (dsp.exec "uwsm app -- kitty --class kitty-floating")) # mini-floating terminal window (for fastfetch & quick commands)
     (bind "${mod} + SHIFT + T" (dsp.exec "uwsm app -- ${vars.miniterm}"))
     # (bind "${mod} + ALT + T" (dsp.exec "uwsm app -- kitty -o background_opacity=0"))
     (bind "${mod} + W" (dsp.exec "uwsm app -- ${vars.browser}"))
@@ -299,10 +82,6 @@ in
     (bind "${mod} + CONTROL + B" (dsp.exec "${vars.shellToggle}"))
 
     # Hypr Modes
-    # (bind "${mod} + Z" (dsp.exec "${vars.shellToggle} ; $HOME/.config/hypr/zen.sh"))
-    # (bind "${mod} + ALT + F" (dsp.exec "$HOME/.config/hypr/frost.sh"))
-    # (bind "${mod} + ALT + S" (dsp.exec "${vars.shellCurveToggle} ; $HOME/.config/hypr/square.sh"))
-    # (bind "${mod} + ALT + O" (dsp.exec "$HOME/.config/hypr/opaque.sh"))
     (bind "${mod} + Z" modes.zenMode)
     (bind "${mod} + ALT + F" modes.frostMode)
     (bind "${mod} + ALT + S" modes.squareMode)
@@ -333,7 +112,8 @@ in
     (bind "${mod} + Q" (dsp.close))
     (bind "${mod} + F" (dsp.fullscreen "fullscreen"))
     (bind "${mod} + SHIFT + F" (dsp.fullscreen "maximized"))
-    (bind "${mod} + CONTROL + F" (dsp.float))
+    # (bind "${mod} + CONTROL + F" (dsp.float))
+    (bind "${mod} + CONTROL + F" floater)
     (bind "${mod} + V" (dsp.layout "togglesplit"))
 
     # Volume
@@ -347,8 +127,8 @@ in
     (bindOpts "${mod} + mouse:273" (dsp.resize) {mouse = true; })
 
     # Submaps
-    # (bind "${mod} + R" (dsp.submap "resize"))
-    # (bind "${mod} + P" (dsp.submap "music"))
+    (bind "${mod} + R" (dsp.submap "resize"))
+    (bind "${mod} + P" (dsp.submap "music"))
     # (bind "${mod} + F" (dsp.submap "window"))
     # (bind "${mod} + ALT + M" (dsp.submap "hypr-mode"))
 
@@ -357,31 +137,31 @@ in
   ++ workspaceBinds;
 
   # Submaps
-  # define_submap = [
-  #   (submap "resize" 
-  #     ''
-  #       hl.bind("L", hl.dsp.window.resize({ x = 10, y = 0, relative = true }))
-  #       hl.bind("H", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
-  #       hl.bind("K", hl.dsp.window.resize({ x = 0, y = 10, relative = true }))
-  #       hl.bind("J", hl.dsp.window.resize({ x = 0, y = -10, relative = true }))
-  #     ''
-      # (submapBind "L" (lua "hl.dsp.window.resize({ x = 10, y = 0, relative = true })"))
-      # (submapBindR "H" (lua "hl.dsp.window.resize({ x = -10, y = 0, relative = true })"))
-      # (submapBindR "K" (lua "hl.dsp.window.resize({ x = 0, y = 10, relative = true })"))
-      # (submapBindR "J" (lua "hl.dsp.window.resize({ x = 0, y = -10, relative = true })"))
-      # (submapBind "escape" (lua ''hl.dsp.submap("reset")''))
-  #   )
-  # ];
-  #   {
-  #     _args = [
-  #       "resize"
-  #       (submapBindR "L" (lua "hl.dsp.window.resize({ x = 10, y = 0, relative = true })"))
-  #       (submapBindR "H" (lua "hl.dsp.window.resize({ x = -10, y = 0, relative = true })"))
-  #       (submapBindR "K" (lua "hl.dsp.window.resize({ x = 0, y = 10, relative = true })"))
-  #       (submapBindR "J" (lua "hl.dsp.window.resize({ x = 0, y = -10, relative = true })"))
-  #       (submapBind "escape" (lua ''hl.dsp.submap("reset")''))
-  #     ];
-  #   }
+  define_submap = [
+    {
+      _args = [
+        "resize"
+        (lua ''function()
+          hl.bind("L", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
+          hl.bind("H", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
+          hl.bind("K", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
+          hl.bind("J", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
+          hl.bind("escape", hl.dsp.submap("reset"))
+        end'')
+      ];
+    }
+    {
+      _args = [
+        "music"
+        (lua ''function()
+          hl.bind("L", hl.dsp.exec_cmd("playerctl next"))
+          hl.bind("H", hl.dsp.exec_cmd("playerctl previous"))
+          hl.bind("space", hl.dsp.exec_cmd("playerctl play-pause"))
+          hl.bind("escape", hl.dsp.submap("reset"))
+        end'')
+      ];
+    }
+
   #   {
   #     _args = [
   #       "music"
@@ -411,6 +191,6 @@ in
   #         (${submapBind} "O" (${lua "toggle_opaque"}))
   #     ];
   #   }
-  # ];
+  ];
   
 }

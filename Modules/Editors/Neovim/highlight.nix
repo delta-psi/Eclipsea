@@ -72,7 +72,14 @@
 
     # Render-Latex
     "Conceal"                   = { bg = "NONE"; };
-    "Special" = { fg = "#ff7eb6"; };
+    "Special"                   = { fg = "#ff7eb6"; };
+
+    "GitGutterAdd"               = { bg = "NONE"; };
+    "GitGutterChange"            = { bg = "NONE"; };
+    "GitGutterDelete"            = { bg = "NONE"; };
+    "GitGutterChangedelete"      = { bg = "NONE"; };
+    "GitGutterTopdelete"         = { bg = "NONE"; };
+    "GitGutterUntracked"         = { bg = "NONE"; };
 
     # End of buffer
     "EndOfBuffer"               = { bg = "NONE"; };
