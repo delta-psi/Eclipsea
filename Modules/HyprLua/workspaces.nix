@@ -15,6 +15,10 @@
       workspace = "special:clock";
       on_created_empty = "kitty --class clock-term era";
     }
+    {
+      workspace = "special:music";
+      on_created_empty = "uwsm -- app spotify";
+    }
   ];
 
 }

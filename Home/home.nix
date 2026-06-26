@@ -9,6 +9,7 @@
     ../Modules/Terminal
     ../Modules/Editors
     ../Modules/Music
+    ../Modules/Browser
   ];
 
   home = {

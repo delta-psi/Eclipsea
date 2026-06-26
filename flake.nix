@@ -72,6 +72,14 @@
       url = "github:Gerg-L/spicetify-nix";
     };
 
+    # Zen Browser
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+    };
+
     # quickshell = {
     #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -79,7 +87,17 @@
 
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nix-cachyos-kernel, nixvim, matugen, sops-nix, calmSDDM, terminal-rain, spicetify-nix, ... }: {
+  outputs = inputs@{ nixpkgs,
+										 home-manager,
+										 nix-cachyos-kernel,
+										 nixvim,
+										 matugen,
+										 sops-nix,
+										 calmSDDM,
+										 terminal-rain,
+										 spicetify-nix,
+										 zen-browser,
+										 ... }: {
     nixosConfigurations = {
       nu = nixpkgs.lib.nixosSystem {
         specialArgs = {
@@ -102,6 +120,7 @@
             home-manager = {
               # useGlobalPkgs = true;
               useUserPackages = true;
+              useGlobalPkgs = true;
               backupFileExtension = "backup";
               overwriteBackup = true;
               extraSpecialArgs = {
