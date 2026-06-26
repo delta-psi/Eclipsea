@@ -19,6 +19,10 @@
       workspace = "special:music";
       on_created_empty = "uwsm -- app spotify";
     }
+    {
+      workspace = "special:comms";
+      on_created_empty = "uwsm -- app vesktop";
+    }
   ];
 
 }

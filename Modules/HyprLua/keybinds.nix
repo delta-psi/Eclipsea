@@ -70,11 +70,7 @@ in
     (bind "${mod} + SHIFT + T" (dsp.exec "uwsm app -- ${vars.miniterm}"))
     # (bind "${mod} + ALT + T" (dsp.exec "uwsm app -- kitty -o background_opacity=0"))
     (bind "${mod} + W" (dsp.exec "uwsm app -- ${vars.browser}"))
-    (bind "${mod} + I" (dsp.toggleSpecial "idle"))
-    (bind "${mod} + B" (dsp.toggleSpecial "systemStats"))
-    (bind "${mod} + C" (dsp.toggleSpecial "clock"))
-
-
+    
     # Tools 
     (bind "${mod} + ALT + H" (dsp.exec "uwsm app -- hyprpicker --autocopy --format=hex"))
 
@@ -91,10 +87,15 @@ in
     # Special Workspaces & Movements
     (bind "${mod} + S" (dsp.toggleSpecial "magic")) 
     (bind "${mod} + M" (dsp.toggleSpecial "music"))
-    (bind "${mod} + D" (dsp.toggleSpecial "communication"))
+    (bind "${mod} + D" (dsp.toggleSpecial "comms"))
+    (bind "${mod} + I" (dsp.toggleSpecial "idle"))
+    (bind "${mod} + B" (dsp.toggleSpecial "systemStats"))
+    (bind "${mod} + C" (dsp.toggleSpecial "clock"))
+
+
     (bind "${mod} + SHIFT + S" (dsp.moveToSpecial "magic")) 
     (bind "${mod} + SHIFT + M" (dsp.moveToSpecial "music"))
-    (bind "${mod} + SHIFT + D" (dsp.moveToSpecial "communication"))
+    (bind "${mod} + SHIFT + D" (dsp.moveToSpecial "comms"))
 
     # Change Window Focus 
     (bind "${mod} + H" (dsp.focus "left"))

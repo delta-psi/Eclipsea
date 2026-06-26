@@ -221,7 +221,7 @@
       cava
       wev
       hyprpicker
-
+      era
 
       sweet-nova
       sweet
@@ -239,8 +239,11 @@
       kdePackages.qtvirtualkeyboard
       qt5.qtgraphicaleffects
 
+
+      xdg-desktop-portal
+      xdg-desktop-portal-wlr
+
       inputs.terminal-rain.packages.${stdenv.hostPlatform.system}.terminal-rain-lightning
-      era
 
       python314
 

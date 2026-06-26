@@ -291,7 +291,8 @@
         "nixvim": "nixvim",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
-        "terminal-rain": "terminal-rain"
+        "terminal-rain": "terminal-rain",
+        "zen-browser": "zen-browser"
       }
     },
     "sops-nix": {
@@ -394,6 +395,29 @@
       "original": {
         "owner": "delta-psi",
         "repo": "terminal-rain-lightning-flake",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782460457,
+        "narHash": "sha256-R3EXRxLmv1uqMtacBi0L8gUCOWC6EpCPSXebf8e+vac=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "563e515460b6c3bb68552979e3abbca447f8aaf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

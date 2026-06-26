@@ -78,6 +78,13 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
+      };
+    };
+
+    # Firefox extensions via rycee's NUR repository
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # quickshell = {
@@ -97,6 +104,7 @@
 										 terminal-rain,
 										 spicetify-nix,
 										 zen-browser,
+                     firefox-addons, 
 										 ... }: {
     nixosConfigurations = {
       nu = nixpkgs.lib.nixosSystem {
