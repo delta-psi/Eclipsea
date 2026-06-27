@@ -23,6 +23,10 @@
       workspace = "special:comms";
       on_created_empty = "uwsm -- app vesktop";
     }
+    {
+      workspace = "special:typing";
+      on_created_empty = "uwsm --class typing tukai";
+    }
   ];
 
 }

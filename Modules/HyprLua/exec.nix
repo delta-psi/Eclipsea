@@ -19,6 +19,8 @@ in
       "awww-daemon"
       "awww restore"
       "qs"
+
+      "vesktop -m"
     ])
   ];
 }

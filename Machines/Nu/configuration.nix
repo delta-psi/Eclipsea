@@ -222,6 +222,7 @@
       wev
       hyprpicker
       era
+      playerctl
 
       sweet-nova
       sweet

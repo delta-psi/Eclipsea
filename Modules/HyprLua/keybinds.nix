@@ -91,6 +91,7 @@ in
     (bind "${mod} + I" (dsp.toggleSpecial "idle"))
     (bind "${mod} + B" (dsp.toggleSpecial "systemStats"))
     (bind "${mod} + C" (dsp.toggleSpecial "clock"))
+    (bind "${mod} + Y" (dsp.toggleSpecial "typing"))
 
 
     (bind "${mod} + SHIFT + S" (dsp.moveToSpecial "magic")) 
@@ -138,6 +139,8 @@ in
   ++ workspaceBinds;
 
   # Submaps
+  #   - Submaps to make: 
+  #     - Music, Window Management, Hypr-Modes, Special Workspaces(?)
   define_submap = [
     {
       _args = [

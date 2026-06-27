@@ -5,6 +5,8 @@
     - [ ] Spicetify
     - [ ] Vesktop 
     - [ ] Zen Browser
+    - [ ] Steam 
+    - [ ] Lutris
 - [ ] Finish Neovim Config 
     - [ ] Snacks ecosystem, LaTeX and Data Science workflows
 - [ ] Terminal Config

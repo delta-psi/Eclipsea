@@ -53,6 +53,7 @@ in {
             id = "48e8a119-5a14-4826-9545-91c8e8dd3bf6";
             url = "https://github.com";
             position = 102;
+            isEssential = true;
           };
           "Dev Tools" = {
             id = "d85a9026-1458-4db6-b115-346746bcc692";
@@ -67,6 +68,7 @@ in {
             url = "https://search.nixos.org/packages";
             # folderParentId = pins."Dev Tools".id;
             position = 201;
+            isEssential = true;
           };
           "NixOS Options" = {
             id = "92931d60-fd40-4707-9512-a57b1a6a3919";
@@ -88,11 +90,11 @@ in {
             icon = "briefcase";
             id = 2;
           };
-          # Shopping = {
-          #   color = "yellow";
-          #   icon = "dollar";
-          #   id = 3;
-          # };
+          Shopping = {
+            color = "green";
+            icon = "dollar";
+            id = 3;
+          };
         };
 
         spacesForce = false; # Delete spaces not declared here
@@ -122,18 +124,18 @@ in {
               texture = 0.5;
             };
           };
-          # "Shopping" = {
-          #   id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
-          #   position = 3000;
-          #   icon = "💸";
-          # };
+          "Shopping" = {
+            id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
+            position = 3000;
+            icon = "💸";
+          };
         };
 
         settings = {
           "zen.workspaces.continue-where-left-off" = true;
           "zen.view.compact.hide-tabbar" = true;
           "zen.urlbar.behavior" = "float";
-          # "zen.welcome-screen.seen" = true;
+          "zen.welcome-screen.seen" = true;
         };
 
         search = {
@@ -219,7 +221,7 @@ in {
 
         # In order to avoid breaking changes here, sometimes when you upgrade you
         # should be asked to bump this version
-        keyboardShortcutsVersion = 17;
+        keyboardShortcutsVersion = 19;
         keyboardShortcuts = [
           {
             id = "zen-compact-mode-toggle";
