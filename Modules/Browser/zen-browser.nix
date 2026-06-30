@@ -34,6 +34,10 @@ in {
         Cryptomining = true;
         Fingerprinting = true;
       };
+      Homepage = {
+        URL = "https://duckduckgo.com/";
+        StartPage = "homepage";
+      };
     };
 
     profiles = {
@@ -41,7 +45,6 @@ in {
 
         pinsForce = true;
         pinsForceAction = "remove"; # omit or "demote" to keep undeclared pins as normal tabs
-        # inherit pins;
         pins = {
           "Email" = {
             id = "9d8a8f91-7e29-4688-ae2e-da4e49d4a179";
@@ -55,14 +58,14 @@ in {
             position = 102;
             isEssential = true;
           };
-          "Dev Tools" = {
-            id = "d85a9026-1458-4db6-b115-346746bcc692";
-            isGroup = true;
-            isFolderCollapsed = false;
-            editedTitle = true;
-            position = 200;
-            folderIcon = "chrome://browser/skin/zen-icons/selectable/eye.svg";
-          };
+          # "Dev Tools" = {
+          #   id = "d85a9026-1458-4db6-b115-346746bcc692";
+          #   isGroup = true;
+          #   isFolderCollapsed = false;
+          #   editedTitle = true;
+          #   position = 200;
+          #   folderIcon = "chrome://browser/skin/zen-icons/selectable/eye.svg";
+          # };
           "NixOS Packages" = {
             id = "f8dd784e-11d7-430a-8f57-7b05ecdb4c77";
             url = "https://search.nixos.org/packages";
@@ -75,6 +78,7 @@ in {
             url = "https://search.nixos.org/options";
             # folderParentId = pins."Dev Tools".id;
             position = 202;
+            isEssential = true;
           };
         };
 
@@ -85,16 +89,16 @@ in {
             icon = "fingerprint";
             id = 1;
           };
-          Work = {
-            color = "blue";
-            icon = "briefcase";
-            id = 2;
-          };
-          Shopping = {
-            color = "green";
-            icon = "dollar";
-            id = 3;
-          };
+          # Work = {
+          #   color = "blue";
+          #   icon = "briefcase";
+          #   id = 2;
+          # };
+          # Shopping = {
+          #   color = "green";
+          #   icon = "dollar";
+          #   id = 3;
+          # };
         };
 
         spacesForce = false; # Delete spaces not declared here
@@ -104,31 +108,31 @@ in {
             position = 1000;
             icon = "🏠";
           };
-          "Work" = {
-            id = "cdd10fab-4fc5-494b-9041-325e5759195b";
-            position = 2000;
-            icon = "💼";
-            theme = {
-              type = "gradient";
-              colors = [
-                {
-                  red = 100;
-                  green = 150;
-                  blue = 200;
-                  algorithm = "floating";
-                  type = "explicit-lightness";
-                  lightness = 50;
-                }
-              ];
-              opacity = 0.8;
-              texture = 0.5;
-            };
-          };
-          "Shopping" = {
-            id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
-            position = 3000;
-            icon = "💸";
-          };
+          # "Work" = {
+          #   id = "cdd10fab-4fc5-494b-9041-325e5759195b";
+          #   position = 2000;
+          #   icon = "💼";
+          #   theme = {
+          #     type = "gradient";
+          #     colors = [
+          #       {
+          #         red = 100;
+          #         green = 150;
+          #         blue = 200;
+          #         algorithm = "floating";
+          #         type = "explicit-lightness";
+          #         lightness = 50;
+          #       }
+          #     ];
+          #     opacity = 0.8;
+          #     texture = 0.5;
+          #   };
+          # };
+          # "Shopping" = {
+          #   id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
+          #   position = 3000;
+          #   icon = "💸";
+          # };
         };
 
         settings = {
@@ -178,16 +182,16 @@ in {
               toolbar = true;
               bookmarks = [
                 {
-                  name = "homepage";
+                  name = "Homepage";
                   url = "https://nixos.org/";
                 }
                 {
-                  name = "wiki";
+                  name = "Wiki";
                   tags = ["wiki" "nix"];
                   url = "https://wiki.nixos.org/";
                 }
                 {
-                  name = "packages";
+                  name = "Packages";
                   url = "https://search.nixos.org/packages";
                 }
                 {

@@ -5,7 +5,7 @@
   mod = "SUPER";
   terminal = "kitty";
   browser = "zen-twilight"; # Eventually zen-twilight
-  communication = "vesktop";
+  comms = "vesktop";
   music = "spotify";
   miniterm = "kitty --class kitty-floating -o remember_window_size=no -o initial_window_width=900 -o initial_window_height=550";
   # miniterm = "kitty --class kitty-floating";

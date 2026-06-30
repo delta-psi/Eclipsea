@@ -16,7 +16,7 @@
       passes = 2; 
       ignore_opacity = true;
       new_optimizations = true;
-      xray = false;
+      xray = true;
       noise = 0.0;
       contrast = 0.90;
       brightness = 0.80;
@@ -41,8 +41,8 @@
     };
     glow = {
       enabled = true;
-      range = 4;
-      render_power = 4;
+      range = 6;
+      render_power = 3;
       # color = "rgba(00eaff33)";
       color_inactive = "rgba(ffffff00)";
     };

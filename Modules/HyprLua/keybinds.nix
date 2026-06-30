@@ -92,8 +92,6 @@ in
     (bind "${mod} + B" (dsp.toggleSpecial "systemStats"))
     (bind "${mod} + C" (dsp.toggleSpecial "clock"))
     (bind "${mod} + Y" (dsp.toggleSpecial "typing"))
-
-
     (bind "${mod} + SHIFT + S" (dsp.moveToSpecial "magic")) 
     (bind "${mod} + SHIFT + M" (dsp.moveToSpecial "music"))
     (bind "${mod} + SHIFT + D" (dsp.moveToSpecial "comms"))

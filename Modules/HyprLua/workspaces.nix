@@ -17,15 +17,15 @@
     }
     {
       workspace = "special:music";
-      on_created_empty = "uwsm -- app spotify";
+      on_created_empty = "uwsm -- app ${vars.music}";
     }
     {
       workspace = "special:comms";
-      on_created_empty = "uwsm -- app vesktop";
+      on_created_empty = "uwsm -- app ${vars.comms}";
     }
     {
       workspace = "special:typing";
-      on_created_empty = "uwsm --class typing tukai";
+      on_created_empty = "kitty --class typing tukai";
     }
   ];
 

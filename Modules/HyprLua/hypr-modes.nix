@@ -34,9 +34,9 @@
             },
             decoration = {
               rounding = 0,
-              dim_inactive = false,
+              dim_inactive = true,
               shadow = {
-                enabled = true
+                enabled = false
               },
               glow = {
                 enabled = true
@@ -52,7 +52,7 @@
             },
             decoration = {
               rounding = 30,
-              dim_inactive = false,
+              dim_inactive = true,
               shadow = {
                 enabled = true
               },
@@ -68,8 +68,6 @@
 
   frostMode = lua ''
     function()
-      -- local blur = hl.get_config("decoration.blur.passes")
-      -- if blur ~= 5 then 
       hyprModes.frost = not hyprModes.frost
       if hyprModes.frost then 
         hl.config({
@@ -117,7 +115,6 @@
       hyprModes.square = not hyprModes.square
       hl.dispatch(hl.dsp.exec_cmd("${vars.shellCurveToggle}"))
       if hyprModes.square then 
-        -- local border = hl.get_config("general.border_size")
         hl.config({
           general = {
             border_size = 2,
@@ -125,7 +122,13 @@
             gaps_out = 8
           },
           decoration = {
-            rounding = 0
+            rounding = 0,
+            shadow = {
+              enabled = false
+            },
+            glow = {
+              enabled = true
+            }
           }
         })
       else 
@@ -137,7 +140,13 @@
               gaps_out = 0
             },
             decoration = {
-              rounding = 0
+              rounding = 0,
+              shadow = {
+                enabled = false
+              },
+              glow = {
+                enabled = false
+              }
             }
           })
         else
@@ -148,7 +157,13 @@
               gaps_out = 16
             },
             decoration = {
-              rounding = 30
+              rounding = 30,
+              shadow = {
+                enabled = true
+              },
+              glow = {
+                enabled = true
+              }
             }
           })
         end
