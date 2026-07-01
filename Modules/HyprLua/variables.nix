@@ -4,6 +4,7 @@
 {
   mod = "SUPER";
   terminal = "kitty";
+  explorer = "thunar";
   browser = "zen-twilight"; # Eventually zen-twilight
   comms = "vesktop";
   music = "spotify";

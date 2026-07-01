@@ -107,6 +107,52 @@
                      firefox-addons, 
 										 ... }: {
     nixosConfigurations = {
+      phi = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs ;
+        };
+        system = "x86_64-linux";
+
+        modules = [
+          # Local
+          ./Machines/Phi/configuration.nix
+          { nixpkgs.config.allowUnfree = true; }
+
+          # Remote
+          nixvim.nixosModules.nixvim
+          matugen.nixosModules.default
+          sops-nix.nixosModules.sops
+          calmSDDM.nixosModules.default 
+          home-manager.nixosModules.home-manager
+          ({ config, ... }: {
+            home-manager = {
+              # useGlobalPkgs = true;
+              useUserPackages = true;
+              useGlobalPkgs = true;
+              backupFileExtension = "backup";
+              overwriteBackup = true;
+              extraSpecialArgs = {
+                inherit inputs;
+                githubTokenPath = config.sops.secrets.github_token.path;
+              };
+              users = {
+                delta = {
+                  imports = [
+                    # Local
+                    ./Home/home.nix
+
+                    # Remote
+                    # stylix.homeModules.stylix
+                    nixvim.homeModules.nixvim
+                    spicetify-nix.homeManagerModules.spicetify
+                    # sops-nix.homeManagerModules.sops
+                  ];
+                };
+              };
+            };
+          })
+        ];
+      };
       nu = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs ;

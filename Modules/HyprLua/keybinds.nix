@@ -70,6 +70,7 @@ in
     (bind "${mod} + SHIFT + T" (dsp.exec "uwsm app -- ${vars.miniterm}"))
     # (bind "${mod} + ALT + T" (dsp.exec "uwsm app -- kitty -o background_opacity=0"))
     (bind "${mod} + W" (dsp.exec "uwsm app -- ${vars.browser}"))
+    (bind "${mod} + E" (dsp.exec "uwsm app -- ${vars.explorer}"))
     
     # Tools 
     (bind "${mod} + ALT + H" (dsp.exec "uwsm app -- hyprpicker --autocopy --format=hex"))
