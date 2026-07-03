@@ -33,7 +33,7 @@
     "@operator"                 = { fg = "#78a9ff"; }; #86aeda
 
     # Core windows
-    # "Normal"                    = { bg = "NONE"; };
+    "Normal"                    = { bg = "NONE"; };
     "NormalNC"                  = { bg = "NONE"; };
     "NormalFloat"               = { bg = "NONE"; };
     "FloatBorder"               = { bg = "NONE"; };
