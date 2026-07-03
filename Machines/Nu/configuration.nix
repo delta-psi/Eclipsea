@@ -180,6 +180,9 @@
     config.allowUnfree = true;
     overlays = [
       inputs.nix-cachyos-kernel.overlays.default
+      (final: prev: {
+        pnpm_10_29_2 = final.pnpm_10;
+      })
     ];
   };
 
