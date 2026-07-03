@@ -10,6 +10,7 @@
     ../Modules/Editors
     ../Modules/Music
     ../Modules/Browser
+    ../Modules/Noctalia/noctalia.nix
   ];
 
   home = {
