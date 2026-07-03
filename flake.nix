@@ -87,6 +87,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Noctalia Shell 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/legacy-v4";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # quickshell = {
     #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -105,6 +111,7 @@
 										 spicetify-nix,
 										 zen-browser,
                      firefox-addons, 
+                     noctalia, 
 										 ... }: {
     nixosConfigurations = {
       phi = nixpkgs.lib.nixosSystem {
@@ -133,6 +140,7 @@
               overwriteBackup = true;
               extraSpecialArgs = {
                 inherit inputs;
+                isLaptop = true;
                 githubTokenPath = config.sops.secrets.github_token.path;
               };
               users = {
@@ -179,6 +187,7 @@
               overwriteBackup = true;
               extraSpecialArgs = {
                 inherit inputs;
+                isLaptop = false;
                 githubTokenPath = config.sops.secrets.github_token.path;
               };
               users = {

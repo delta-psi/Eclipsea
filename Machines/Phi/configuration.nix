@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports =
@@ -108,6 +108,15 @@
   services = {
     # Scheduler
     scx.enable = true;
+
+    # Power profiles
+    power-profiles-daemon = {
+      enable = true;
+    };
+
+    upower = {
+      enable = true;
+    };
     
     # Open the OpenSSH daemon
     openssh.enable = true;
@@ -356,11 +365,17 @@
       substituters = [
         "https://attic.xuyh0120.win/lantian"
       ];
+      extra-substituters = [
+        "https://noctalia.cachix.org"
+      ];
       trusted-substituters = [
         "https://attic.xuyh0120.win/lantian"
       ];
       trusted-public-keys = [
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+      ];
+      extra-trusted-public-keys = [ 
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" 
       ];
     };
   };

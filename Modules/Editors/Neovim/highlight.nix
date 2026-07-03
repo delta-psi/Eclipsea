@@ -38,11 +38,17 @@
     "NormalFloat"               = { bg = "NONE"; };
     "FloatBorder"               = { bg = "NONE"; };
     "FloatTitle"                = { bg = "NONE"; };
+    "LineNr"                    = { bg = "NONE"; };
+    "CursorLineNr"              = { bg = "NONE"; };
+    "CursorLine"                = { bg = "NONE"; };
+
 
     # Snacks explorer
     "SnacksExplorerNormal"      = { bg = "NONE"; };
     "SnacksExplorerNormalNC"    = { bg = "NONE"; };
     "SnacksExplorerWinBar"      = { bg = "NONE"; };
+    "SnacksIndent"              = { bg = "NONE"; };
+    "SnacksIndentScope"         = { bg = "NONE"; };
 
     # Toggleterm
     "ToggleTerm"                = { bg = "NONE"; };
