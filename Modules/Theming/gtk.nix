@@ -11,8 +11,8 @@
     };
 
     iconTheme = {
-      package = pkgs.sweet-nova;
-      name = "Sweet-cursors";
+      package = pkgs.sweet;
+      name = "Sweet-Rainbow";
     };
 
     font = {

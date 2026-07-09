@@ -78,6 +78,11 @@ in
     # Quickshell Commands
     (bind "${mod} + CONTROL + B" (dsp.exec "${vars.shellToggle}"))
 
+    # Noctalia Shell Commands (Laptop)
+    # (if )
+    (bind "${mod} + SUPER_L" (dsp.exec "noctalia-shell ipc call launcher toggle"))
+    (bind "${mod} + CONTROL + W" (dsp.exec "noctalia-shell ipc call wallpaper toggle"))
+
     # Hypr Modes
     (bind "${mod} + Z" modes.zenMode)
     (bind "${mod} + ALT + F" modes.frostMode)

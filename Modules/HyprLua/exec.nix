@@ -1,5 +1,5 @@
 
-{ lua, ... }:
+{ lua, isLaptop, ... }:
 
 let 
   mkExec = event: cmds: {
@@ -16,9 +16,17 @@ in
 {
   on = [ 
     (mkExec "hyprland.start" [
-      "awww-daemon"
-      "awww restore"
-      "qs"
+      (if isLaptop then 
+        "noctalia-shell -d"
+      else
+        "awww-daemon"
+        "awww restore"
+        "qs"
+      )
+      # "awww-daemon"
+      # "awww restore"
+      # # "qs"
+      # (if isLaptop then "noctalia-shell -d" else "qs")
 
       "vesktop -m"
     ])

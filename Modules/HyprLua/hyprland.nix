@@ -7,12 +7,14 @@
 #   - Make sure everything works, imports in all the right places, etc. 
 #   - Make sure code is clean & consistent
 
-{ lib, ... }:
+{ lib, isLaptop, ... }:
 
 let 
   lua = lib.generators.mkLuaInline;
   vars = import ./variables.nix;
-  args = { inherit lib lua vars; };
+  # shellToggle = if isLaptop then "hl.dispatch(hl.dsp.exec_cmd('${vars.customShellToggle}'))" else "hl.dispatch(hl.dsp.exec_cmd('${vars.noctaliaBarToggle}))";
+
+  args = { inherit lib lua vars isLaptop; };
 
   configs = lib.mkMerge (map (f: import f args) [
     ./general.nix

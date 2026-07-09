@@ -250,9 +250,12 @@
       sweet-nova
       sweet
       sweet-folders
+      candy-icons
+      nwg-look
       elegant-sddm
       
       inputs.matugen.packages.${stdenv.hostPlatform.system}.default
+      inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
       wallust
       quickshell
       qt6.qtdeclarative

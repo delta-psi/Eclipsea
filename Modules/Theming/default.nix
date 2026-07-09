@@ -2,7 +2,7 @@
 {
   imports = [
     # ./stylix.nix
-    # ./qt.nix
+    ./qt.nix
     ./gtk.nix
     ./matugen.nix
     ./wallpaper.nix

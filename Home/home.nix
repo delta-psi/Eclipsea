@@ -23,6 +23,10 @@
       name = "Sweet-cursors";
       size = 24;
     };
+
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
     # packages = with pkgs; [
     # ];
 

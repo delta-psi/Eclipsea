@@ -161,19 +161,19 @@
             interactive = false;
           }
           # Right Pane - Random Pokemon sprite 
-          {
-            pane = 2;
-            padding = 5;
-          }
+          # {
+          #   pane = 2;
+          #   padding = 5;
+          # }
           {
             section = "terminal";
             cmd = "pokemon-colorscripts -r --no-title; sleep .1";
             # cmd = "tmatrix --background=default -C magenta; sleep .1";
             random = 10;
             pane = 2;
-            indent = 8;
-            height = 30;
-            padding = 4;
+            # indent = 8;
+            # height = 30;
+            # padding = 4;
             interactive = false;
           }
         ];

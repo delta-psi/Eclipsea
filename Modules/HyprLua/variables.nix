@@ -13,4 +13,6 @@
   idle = "terminal-rain --lightning-color magenta --speed fast --thunder";
   shellToggle = "qs ipc call togglePanels barBezelToggle";
   shellCurveToggle = "qs ipc call layout toggleSquareMode";
+  noctaliaBarToggle = "noctalia ipc call bar toggle";
+  # shellToggle = if isLaptop then "hl.dispatch(hl.dsp.exec_cmd('${customShellToggle}'))" else "hl.dispatch(hl.dsp.exec_cmd('${noctaliaBarToggle}))"
 }

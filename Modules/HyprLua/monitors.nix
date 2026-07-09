@@ -15,5 +15,11 @@
       position = "0x0";
       scale = 1.2;
     }
+    {
+      output = "DP-5"; # 6
+      mode = "2560x1080";
+      position = "auto-left";
+      scale = 1.0;
+    }
   ];
 }

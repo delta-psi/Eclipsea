@@ -1,5 +1,5 @@
 
-{ ... }:
+{ machine, ... }:
 
 {
 
@@ -34,8 +34,8 @@
       reload = "cd ~ && clear && fastfetch && echo";
       ec = "cd ~/Configs/Eclipsea && tree -d";
       # rebuild = "sudo nixos-rebuild switch --flake .#nu";
-      rebuild = "nh os switch . -H nu";
-      build = "nh os boot . -H nu";
+      rebuild = "nh os switch . -H ${machine}";
+      build = "nh os boot . -H ${machine}";
       # build = "sudo nixos-rebuild build --flake .#nu";
       clean = "nh clean all --keep 5 --keep-since 7d --optimise";
 

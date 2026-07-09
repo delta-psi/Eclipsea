@@ -1,6 +1,9 @@
 
 { lua, vars, ... }:
 
+# let 
+#   shellToggle = (if isLaptop then
+#   )
 {
   zenMode = lua ''
     function()

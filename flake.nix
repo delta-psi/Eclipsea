@@ -19,7 +19,10 @@
 #       - Headscale/Tailscale 
 #       - Sunshine/Moonlight 
 
-
+let 
+  mkHost = {
+    # General machine configuration stuffs here
+  };
 {
   description = "Eclipsea NixOS Configuration";
 
@@ -140,6 +143,7 @@
               overwriteBackup = true;
               extraSpecialArgs = {
                 inherit inputs;
+                machine = "phi";
                 isLaptop = true;
                 githubTokenPath = config.sops.secrets.github_token.path;
               };
@@ -187,6 +191,7 @@
               overwriteBackup = true;
               extraSpecialArgs = {
                 inherit inputs;
+                machine = "nu";
                 isLaptop = false;
                 githubTokenPath = config.sops.secrets.github_token.path;
               };
