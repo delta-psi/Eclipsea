@@ -25,5 +25,12 @@
     smart_split = false;
     smart_resizing = true;
   };
+
+  input = {
+    touchpad = {
+      # flip_y = true;
+      natural_scroll = true;
+    };
+  };
 }
 

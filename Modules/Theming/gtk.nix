@@ -7,7 +7,7 @@
     
     theme = {
       package = pkgs.sweet-nova;
-      name = "Sweet-Nova";
+      name = "Sweet-Dark";
     };
 
     iconTheme = {

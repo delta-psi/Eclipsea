@@ -265,6 +265,7 @@
       kdePackages.qtsvg
       kdePackages.qtvirtualkeyboard
       qt5.qtgraphicaleffects
+      kdePackages.qt6ct
 
 
       xdg-desktop-portal

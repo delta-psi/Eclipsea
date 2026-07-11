@@ -19,10 +19,10 @@
 #       - Headscale/Tailscale 
 #       - Sunshine/Moonlight 
 
-let 
-  mkHost = {
-    # General machine configuration stuffs here
-  };
+# let 
+#   mkHost = {
+#     # General machine configuration stuffs here
+#   };
 {
   description = "Eclipsea NixOS Configuration";
 

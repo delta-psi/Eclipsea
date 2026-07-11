@@ -27,8 +27,13 @@
     sessionVariables = {
       EDITOR = "nvim";
     };
-    # packages = with pkgs; [
-    # ];
+
+    packages = with pkgs; [
+      sweet-nova
+      sweet
+      sweet-folders
+      candy-icons
+    ];
 
     file = {
       ".ssh/config" = {

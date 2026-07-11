@@ -8,17 +8,17 @@
       name = "Sweet-nova";
       package = pkgs.sweet-nova;
     };
-    # platformTheme = "qt5ct";
+    platformTheme.name = "qtct";
     qt6ctSettings = {
       Appearance = {
-        style = "sweet-nova";
+        # style = "sweet-nova";
         icon_theme = "Sweet-Rainbow";
         standard_dialogs = "xdgdesktopportal";
       };
     };
     qt5ctSettings = {
       Appearance = {
-        style = "sweet-nova";
+        # style = "sweet-nova";
         icon_theme = "Sweet-Rainbow";
         standard_dialogs = "xdgdesktopportal";      };
     };
