@@ -14,21 +14,33 @@ let
   };
 in
 {
-  on = [ 
-    (mkExec "hyprland.start" [
-      (if isLaptop then 
+  on = [
+    (if isLaptop then
+      (mkExec "hyprland.start" [
         "noctalia-shell -d"
-      else
+        "vesktop -m"
+      ])
+    else
+      (mkExec "hyprland.start" [
         "awww-daemon"
         "awww restore"
         "qs"
-      )
+      ]))
+  ];
+  # )
+  # on = [ 
+    # (mkExec "hyprland.start" [
+    #   (if isLaptop then 
+    #     [ "noctalia-shell -d" ]
+    #   else
+    #     ''"awww-daemon" "awww restore" "qs"''
+    #   )
       # "awww-daemon"
       # "awww restore"
       # # "qs"
       # (if isLaptop then "noctalia-shell -d" else "qs")
 
-      "vesktop -m"
-    ])
-  ];
+  #     "vesktop -m"
+  #   ])
+  # ];
 }
