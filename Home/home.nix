@@ -88,6 +88,14 @@
       };
     };
 
+    direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
+      enableFishIntegration = true;
+    };
+
     # Let home-manager manage itself
     home-manager.enable = true;
   };

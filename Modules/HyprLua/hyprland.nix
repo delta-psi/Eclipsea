@@ -11,7 +11,7 @@
 
 let 
   lua = lib.generators.mkLuaInline;
-  vars = import ./variables.nix;
+  vars = import ./variables.nix { inherit isLaptop; };
   # shellToggle = if isLaptop then "hl.dispatch(hl.dsp.exec_cmd('${vars.customShellToggle}'))" else "hl.dispatch(hl.dsp.exec_cmd('${vars.noctaliaBarToggle}))";
 
   args = { inherit lib lua vars isLaptop; };

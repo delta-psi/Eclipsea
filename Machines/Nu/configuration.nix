@@ -237,6 +237,10 @@
       thunar
       thunar-volman
       thunar-archive-plugin
+      sshfs
+      rsync
+      remmina
+      freerdp
 
       sweet-nova
       sweet

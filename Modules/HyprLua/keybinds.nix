@@ -82,6 +82,7 @@ in
     # (if )
     (bind "${mod} + SUPER_L" (dsp.exec "noctalia-shell ipc call launcher toggle"))
     (bind "${mod} + CONTROL + W" (dsp.exec "noctalia-shell ipc call wallpaper toggle"))
+    (bind "${mod} + CONTROL + L" (dsp.exec "noctalia-shell ipc call lockScreen lock"))
 
     # Hypr Modes
     (bind "${mod} + Z" modes.zenMode)

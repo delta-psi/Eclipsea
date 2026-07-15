@@ -84,6 +84,9 @@
   networking = {
     hostName = "phi"; 
     networkmanager.enable = true;
+    firewall = {
+      checkReversePath = "loose";
+    };
   };
 
   # Set your time zone.
@@ -119,7 +122,17 @@
     };
     
     # Open the OpenSSH daemon
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+      };
+    };
+
+    tailscale ={
+      enable = true;
+    }; 
 
     blueman = {
       enable = true;
@@ -246,6 +259,8 @@
       thunar
       thunar-volman
       thunar-archive-plugin
+      tailscale
+      remmina
 
       sweet-nova
       sweet

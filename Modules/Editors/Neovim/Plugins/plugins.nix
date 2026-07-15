@@ -7,6 +7,7 @@
     (import ./blink-cmp.nix)
     (import ./colorizer.nix)
     (import ./conform-nvim.nix)
+    (import ./direnv.nix)
     (import ./gitsigns.nix)
     (import ./hardtime.nix)
     (import ./image.nix)

@@ -40,6 +40,7 @@
       clean = "nh clean all --keep 5 --keep-since 7d --optimise";
 
       # Git
+      gf = "git fetch";
       gs = "git status";
       gc = "git_commit";
       gp = "git push";
@@ -47,6 +48,9 @@
       # Fun stuff
       idle = "terminal-rain --lightning-color magenta --speed fast --thunder";
       clk = "era";
+
+      # Projects & misc
+      magpy = "cd ~/Projects/Magpy && nvim new.py";
     };
 
   };
