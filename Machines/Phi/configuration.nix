@@ -1,3 +1,4 @@
+
 { inputs, pkgs, ... }:
 
 {
@@ -158,6 +159,16 @@
       enable = true;
     };
 
+    udev = {
+      packages = with pkgs; [
+        qmk 
+        qmk-udev-rules
+        qmk_hid
+        via
+        vial
+      ];
+    };
+
     # Enable SDDM login
     displayManager = {
       sddm = {
@@ -261,6 +272,7 @@
       thunar-archive-plugin
       tailscale
       remmina
+      vial
 
       sweet-nova
       sweet
@@ -269,6 +281,7 @@
       nwg-look
       elegant-sddm
       
+      # inputs.hyprland.packages.${stdenv.hostPlatform.system}.hyprland
       inputs.matugen.packages.${stdenv.hostPlatform.system}.default
       inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
       wallust
@@ -353,6 +366,8 @@
       enable = true;
       xwayland.enable = true;
       withUWSM = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
     nh = {
@@ -383,18 +398,25 @@
       ];
       substituters = [
         "https://attic.xuyh0120.win/lantian"
+        "https://hyprland.cachix.org"
       ];
       extra-substituters = [
         "https://noctalia.cachix.org"
       ];
       trusted-substituters = [
         "https://attic.xuyh0120.win/lantian"
+        "https://hyprland.cachix.org"
       ];
       trusted-public-keys = [
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
       extra-trusted-public-keys = [ 
         "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" 
+      ];
+      trusted-users = [
+        "root"
+        "@wheel"
       ];
     };
   };

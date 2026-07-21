@@ -1,14 +1,28 @@
 # To Do 
 - [X] Migrate Hyprland to Lua config 
-    - [ ] Finish Hyprland Config 
+    - [X] Finish Hyprland Config 
 - [ ] Configure Apps:
     - [ ] Spicetify
     - [ ] Vesktop 
     - [ ] Zen Browser
     - [ ] Steam 
     - [ ] Lutris
+- [ ] Other things to do 
+    - [ ] Declarative VM's 
+    - [ ] Declarative MC servers 
+    - [ ] SSH File Sharing for MARI 
+    - [ ] Git server (Personal & MARI)
 - [ ] Finish Neovim Config 
-    - [ ] Snacks ecosystem, LaTeX and Data Science workflows
+    - [ ] Snacks ecosystem
+    - [ ] Set up neorg for notes 
+        - [ ] Full obsidian replacement with graph view 
+        - [ ] Organize notes vault
+    - [ ] Fix inline math for markdown & neorg notes
+    - [ ] LaTeX workflow 
+    - [ ] Data Science workflow
+        - [ ] R, Python, Julia 
+        - [ ] Jupyter Notebooks 
+        - [ ] R environment (like RStudio/Positron)
 - [ ] Terminal Config
     - [ ] Kitty
     - [ ] Starship

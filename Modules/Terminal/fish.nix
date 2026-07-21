@@ -50,7 +50,7 @@
       clk = "era";
 
       # Projects & misc
-      magpy = "cd ~/Projects/Magpy && nvim new.py";
+      magpy = "cd ~/Projects/Magpy";
     };
 
   };

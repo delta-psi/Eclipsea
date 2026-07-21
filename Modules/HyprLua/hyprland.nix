@@ -7,7 +7,7 @@
 #   - Make sure everything works, imports in all the right places, etc. 
 #   - Make sure code is clean & consistent
 
-{ lib, isLaptop, ... }:
+{ pkgs, inputs, lib, isLaptop, ... }:
 
 let 
   lua = lib.generators.mkLuaInline;
@@ -43,8 +43,11 @@ in
     windowManager.hyprland = {
       enable = true;
       configType = "lua";
-      package = null;
-      portalPackage = null;
+      # package = null;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
+      # portalPackage = null;
       systemd.enable = false;
       xwayland.enable = true;
 

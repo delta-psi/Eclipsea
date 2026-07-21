@@ -8,11 +8,12 @@ hl.config({
   decoration = {
     shadow = {
       -- color = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 }
-      color = "rgba({{colors.primary.dark.hex_alpha_stripped}})"
-      -- color = "rgba({{colors.primary.dark.hex_alpha_stripped}}), rgba({{colors.tertiary.dark.hex_alpha_stripped}})"
+      -- color = "rgba({{colors.primary.dark.hex_alpha_stripped}})"
+      color = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 }
     },
     glow = {
-      color = "rgba({{colors.primary.dark.hex_alpha_stripped}})"
+      -- color = "rgba({{colors.primary.dark.hex_alpha_stripped}})"
+      color = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 }
     }
   }
 })

@@ -41,8 +41,8 @@
     };
     glow = {
       enabled = true;
-      range = 6;
-      render_power = 3;
+      range = 8;
+      render_power = 4;
       # color = "rgba(00eaff33)";
       color_inactive = "rgba(ffffff00)";
     };
