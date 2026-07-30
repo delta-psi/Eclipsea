@@ -41,7 +41,7 @@
       mode = "n";
       key = "<leader>/"; 
       action = "<cmd>lua Snacks.picker.grep()<cr";
-      option.desc = "Grep";
+      options.desc = "Grep";
     }
     {
 			mode = "n";

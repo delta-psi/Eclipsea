@@ -177,8 +177,11 @@
           hmModule = if isDarwin then home-manager.darwinModules.home-manager else home-manager.nixosModules.home-manager;
         in
         systemFn {
-          inherit system;
-          specialArgs = { inherit inputs; };
+          inherit system ;
+          specialArgs = { 
+            inherit inputs; 
+            machine = hostName;
+          };
 
           modules = [
             (./Machines + "/${hostHomeDir}/configuration.nix")
