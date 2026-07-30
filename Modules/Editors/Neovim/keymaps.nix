@@ -32,6 +32,30 @@
       options.desc = "File Tree"; 
     }
     { 
+      mode = "n";
+      key = "<leader>,";
+      action = "<cmd>lua Snacks.picker.buffers()<cr>";
+      options.desc = "Buffer Search";
+    }
+    { 
+      mode = "n";
+      key = "<leader>/"; 
+      action = "<cmd>lua Snacks.picker.grep()<cr";
+      option.desc = "Grep";
+    }
+    {
+			mode = "n";
+			key = "<leader>:";
+			action = "<cmd>lua Snacks.picker.command_history()<cr>";
+			options.desc = "Command History";
+    }
+    {
+			mode = "n";
+			key = "<leader>n";
+			action = "<cmd>Snacks.picker.notifications()<cr>";
+			options.desc = "Notification History";
+    }
+    { 
       mode = [ "n" "t" ]; 
       key = "<C-\\>"; 
       action = "<cmd> lua Snacks.terminal.toggle()<cr>"; 

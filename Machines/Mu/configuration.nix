@@ -1,6 +1,14 @@
 { pkgs, ... }: 
 
 {
+  imports = [
+
+    # MARI Server
+    # ../../Users/users.nix
+    # ../../MARI-Server
+
+    # Personal Server
+  ];
 
   # Declare user(s)
   users = {
@@ -12,26 +20,55 @@
 
   # List packages installed in system profile. 
   environment = {
-    systemPackages = with pkgs; [
-      neovim
-      git
-      tree
+    systemPackages = (import ../../System/common.nix) ++ (with pkgs; [
+      
+      # Personal/Mac stuff
       aerospace
       sketchybar
-      fastfetch
       kitty
-      starship
-      zoxide
-      eza
-      gh
-      nh
-      btop
-      tmux
       tailscale
-    ];
+
+      # Editors
+      # neovim
+      vim 
+      emacs
+
+      # CLIs
+      # git
+      # lazygit
+      # tree
+      # fastfetch
+      # starship
+      # zoxide
+      # eza
+      # gh
+      # nh
+      # btop
+      # tmux
+      # ripgrep
+      # tmux
+      # yazi
+      # fzf
+      bfs
+      # pay-respects
+      # rsync
+
+      # Languages
+      # texliveFull
+      # python314
+      # R 
+      cbqn
+      
+      # Fun stuff
+      # sl
+      # cowsay
+      # lolcat
+      # tmatrix
+
+    ]);
 
     variables = {
-      EDITOR = "neovim";
+      EDITOR = "nvim";
     };
   };
 
@@ -42,4 +79,4 @@
     # Necessary for using flakes on this system.
     settings.experimental-features = "nix-command flakes";
   };
-
+}

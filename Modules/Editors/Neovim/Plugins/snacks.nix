@@ -28,6 +28,7 @@
       };
       bigfile = {
         enabled = true;
+        notify = true;
       };
       health = {
         enabled = true;
