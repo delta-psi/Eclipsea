@@ -17,6 +17,7 @@
       thunar-volman
       thunar-archive-plugin
       vial
+      xdotool
 
       sweet-nova
       sweet

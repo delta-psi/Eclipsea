@@ -11,7 +11,7 @@ with pkgs; [
   })
 
   # CLIs 
-  xdotool
+  # xdotool
   tree
   tmux 
   btop
