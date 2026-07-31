@@ -5,8 +5,8 @@
   clipboard = {
     register = "unnamedplus";
     providers = {
-      wl-copy = pkgs.stdenv.isLinux;
-      pbcopy = pkgs.stdenv.isDarwin;
+      wl-copy.enable = pkgs.stdenv.isLinux;
+      pbcopy.enable = pkgs.stdenv.isDarwin;
     };
   }; 
 }
