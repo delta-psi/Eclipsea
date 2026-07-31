@@ -40,7 +40,7 @@
     { 
       mode = "n";
       key = "<leader>/"; 
-      action = "<cmd>lua Snacks.picker.grep()<cr";
+      action = "<cmd>lua Snacks.picker.grep()<cr>";
       options.desc = "Grep";
     }
     {
@@ -58,25 +58,25 @@
     { 
       mode = [ "n" "t" ]; 
       key = "<C-\\>"; 
-      action = "<cmd> lua Snacks.terminal.toggle()<cr>"; 
+      action = "<cmd>lua Snacks.terminal.toggle()<cr>"; 
       options.desc = "Toggle Terminal"; 
     } 
     { 
       mode = "n"; 
       key = "<leader>bd"; 
-      action = "<cmd> lua Snacks.bufdelete()<cr>"; 
+      action = "<cmd>lua Snacks.bufdelete()<cr>"; 
       options.desc = "Delete current buffer"; 
     }
     { 
       mode = "n"; 
       key = "<leader>ba"; 
-      action = "<cmd> lua Snacks.bufdelete.all()<cr>"; 
+      action = "<cmd>lua Snacks.bufdelete.all()<cr>"; 
       options.desc = "Delete all buffers"; 
     }
     { 
       mode = "n"; 
       key = "<leader>bo"; 
-      action = "<cmd> lua Snacks.bufdelete.other()<cr>"; 
+      action = "<cmd>lua Snacks.bufdelete.other()<cr>"; 
       options.desc = "Delete all except the current buffer"; 
     }
 

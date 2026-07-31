@@ -52,7 +52,7 @@
     (import ./highlight.nix)
     (import ./keymaps.nix)
     (import ./options.nix)
-    (import ./clipboard.nix { inherit pkgs; })
+    (import ./clipboard.nix { inherit pkgs lib; })
     (import ./Plugins/plugins.nix { inherit lib pkgs; })
   ];
 }
