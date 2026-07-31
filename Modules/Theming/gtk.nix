@@ -11,7 +11,7 @@
     };
 
     iconTheme = {
-      package = pkgs.sweet;
+      package = pkgs.sweet-nova;
       name = "Sweet-Rainbow";
     };
 

@@ -30,7 +30,7 @@
 
     packages = with pkgs; [
       sweet-nova
-      sweet
+      # sweet
       sweet-folders
       candy-icons
     ];

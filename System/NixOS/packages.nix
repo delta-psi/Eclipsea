@@ -25,7 +25,7 @@
       meowpdf
 
       sweet-nova
-      sweet
+      # sweet # Deprecated because of a dead dependency
       sweet-folders
       candy-icons
       nwg-look
