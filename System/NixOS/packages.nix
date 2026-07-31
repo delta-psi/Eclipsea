@@ -19,6 +19,7 @@
       vial
       xdotool
       vlc
+      meowpdf
 
       sweet-nova
       sweet

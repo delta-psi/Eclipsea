@@ -35,7 +35,7 @@ with pkgs; [
   rsync
   eza 
   pay-respects
-  meowpdf
+  # meowpdf
 
   # Languages
   texliveFull
