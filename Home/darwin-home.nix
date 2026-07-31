@@ -1,6 +1,11 @@
 { pkgs, ... }: 
 
 {
+  imports = [
+    ../Modules/Terminal 
+    ../Modules/Editors
+  ];
+
   home = {
     username = "delta";
     homeDirectory = "/Users/delta";
@@ -12,7 +17,50 @@
     stateVersion = "25.11";
   };
 
-  programs.home-manager.enable = true;
+  manual.manpages.enable = false;
+
+  programs = {
+    eza = {
+      enable = true;
+      git = true;
+      icons = "always";
+      colors = "always";
+      enableFishIntegration = true;
+    };
+
+    fish = {
+      enable = true;
+    };
+    
+    git = {
+      enable = true;
+      settings = {
+        user = {
+          name = "delta-psi";
+          email = "deltapsi.exe@proton.me";
+        };
+        init.defautBrach = "main";
+        push.autoSetupRemote = true;
+      };
+    };
+
+    gh = {
+      enable = true;
+      settings = {
+        git_protocol = "ssh";
+      };
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
+      enableFishIntegration = true;
+    };
+
+    home-manager.enable = true;
+  };
 
 }
 
