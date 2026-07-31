@@ -97,5 +97,5 @@
     };
   };
 
-
+  system.stateVersion = 7;
 }
