@@ -30,7 +30,7 @@ with pkgs; [
   mermaid-cli
   ffmpeg
   unzip
-  vlc 
+  # vlc 
   sshfs
   rsync
   eza 

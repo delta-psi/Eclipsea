@@ -18,6 +18,7 @@
       thunar-archive-plugin
       vial
       xdotool
+      vlc
 
       sweet-nova
       sweet
