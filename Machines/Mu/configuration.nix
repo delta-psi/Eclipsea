@@ -20,7 +20,7 @@
 
   # List packages installed in system profile. 
   environment = {
-    systemPackages = (import ../../System/common.nix) ++ (with pkgs; [
+    systemPackages = (import ../../System/common.nix { inherit pkgs; }) ++ (with pkgs; [
       
       # Personal/Mac stuff
       aerospace
