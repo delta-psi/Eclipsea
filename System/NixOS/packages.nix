@@ -4,6 +4,9 @@
 {
   environment = {
     systemPackages = with pkgs; [
+      (zathura.override {
+        plugins = [ zathuraPkgs.zathura_pdf_mupdf ];
+      })
       nushell
       wl-clipboard
       smassh

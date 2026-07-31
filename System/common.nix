@@ -6,9 +6,6 @@ with pkgs; [
   # Apps
   kitty
   neovim
-  (zathura.override {
-    plugins = [ zathuraPkgs.zathura_pdf_mupdf ];
-  })
 
   # CLIs 
   # xdotool
