@@ -3,6 +3,7 @@
 {
   imports = [
     ../Modules/Terminal 
+    ../Modules/Darwin/Terminal
     # ../Modules/Editors
   ];
 
