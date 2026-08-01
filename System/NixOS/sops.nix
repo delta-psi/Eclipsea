@@ -1,4 +1,6 @@
 
+{ config, ... }:
+
 {
   sops = {
     defaultSopsFile = ../../secrets/secrets.yaml;
@@ -15,7 +17,7 @@
         path = "/home/delta/.ssh/github_ed25519";
       };
       "mu_ed25519" = {
-	path = "{config.home.homeDirectory}/.ssh/mu_25519";
+        path = "${config.home.homeDirectory}/.ssh/mu_25519";
       };
     };
   };
