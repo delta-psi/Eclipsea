@@ -105,7 +105,7 @@
           identityFile = "~/.ssh/github_ed25519";
           identitiesOnly = true;
         };
-        "mu" = {
+        "mu_ed25519" = {
           hostname = "mu";
           user = "delta";
           identityFile = "~/.ssh/mu_25519";
