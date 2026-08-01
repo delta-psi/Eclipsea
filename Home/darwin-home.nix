@@ -6,6 +6,10 @@
     # ../Modules/Editors
   ];
 
+  users.users.delta = {
+    shell = pkgs.fish;
+  };
+
   home = {
     username = "delta";
     homeDirectory = "/Users/delta";
