@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, config, ... }: 
 
 {
   imports = [
@@ -30,6 +30,8 @@
         '';
       };
     };
+    
+    sessionVariables.XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
 
     stateVersion = "25.11";
   };
