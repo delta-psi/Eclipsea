@@ -101,7 +101,7 @@
           hostname = "github.com";
           user = "git";
           identityFile = "~/.ssh/github_ed25519";
-          idenetitiesOnly = true;
+          identitiesOnly = true;
         };
         "mu" = {
           hostname = "mu";
