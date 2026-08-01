@@ -30,9 +30,9 @@
         '';
       };
       ".ssh/authorized_keys" = {
-	text = ''
-	  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPEKMtfzbuADY0squhI/86QMjwR0fCl97+8CVVAmMx8U server
-	'';
+        text = ''
+          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPEKMtfzbuADY0squhI/86QMjwR0fCl97+8CVVAmMx8U server
+        '';
       };
     };
 
@@ -87,6 +87,16 @@
         enable = true;
       };
       enableFishIntegration = true;
+    };
+
+    ssh = {
+      matchBlocks = {
+        "mu" = {
+          hostname = "mu";
+          user = "delta";
+          identityFile = "~/.ssh/mu_25519";
+        }; 
+      };
     };
 
     home-manager.enable = true;

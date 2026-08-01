@@ -17,7 +17,9 @@
         path = "/home/delta/.ssh/github_ed25519";
       };
       "mu_ed25519" = {
-        path = "${config.home.homeDirectory}/.ssh/mu_25519";
+        owner = "delta";
+        mode = "0600";
+        path = "${config.users.users.delta.home}/.ssh/mu_25519";
       };
     };
   };

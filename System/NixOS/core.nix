@@ -1,5 +1,5 @@
 
-# { inputs, config, pkgs, ... }:
+# { config, ... }:
 
 {
   imports = [
@@ -13,7 +13,7 @@
     ./nix.nix
     ./environment.nix
     ./programs.nix
-    ./sops.nix
+    ./sops.nix # { inherit config; }
     ./packages.nix
     ./fonts.nix
     ./users.nix
