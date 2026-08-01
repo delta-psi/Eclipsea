@@ -3,7 +3,7 @@
 {
   imports = [
     ../Modules/Terminal 
-    ../Modules/Editors
+    # ../Modules/Editors
   ];
 
   home = {
