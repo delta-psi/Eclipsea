@@ -68,6 +68,8 @@
 
     ]);
 
+    shells = [ pkgs.fish ];
+
     variables = {
       EDITOR = "nvim";
     };
