@@ -39,7 +39,6 @@
     activation = {
       fixAuthorizedKeys = config.lib.dag.entryAfter [ "writeBoundary" ] ''
         install -m 600 ${config.home.homeDirectory}/.ssh/authorized_keys_hm ${config.home.homeDirectory}/.ssh/authorized_keys
-
       '';
       setupGhAuth = config.lib.dag.entryAfter [ "writeBoundary" ] ''
         mkdir -p $HOME/.config/gh
@@ -96,6 +95,7 @@
     };
 
     ssh = {
+      enable = true;
       matchBlocks = {
         "github.com" = {
           hostname = "github.com";
