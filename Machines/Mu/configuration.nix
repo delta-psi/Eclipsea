@@ -15,6 +15,7 @@
     users.delta = {
       name = "delta";
       home = "/Users/delta";
+      shell = pkgs.fish;
     };
   };
 

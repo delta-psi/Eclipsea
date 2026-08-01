@@ -6,9 +6,9 @@
     # ../Modules/Editors
   ];
 
-  users.users.delta = {
-    shell = pkgs.fish;
-  };
+  # users.users.delta = {
+  #   shell = pkgs.fish;
+  # };
 
   home = {
     username = "delta";
