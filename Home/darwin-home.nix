@@ -36,11 +36,16 @@
       };
     };
 
-    activation.setupGhAuth = config.lib.dag.entryAfter [ "writeBoundary" ] ''
-      mkdir -p $HOME/.config/gh
-      printf 'github.com:\n    user: delta-psi\n    oauth_token: %s\n    git_protocol: ssh\n' "$(cat ${githubTokenPath})" > $HOME/.config/gh/hosts.yml
-      chmod 600 $HOME/.config/gh/hosts.yml
-    '';
+    activation = {
+      fixAuthorizedKeys = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+        isntall -m 600 ${config.home.homeDirectory}/.ssh/authorized_keys_hm ${config.home.homeDirectory}/.ssh/authorized_keys
+      '';
+      setupGhAuth = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+        mkdir -p $HOME/.config/gh
+        printf 'github.com:\n    user: delta-psi\n    oauth_token: %s\n    git_protocol: ssh\n' "$(cat ${githubTokenPath})" > $HOME/.config/gh/hosts.yml
+        chmod 600 $HOME/.config/gh/hosts.yml
+      '';
+    };
     
     sessionVariables.XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
 
