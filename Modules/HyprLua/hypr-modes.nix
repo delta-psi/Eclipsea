@@ -76,7 +76,7 @@
         hl.config({
           decoration = {
             blur = {
-              passes = 5
+              passes = 7
             }
           }
         })
@@ -192,7 +192,7 @@
             decoration = {
               blur = {
                 size = 7,
-                passes = 5
+                passes = 7
               }
             }
           })
