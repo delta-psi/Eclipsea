@@ -29,7 +29,7 @@
             IdentitiesOnly yes
         '';
       };
-      ".ssh/authorized_keys" = {
+      ".ssh/authorized_keys_hm" = {
         text = ''
           ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPEKMtfzbuADY0squhI/86QMjwR0fCl97+8CVVAmMx8U server
         '';
@@ -38,7 +38,8 @@
 
     activation = {
       fixAuthorizedKeys = config.lib.dag.entryAfter [ "writeBoundary" ] ''
-        isntall -m 600 ${config.home.homeDirectory}/.ssh/authorized_keys_hm ${config.home.homeDirectory}/.ssh/authorized_keys
+        install -m 600 ${config.home.homeDirectory}/.ssh/authorized_keys_hm ${config.home.homeDirectory}/.ssh/authorized_keys
+
       '';
       setupGhAuth = config.lib.dag.entryAfter [ "writeBoundary" ] ''
         mkdir -p $HOME/.config/gh
