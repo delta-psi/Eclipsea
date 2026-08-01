@@ -29,6 +29,11 @@
             IdentitiesOnly yes
         '';
       };
+      ".ssh/authorized_keys" = {
+	text = ''
+	  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPEKMtfzbuADY0squhI/86QMjwR0fCl97+8CVVAmMx8U server
+	'';
+      };
     };
 
     activation.setupGhAuth = config.lib.dag.entryAfter [ "writeBoundary" ] ''
