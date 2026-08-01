@@ -19,6 +19,18 @@
 
     ];
 
+    file = {
+      ".ssh/config" = {
+        text = ''
+          Host github.com
+            HostName github.com 
+            User git 
+            IdentityFile ~/.ssh/github_ed25519
+            IdentitiesOnly yes
+        '';
+      };
+    };
+
     stateVersion = "25.11";
   };
 
