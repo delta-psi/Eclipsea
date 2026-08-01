@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: 
+{ pkgs, config, githubTokenPath,... }: 
 
 {
   imports = [
@@ -30,6 +30,12 @@
         '';
       };
     };
+
+    activation.setupGhAuth = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+      mkdir -p $HOME/.config/gh
+      printf 'github.com:\n    user: delta-psi\n    oauth_token: %s\n    git_protocol: ssh\n' "$(cat ${githubTokenPath})" > $HOME/.config/gh/hosts.yml
+      chmod 600 $HOME/.config/gh/hosts.yml
+    '';
     
     sessionVariables.XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
 
