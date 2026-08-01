@@ -32,7 +32,7 @@
       elegant-sddm
       inputs.matugen.packages.${stdenv.hostPlatform.system}.default
       inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
-      imagemagick
+      # imagemagick
       awww
       wallust
       quickshell

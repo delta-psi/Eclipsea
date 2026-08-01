@@ -33,6 +33,7 @@ with pkgs; [
   eza 
   pay-respects
   # meowpdf
+  imagemagick
 
   # Languages
   texliveFull
