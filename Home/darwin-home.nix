@@ -31,7 +31,7 @@
       # };
       ".ssh/authorized_keys_hm" = {
         text = ''
-          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPEKMtfzbuADY0squhI/86QMjwR0fCl97+8CVVAmMx8U server
+          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa5GpCGH6up5jygbM+FddWkhJiB9aRhULRC3n5ktfxT server
         '';
       };
     };
