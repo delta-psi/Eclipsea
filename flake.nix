@@ -159,7 +159,7 @@
 
       commonDarwinModules = [
         sops-nix.darwinModules.sops
-        # nixvim.darwinModules.nixvim
+        nixvim.nixDarwinModules.nixvim
       ];
 
       mkHost = 
