@@ -20,15 +20,15 @@
     ];
 
     file = {
-      ".ssh/config" = {
-        text = ''
-          Host github.com
-            HostName github.com 
-            User git 
-            IdentityFile ~/.ssh/github_ed25519
-            IdentitiesOnly yes
-        '';
-      };
+      # ".ssh/config" = {
+      #   text = ''
+      #     Host github.com
+      #       HostName github.com 
+      #       User git 
+      #       IdentityFile ~/.ssh/github_ed25519
+      #       IdentitiesOnly yes
+      #   '';
+      # };
       ".ssh/authorized_keys_hm" = {
         text = ''
           ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPEKMtfzbuADY0squhI/86QMjwR0fCl97+8CVVAmMx8U server
@@ -97,6 +97,12 @@
 
     ssh = {
       matchBlocks = {
+        "github.com" = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = "~/.ssh/github_ed25519";
+          idenetitiesOnly = true;
+        };
         "mu" = {
           hostname = "mu";
           user = "delta";
