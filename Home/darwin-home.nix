@@ -103,11 +103,11 @@
           identityFile = "~/.ssh/github_ed25519";
           identitiesOnly = true;
         };
-        "mu" = {
-          hostname = "mu";
-          user = "delta";
-          identityFile = "~/.ssh/mu_25519";
-        }; 
+        # "mu" = {
+        #   hostname = "mu";
+        #   user = "delta";
+        #   identityFile = "~/.ssh/mu_25519";
+        # }; 
       };
     };
 

@@ -35,17 +35,17 @@
       candy-icons
     ];
 
-    file = {
-      ".ssh/config" = {
-        text = ''
-          Host github.com
-            HostName github.com 
-            User git 
-            IdentityFile ~/.ssh/github_ed25519
-            IdentitiesOnly yes
-        '';
-      };
-    };
+    # file = {
+    #   ".ssh/config" = {
+    #     text = ''
+    #       Host github.com
+    #         HostName github.com 
+    #         User git 
+    #         IdentityFile ~/.ssh/github_ed25519
+    #         IdentitiesOnly yes
+    #     '';
+    #   };
+    # };
 
     activation.setupGhAuth = config.lib.dag.entryAfter [ "writeBoundary" ] ''
       mkdir -p $HOME/.config/gh
@@ -95,6 +95,25 @@
       };
       enableFishIntegration = true;
     };
+
+    ssh = {
+      enable = true;
+      matchBlocks = {
+        "github.com" = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = "~/.ssh/github_ed25519";
+          identitiesOnly = true;
+        };
+        "mu" = {
+          hostname = "mu";
+          user = "delta";
+          identityFile = "~/.ssh/mu_25519";
+        }; 
+      };
+    };
+
+
 
     # Let home-manager manage itself
     home-manager.enable = true;
