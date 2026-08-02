@@ -35,6 +35,9 @@ with pkgs; [
   # meowpdf
   imagemagick
 
+  # Shells 
+  nushell
+
   # Languages
   texliveFull
   python314
