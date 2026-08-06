@@ -7,7 +7,7 @@
       (zathura.override {
         plugins = [ zathuraPkgs.zathura_pdf_mupdf ];
       })
-      nushell
+      # nushell
       wl-clipboard
       smassh
       overskride

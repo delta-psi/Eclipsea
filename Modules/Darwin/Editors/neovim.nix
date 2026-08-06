@@ -286,11 +286,11 @@
           };
           indent = {
             enabled = true;
-            char = " ";
+            char = "│";
             scope = {
               enabled = true;
               underline = false;
-              char = " ";
+              char = "┃";
             };
             animate = {
               enabled = true;

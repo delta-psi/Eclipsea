@@ -4,7 +4,7 @@
   imports = [
     ../Modules/Terminal 
     ../Modules/Darwin/Terminal
-    # ../Modules/Editors
+    ../Modules/Darwin/Editors/neovim.nix
   ];
 
   # users.users.delta = {
