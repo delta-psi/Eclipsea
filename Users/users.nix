@@ -1,31 +1,41 @@
 
-{ pkgs, lib, ... }: 
+{ config, pkgs, lib, ... }: 
 
 let 
+  researchGroup = "MARI";
+  mariDir = "/Users/MARI"; 
 
-  userMap = {
-    hunter = {
-      keys = [
+  researchers = {
+    test = {
+      uid = 1501;
+      sshKeys = [
 
       ];
     };
-    terpy = {
-      keys = [
+    hunter = {
+      uid = 1502;
+      sshKeys = [
 
       ];
-    };    
-    alex = {
-      keys = [
-
-      ];
-    };    
-    kayla = {
-      keys = [
+    };
+    cameron = {
+      uid = 1503;
+      sshKeys = [
 
       ];
     };    
     garek = {
-      keys = [
+      uid = 1504;
+    };    
+    kayla = {
+      uid = 1505;
+      sshKeys = [
+
+      ];
+    };    
+    alex = {
+      uid = 1506;
+      sshKeys = [
 
       ];
     };  
@@ -33,12 +43,44 @@ let
 
   mkUser = name: spec: {
     inherit name; 
-    home = "Users/${name}";
+    home = mariDir;
+    group = researchGroup;
+    uid = spec.uid;
+    isHidden = true;
     createHome = true;
-    shell = spec.shell or pkgs.zsh;
-    openssh.authorizedKeys.keys = spec.keys;
+    shell = spec.shell or pkgs.fish;
+    openssh.authorizedKeys.keys = spec.sshKeys or [ ];
   };
 in
 {
-  users.users = lib.mapAttrs mkUser userMap;
+  users = {
+    groups.${researchGroup}.gid = 1500;
+    users = lib.mapAttrs mkUser researchers;
+  };
+
+  services.openssh.extraConfig = ''
+    Match Group ${researchGroup}
+      PasswordAuthentication yes 
+      PubkeyAuthentication yes
+      AllowTcpForwarding no 
+      X11Forwarding no 
+      AllowAgentForwarding no
+  '';
+
+  system.activationScripts.postActivation.text = ''
+    mkdir -p ${mariDir}
+    chown root:wheel ${mariDir}
+    chmod 755 ${mariDir}
+
+    mkdir -p ${mariDir}/share
+    chown root:${researchGroup} ${mariDir}/share
+    chmod 2770 ${mariDir}/share
+
+    for user_dir in ${mariDir}/*; do 
+      if [ "$user_dir" != "${mariDir}/share" ] && [ -d "$user_dir" ]; then 
+        chmod 700 "$user_dir"
+      fi 
+    done
+  '';
+
 }

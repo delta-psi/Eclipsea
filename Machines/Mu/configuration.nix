@@ -4,7 +4,7 @@
   imports = [
 
     # MARI Server
-    # ../../Users/users.nix
+    ../../Users/users.nix
     # ../../MARI-Server
 
     # Personal Server
@@ -30,29 +30,11 @@
       tailscale
 
       # Editors
-      # neovim
       vim 
       emacs
 
       # CLIs
-      # git
-      # lazygit
-      # tree
-      # fastfetch
-      # starship
-      # zoxide
-      # eza
-      # gh
-      # nh
-      # btop
-      # tmux
-      # ripgrep
-      # tmux
-      # yazi
-      # fzf
       bfs
-      # pay-respects
-      # rsync
 
       # Languages
       # texliveFull
@@ -61,29 +43,61 @@
       cbqn
       
       # Fun stuff
-      # sl
-      # cowsay
-      # lolcat
-      # tmatrix
 
     ]);
 
-    shells = [ pkgs.fish ];
+    shells = with pkgs; [ 
+      fish 
+      zsh
+      bash
+    ];
 
     variables = {
       EDITOR = "nvim";
+
+      HOMEBREW_NO_ANALYTICS = "1";
+      HOMEVREW_NO_AUTO_UPDATE = "1";
+      DOTNET_CLI_TELEMETRY_OUTPUT = "1";
+      POETRY_VIRTUALENVS_IN_PROJECT = true;
     };
   };
 
-  services.tailscale.enable = true;
-  programs.fish.enable = true;
+  services = {
+    openssh = {
+      enable = true;
+    };
+    tailscale = {
+      enable = true; 
+    };
+  };
 
-  # Lix (Like Nix)
+  programs = {
+    fish = {
+      enable = true;
+    };
+  };
+
   nix = {
+
+    # Lix (Like Nix)
     package = pkgs.lix;
 
-    # Necessary for using flakes on this system.
-    settings.experimental-features = "nix-command flakes";
+    settings = {
+      experimental-features = "nix-command flakes";
+      auto-optimise-store = true;
+    };
+
+    gc = {
+      automatic = true;
+      # Weekly (Sundays?) @ 6am
+      interval = {
+        Weekday = 0;
+        Hour = 6;
+        Minute = 0;
+      };
+      options = "--delete-older-than 14d";
+    };
+
   };
 
   sops = {
@@ -99,6 +113,28 @@
         owner = "delta";
         mode = "0400";
         path = "/Users/delta/.ssh/github_ed25519";
+      };
+    };
+  };
+
+  system = {
+    primaryUser = "delta";
+    defaults = {
+      screensaver.askForPassword = false;
+      NSGlobalDomain = {
+        NSAutomaricWindowAnimationsEnabled = false;
+        NSWindowResizeTime = 0.001;
+      };
+      dock = {
+        launchanim = false;
+        expose-animation-duration = 0.1;
+        autohide = true;
+        autohide-delay = 0.0;
+        autohide-time-modifier = 0.15;
+      };
+      finder = {
+        ShowExternalHardDrivesOnDesktop = false;
+        ShowPathbar = true;
       };
     };
   };
