@@ -4,6 +4,8 @@
 let 
   researchGroup = "MARI";
   mariDir = "/Users/MARI"; 
+  mariGid = 1500;
+  admin = "delta";
 
   researchers = {
     test = {
@@ -44,9 +46,10 @@ let
   mkUser = name: spec: {
     inherit name; 
     home = mariDir;
-    group = researchGroup;
+    description = "${name} (MARI)";
     uid = spec.uid;
-    isHidden = true;
+    gid = mariGid;
+    isHidden = false;
     createHome = true;
     shell = spec.shell or pkgs.fish;
     openssh.authorizedKeys.keys = spec.sshKeys or [ ];
@@ -54,7 +57,10 @@ let
 in
 {
   users = {
-    groups.${researchGroup}.gid = 1500;
+    groups.${researchGroup} = {
+      gid = mariGid;
+      members = [ admin ] ++ (lib.attrNames researchers);
+    };
     users = lib.mapAttrs mkUser researchers;
   };
 
@@ -73,7 +79,7 @@ in
     chmod 755 ${mariDir}
 
     mkdir -p ${mariDir}/share
-    chown root:${researchGroup} ${mariDir}/share
+    chown root:${toString mariGid} ${mariDir}/share
     chmod 2770 ${mariDir}/share
 
     for user_dir in ${mariDir}/*; do 

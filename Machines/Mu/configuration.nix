@@ -58,7 +58,7 @@
       HOMEBREW_NO_ANALYTICS = "1";
       HOMEVREW_NO_AUTO_UPDATE = "1";
       DOTNET_CLI_TELEMETRY_OUTPUT = "1";
-      POETRY_VIRTUALENVS_IN_PROJECT = true;
+      POETRY_VIRTUALENVS_IN_PROJECT = "true";
     };
   };
 
@@ -122,7 +122,7 @@
     defaults = {
       screensaver.askForPassword = false;
       NSGlobalDomain = {
-        NSAutomaricWindowAnimationsEnabled = false;
+        NSAutomaticWindowAnimationsEnabled = false;
         NSWindowResizeTime = 0.001;
       };
       dock = {
