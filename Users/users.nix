@@ -48,7 +48,7 @@ let
     home = mariDir;
     description = "${name} (MARI)";
     uid = spec.uid;
-    gid = 20;
+    gid = mariGid;
     isHidden = false;
     createHome = true;
     shell = spec.shell or pkgs.zsh;
@@ -61,7 +61,8 @@ in
       gid = mariGid;
       members = [ admin ] ++ (lib.attrNames researchers);
     };
-    knownUsers = [ admin ] ++ (lib.attrNames researchers);
+    knownGroups = [ researchGroup ];
+    knownUsers = (lib.attrNames researchers);
     users = lib.mapAttrs mkUser researchers;
   };
 
@@ -83,7 +84,7 @@ in
       /usr/bin/dscacheutil -flushcache
 
       mkdir -p ${mariDir}/share
-      chown root:${toString mariGid} ${mariDir}/share
+      chown root:${researchGroup} ${mariDir}/share
       chmod 2770 ${mariDir}/share
 
       ${lib.concatStringsSep "\n" (lib.mapAttrsToList (name: spec: ''
