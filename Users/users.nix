@@ -10,36 +10,36 @@ let
   researchers = {
     test = {
       uid = 1501;
-      sshKeys = [
-
-      ];
+      # sshKeys = [
+      #
+      # ];
     };
     hunter = {
       uid = 1502;
-      sshKeys = [
-
-      ];
+      # sshKeys = [
+      #
+      # ];
     };
     cameron = {
       uid = 1503;
-      sshKeys = [
-
-      ];
+      # sshKeys = [
+      #
+      # ];
     };    
     garek = {
       uid = 1504;
     };    
     kayla = {
       uid = 1505;
-      sshKeys = [
-
-      ];
+      # sshKeys = [
+      #
+      # ];
     };    
     alex = {
       uid = 1506;
-      sshKeys = [
-
-      ];
+      # sshKeys = [
+      #
+      # ];
     };  
   };
 
