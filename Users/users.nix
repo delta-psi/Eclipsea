@@ -75,18 +75,17 @@ in
 
   system.activationScripts.postActivation.text = ''
     mkdir -p ${mariDir}
-    chown root:wheel ${mariDir}
     chmod 755 ${mariDir}
 
     mkdir -p ${mariDir}/share
-    chown root:${toString mariGid} ${mariDir}/share
+    chown root:${researchGroup} ${mariDir}/share
     chmod 2770 ${mariDir}/share
 
-    for user_dir in ${mariDir}/*; do 
-      if [ "$user_dir" != "${mariDir}/share" ] && [ -d "$user_dir" ]; then 
-        chmod 700 "$user_dir"
-      fi 
-    done
+    ${lib.concatStringsSep "\n" (lib.mapAttrsToList (name: spec: ''
+      mkdir -p ${mariDir}/${name}
+      chown ${name}:${researchGroup} ${mariDir}/${name}
+      chmod 700 ${mariDir}/${name}
+    '') researchers)}
   '';
 
 }
