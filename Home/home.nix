@@ -110,6 +110,11 @@
           user = "delta";
           identityFile = "~/.ssh/mu_key";
         }; 
+        "mari" = {
+          hostname = "192.168.1.189";
+          user = "test";
+
+        };
       };
     };
 

@@ -57,9 +57,15 @@ let
 in
 {
   users = {
-    groups.${researchGroup} = {
-      gid = mariGid;
-      members = [ admin ] ++ (lib.attrNames researchers);
+    groups = {
+      ${researchGroup} = {
+        gid = mariGid;
+        members = [ admin ] ++ (lib.attrNames researchers);
+      };
+      "com.apple.access_ssh" = {
+        gid = 399;
+        members = [ admin ] ++ (lib.attrNames researchers);
+      }; 
     };
     knownGroups = [ researchGroup ];
     knownUsers = (lib.attrNames researchers);
@@ -91,6 +97,7 @@ in
         mkdir -p ${mariDir}/${name}
         chown ${name}:${researchGroup} ${mariDir}/${name}
         chmod 700 ${mariDir}/${name}
+        chmod +a "${admin} allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,writesecurity,chown,file_inherit,directory_inherit" ${mariDir}/${name}
       '') researchers)}
     '';
   };
