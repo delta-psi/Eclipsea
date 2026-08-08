@@ -87,7 +87,7 @@ in
       chmod 755 ${mariDir}
     '';
     postActivation.text = ''
-      /usr/bin/dscacheutil -flushcache
+      # /usr/bin/dscacheutil -flushcache
 
       mkdir -p ${mariDir}/share
       chown root:${researchGroup} ${mariDir}/share
@@ -103,3 +103,5 @@ in
   };
 
 }
+
+
