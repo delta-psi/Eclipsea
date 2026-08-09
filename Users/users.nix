@@ -51,7 +51,7 @@ let
     gid = mariGid;
     isHidden = false;
     createHome = true;
-    shell = spec.shell or pkgs.zsh;
+    shell = spec.shell or pkgs.fish;
     openssh.authorizedKeys.keys = spec.sshKeys or [ ];
   };
 in
