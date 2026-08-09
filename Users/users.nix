@@ -73,8 +73,11 @@ in
   };
 
   services.openssh.extraConfig = ''
+    UseDNS no
+
     Match Group ${researchGroup}
       PasswordAuthentication yes 
+      KbdInteractiveAuthentication yes
       PubkeyAuthentication yes
       AllowTcpForwarding no 
       X11Forwarding no 
