@@ -72,17 +72,20 @@ in
     users = lib.mapAttrs mkUser researchers;
   };
 
-  services.openssh.extraConfig = ''
-    UseDNS no
+  services.openssh = {
+    enable = true;
+    extraConfig = ''
+      UseDNS no
 
-    Match Group ${researchGroup}
-      PasswordAuthentication yes 
-      KbdInteractiveAuthentication yes
-      PubkeyAuthentication yes
-      AllowTcpForwarding no 
-      X11Forwarding no 
-      AllowAgentForwarding no
-  '';
+      Match Group ${researchGroup}
+        PasswordAuthentication yes 
+        KbdInteractiveAuthentication yes
+        PubkeyAuthentication yes
+        AllowTcpForwarding no 
+        X11Forwarding no 
+        AllowAgentForwarding no
+    '';
+  };
 
   system.activationScripts = {
     extraActivation.text = ''
