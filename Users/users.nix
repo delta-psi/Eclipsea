@@ -10,9 +10,9 @@ let
   researchers = {
     test = {
       uid = 1501;
-      sshKeys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa5GpCGH6up5jygbM+FddWkhJiB9aRhULRC3n5ktfxT server"
-      ];
+      # sshKeys = [
+      #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa5GpCGH6up5jygbM+FddWkhJiB9aRhULRC3n5ktfxT server"
+      # ];
     };
     hunter = {
       uid = 1502;
@@ -84,9 +84,9 @@ in
         X11Forwarding no 
         AllowAgentForwarding no
 
-      Match LocalPort 22 Group ${researchGroup}
-        PasswordAuthentication no
-        PubkeyAuthentication no
+      # Match LocalPort 22 Group ${researchGroup}
+      #   PasswordAuthentication no
+      #   PubkeyAuthentication no
     '';
   };
 
