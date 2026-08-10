@@ -10,9 +10,9 @@ let
   researchers = {
     test = {
       uid = 1501;
-      # sshKeys = [
-      #
-      # ];
+      sshKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa5GpCGH6up5jygbM+FddWkhJiB9aRhULRC3n5ktfxT server"
+      ];
     };
     hunter = {
       uid = 1502;
