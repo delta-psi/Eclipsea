@@ -74,14 +74,19 @@ in
 
   services.openssh = {
     enable = true;
+    # ports = [ 22 2222 ];
     extraConfig = ''
-      Match Group ${researchGroup}
+      Match LocalPort 2222 Group ${researchGroup}
         PasswordAuthentication yes 
         KbdInteractiveAuthentication yes
         PubkeyAuthentication yes
         AllowTcpForwarding no 
         X11Forwarding no 
         AllowAgentForwarding no
+
+      Match LocalPort 22 Group ${researchGroup}
+        PasswordAuthentication no
+        PubkeyAuthentication no
     '';
   };
 
