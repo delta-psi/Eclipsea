@@ -68,15 +68,13 @@ in
       }; 
     };
     knownGroups = [ researchGroup "com.apple.access_ssh" ];
-    knownUsers = (lib.attrNames researchers);
     users = lib.mapAttrs mkUser researchers;
+    knownUsers = (lib.attrNames researchers);
   };
 
   services.openssh = {
     enable = true;
     extraConfig = ''
-      UseDNS no
-
       Match Group ${researchGroup}
         PasswordAuthentication yes 
         KbdInteractiveAuthentication yes
@@ -103,7 +101,7 @@ in
         mkdir -p ${mariDir}/${name}
         chown ${name}:${researchGroup} ${mariDir}/${name}
         chmod 700 ${mariDir}/${name}
-        /bin/chmod +a "${admin} allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,writesecurity,chown,file_inherit,directory_inherit" ${mariDir}/${name}
+        # /bin/chmod +a "${admin} allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,writesecurity,chown,file_inherit,directory_inherit" ${mariDir}/${name}
       '') researchers)}
     '';
   };
