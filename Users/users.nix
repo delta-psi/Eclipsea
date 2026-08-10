@@ -1,5 +1,5 @@
 
-{ config, pkgs, lib, ... }: 
+{ pkgs, lib, ... }: 
 
 let 
   researchGroup = "MARI";
@@ -91,7 +91,7 @@ in
       chmod 755 ${mariDir}
     '';
     postActivation.text = ''
-      /usr/bin/dscacheutil -flushcache
+      # /usr/bin/dscacheutil -flushcache
 
       mkdir -p ${mariDir}/share
       chown root:${researchGroup} ${mariDir}/share
@@ -101,11 +101,11 @@ in
         mkdir -p ${mariDir}/${name}
         chown ${name}:${researchGroup} ${mariDir}/${name}
         chmod 700 ${mariDir}/${name}
-        # /bin/chmod +a "${admin} allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,writesecurity,chown,file_inherit,directory_inherit" ${mariDir}/${name}
       '') researchers)}
     '';
   };
 
+        # /bin/chmod +a "${admin} allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,writesecurity,chown,file_inherit,directory_inherit" ${mariDir}/${name}
 }
 
 
