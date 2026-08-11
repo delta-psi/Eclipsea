@@ -76,6 +76,8 @@ in
     enable = true;
     # ports = [ 22 2222 ];
     extraConfig = ''
+      Port 2222 
+
       Match LocalPort 2222 Group ${researchGroup}
         PasswordAuthentication yes 
         KbdInteractiveAuthentication yes
