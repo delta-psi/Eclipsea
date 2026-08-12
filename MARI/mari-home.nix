@@ -37,7 +37,7 @@
     };
 
 
-    programs.starship = {
+    starship = {
       enable = true;
       enableFishIntegration = true;
       presets = [
