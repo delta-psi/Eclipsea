@@ -34,6 +34,7 @@ with pkgs; [
   pay-respects
   # meowpdf
   imagemagick
+  starship
 
   # Shells 
   nushell
