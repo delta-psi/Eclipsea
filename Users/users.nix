@@ -45,7 +45,7 @@ let
 
   mkUser = name: spec: {
     inherit name; 
-    home = mariDir;
+    home = "${mariDir}/${name}";
     description = "${name} (MARI)";
     uid = spec.uid;
     gid = mariGid;
@@ -75,21 +75,51 @@ in
   services.openssh = {
     enable = true;
     # ports = [ 22 2222 ];
-    extraConfig = ''
-      Port 2222 
+    # extraConfig = ''
+    #   Port 2222 
+    #
+    #   Match LocalPort 2222 Group ${researchGroup}
+    #     PasswordAuthentication yes 
+    #     KbdInteractiveAuthentication yes
+    #     PubkeyAuthentication yes
+    #     AllowTcpForwarding no 
+    #     X11Forwarding no 
+    #     AllowAgentForwarding no
+    #
+    #   # Match LocalPort 22 Group ${researchGroup}
+    #   #   PasswordAuthentication no
+    #   #   PubkeyAuthentication no
+    # '';
+  };
 
-      Match LocalPort 2222 Group ${researchGroup}
-        PasswordAuthentication yes 
-        KbdInteractiveAuthentication yes
-        PubkeyAuthentication yes
-        AllowTcpForwarding no 
-        X11Forwarding no 
-        AllowAgentForwarding no
+  environment.etc."ssh/mari_sshd_config".text = ''
+    Port 2222
+    ListenAddress 0.0.0.0
+    HostKey /etc/ssh/ssh_host_ed25519_key
+    PidFile /var/run/mari-sshd.pid
+    UsePAM yes
+    PasswordAuthentication yes
+    KbdInteractiveAuthentication yes
+    PubkeyAuthentication yes
+    AllowGroups ${researchGroup}
+    AllowTcpForwarding no
+    X11Forwarding no
+    AllowAgentForwarding no
+  '';
 
-      # Match LocalPort 22 Group ${researchGroup}
-      #   PasswordAuthentication no
-      #   PubkeyAuthentication no
-    '';
+  launchd.daemons.mari-sshd = {
+    serviceConfig = {
+      Label = "com.mari.sshd";
+      ProgramArguments = [
+        "${pkgs.openssh}/bin/sshd"
+        "-D"
+        "-f" "/etc/ssh/mari_sshd_config"
+      ];
+      KeepAlive = true;
+      RunAtLoad = true;
+      StandardOutPath = "/var/log/mari-sshd.log";
+      StandardErrorPath = "/var/log/mari-sshd.log";
+    };
   };
 
   system.activationScripts = {
@@ -111,7 +141,6 @@ in
       '') researchers)}
     '';
   };
-
         # /bin/chmod +a "${admin} allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,writesecurity,chown,file_inherit,directory_inherit" ${mariDir}/${name}
 }
 
