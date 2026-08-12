@@ -207,8 +207,8 @@
                   users.${user}.imports = commonHmModules ++ extraHmModules ++ [
                     # ./Home/home.nix
                       (if isDarwin then ./Home/darwin-home.nix else ./Home/home.nix)
-                  # users.test.imports = ./Home/
                   ];
+                  users.test.imports = [ ./MARI/mari-home.nix ];
                 };   
               }
             )

@@ -4,7 +4,7 @@
   imports = [
 
     # MARI Server
-    ../../Users/users.nix
+    ../../MARI/Users/users.nix
     # ../../MARI-Server
 
     # Personal Server
