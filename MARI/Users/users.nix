@@ -10,16 +10,17 @@ let
   researchers = {
     test = {
       uid = 1501;
-      # sshKeys = [
-      #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa5GpCGH6up5jygbM+FddWkhJiB9aRhULRC3n5ktfxT server"
-      # ];
+      sshKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa5GpCGH6up5jygbM+FddWkhJiB9aRhULRC3n5ktfxT server"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAKCHBqV2INHanoxC3wk05vihdLe+p2mT246taZaikLK skylarkorf@mu-2.local"
+      ];
     };
     hunter = {
       uid = 1502;
       shell = pkgs.bash;
-      # sshKeys = [
-      #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFOEv4foK8SvIhS2g+OVzY9FylaUSG8b+3YEsM/fcWkT hunter@optiflex"
-      # ];
+      sshKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFOEv4foK8SvIhS2g+OVzY9FylaUSG8b+3YEsM/fcWkT hunter@optiflex"
+      ];
     };
     cameron = {
       uid = 1503;
@@ -30,10 +31,10 @@ let
     garek = {
       uid = 1504;
       shell = pkgs.bash;
-      # sshKeys = [
-      #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ35LrDv0rgCERhQv0xMQUVtfXEkqcJBk/QhDYTuSlpD chips@myth"
-      #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHsSBKxVFBsL2QjI4USjjFmflMynaDe39C+fP264WmAZ chips@bread"
-      # ];
+      sshKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ35LrDv0rgCERhQv0xMQUVtfXEkqcJBk/QhDYTuSlpD chips@myth"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHsSBKxVFBsL2QjI4USjjFmflMynaDe39C+fP264WmAZ chips@bread"
+      ];
     };    
     kayla = {
       uid = 1505;
@@ -103,9 +104,12 @@ in
     ListenAddress 0.0.0.0
     HostKey /etc/ssh/ssh_host_ed25519_key
     PidFile /var/run/mari-sshd.pid
-    UsePAM yes
-    PasswordAuthentication yes
-    KbdInteractiveAuthentication yes
+    # AuthorizedKeysFile /etc/ssh/authorized_keys.d/%u
+    # UsePAM yes
+    PasswordAuthentication no
+    KbdInteractiveAuthentication no
+    AuthorizedKeysCommand /bin/cat /etc/ssh/nix_authorized_keys.d/%u
+    AuthorizedKeysCommandUser _sshd
     PubkeyAuthentication yes
     AllowGroups ${researchGroup}
     AllowTcpForwarding no
