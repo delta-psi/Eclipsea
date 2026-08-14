@@ -16,8 +16,9 @@ let
     };
     hunter = {
       uid = 1502;
+      shell = pkgs.bash;
       # sshKeys = [
-      #
+      #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFOEv4foK8SvIhS2g+OVzY9FylaUSG8b+3YEsM/fcWkT hunter@optiflex"
       # ];
     };
     cameron = {
@@ -28,6 +29,11 @@ let
     };    
     garek = {
       uid = 1504;
+      shell = pkgs.bash;
+      # sshKeys = [
+      #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ35LrDv0rgCERhQv0xMQUVtfXEkqcJBk/QhDYTuSlpD chips@myth"
+      #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHsSBKxVFBsL2QjI4USjjFmflMynaDe39C+fP264WmAZ chips@bread"
+      # ];
     };    
     kayla = {
       uid = 1505;
