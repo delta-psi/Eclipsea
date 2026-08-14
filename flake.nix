@@ -179,7 +179,7 @@
         systemFn {
           inherit system ;
           specialArgs = { 
-            inherit inputs; 
+            inherit inputs isLaptop isDarwin; 
             machine = hostName;
           };
 

@@ -6,6 +6,7 @@
     # MARI Server
     ../../MARI/Users/users.nix
     # ../../MARI-Server
+    ../../System/NixOS/sops.nix
 
     # Personal Server
   ];

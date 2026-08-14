@@ -1,5 +1,5 @@
 
-{ pkgs, lib, ... }: 
+{ config, pkgs, lib, ... }: 
 
 let 
   researchGroup = "MARI";
@@ -113,18 +113,35 @@ in
     AllowAgentForwarding no
   '';
 
-  launchd.daemons.mari-sshd = {
-    serviceConfig = {
-      Label = "com.mari.sshd";
-      ProgramArguments = [
-        "${pkgs.openssh}/bin/sshd"
-        "-D"
-        "-f" "/etc/ssh/mari_sshd_config"
-      ];
-      KeepAlive = true;
-      RunAtLoad = true;
-      StandardOutPath = "/var/log/mari-sshd.log";
-      StandardErrorPath = "/var/log/mari-sshd.log";
+  # sops.secrets.duckdns_token = { };
+
+  launchd.daemons = {
+    mari-sshd = {
+      serviceConfig = {
+        Label = "com.mari.sshd";
+        ProgramArguments = [
+          "${pkgs.openssh}/bin/sshd"
+          "-D"
+          "-f" "/etc/ssh/mari_sshd_config"
+        ];
+        KeepAlive = true;
+        RunAtLoad = true;
+        StandardOutPath = "/var/log/mari-sshd.log";
+        StandardErrorPath = "/var/log/mari-sshd.log";
+      };
+    };
+    duckdns-update = {
+      serviceConfig = {
+        Label = "com.mari.duckdns-update";
+        ProgramArguments = [
+          "/bin/sh" "-c"
+          ''curl -s "https://www.duckdns.org/update?domains=mari-lab&token=$(cat ${config.sops.secrets.duckdns_token.path})&ip="''
+        ];
+        StartInterval = 300;
+        RunAtLoad = true;
+        StandardOutPath = "/var/log/duckdns.log";
+        StandardErrorPath = "/var/log/duckdns.log";
+      };
     };
   };
 
