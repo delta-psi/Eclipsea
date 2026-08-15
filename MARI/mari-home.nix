@@ -10,18 +10,21 @@
 
   home = {
     username = "test";
-    homeDirectory = "/Users/MARI/test";
+    # homeDirectory = "/Users/MARI/test";
+    # isNormalUser = true;
 
     packages = with pkgs; [
 
     ];
    
-    # sessionVariables.XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
+    sessionVariables.XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
 
     stateVersion = "25.11";
   };
 
   manual.manpages.enable = false;
+
+  # xdg.configHome = "/Users/MARI/test/.config";
 
   programs = {
     eza = {

@@ -209,6 +209,8 @@
                       (if isDarwin then ./Home/darwin-home.nix else ./Home/home.nix)
                   ];
                   users.test.imports = [ ./MARI/mari-home.nix ];
+                  # users.test.isNoramlUser = true;
+                  # users.test.group = "MARI";
                 };   
               }
             )
