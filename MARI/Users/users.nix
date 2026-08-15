@@ -110,6 +110,7 @@ in
     KbdInteractiveAuthentication no
     AuthorizedKeysCommand /bin/cat /etc/ssh/nix_authorized_keys.d/%u
     AuthorizedKeysCommandUser _sshd
+    Subsystem sftp internal sftp
     PubkeyAuthentication yes
     AllowGroups ${researchGroup}
     AllowTcpForwarding no
