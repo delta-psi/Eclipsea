@@ -192,7 +192,7 @@
           ++ [
             hmModule
             (
-              { config, ... }:
+              { config, lib, ... }:
               {
                 home-manager = {
                   useUserPackages = true;
@@ -204,11 +204,16 @@
                     machine = hostName;
                     githubTokenPath = config.sops.secrets.github_token.path;
                   };
-                  users.${user}.imports = commonHmModules ++ extraHmModules ++ [
-                    # ./Home/home.nix
+                  users = {
+                    ${user}.imports = commonHmModules ++ extraHmModules ++ [
+                      # ./Home/home.nix
                       (if isDarwin then ./Home/darwin-home.nix else ./Home/home.nix)
-                  ];
-                  users.test.imports = [ ./MARI/mari-home.nix ];
+                    ];
+                  } // lib.optionalAttrs isDarwin {
+                    test.imports = [ ./MARI/mari-home.nix ];
+                  };
+                  # (if isDarwin then users.test.imports = [ ./MARI/mari-home.nix ] else null)
+                  # users.test.imports = [ ./MARI/mari-home.nix ];
                   # users.test.isNoramlUser = true;
                   # users.test.group = "MARI";
                 };   
