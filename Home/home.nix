@@ -115,6 +115,13 @@
           user = "test";
           port  = 2222;
         };
+        "mari-chat" = {
+          hostname = "mari-chat.duckdns.org";
+          user = "test";
+          port = 2221;
+          identityFile = "~/.ssh/mari_test";
+          identitiesOnly = true;
+        };
       };
     };
 
