@@ -52,6 +52,9 @@
 
       # Projects & misc
       magpy = "cd ~/Projects/Magpy";
+
+      # MARI Server
+      restart-chat = (if isDarwin then "sudo launchctl unload /Library/LaunchDaemons/org.nixos.devzat.plist && sudo launchctl load /Library/LaunchDaemons/org.nixos.devzat.plist" else "");
     };
 
   };
