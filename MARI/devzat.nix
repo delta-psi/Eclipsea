@@ -10,11 +10,17 @@ let
       owner = "quackduck";
       repo = "devzat";
       rev = "main";
-      # Set vendorHash to null or the specific hash if required by your Nix version
-      hash = "sha256-o123456789012345678901234567890123456789012="; # Run darwin-rebuild to get actual hash
+      hash = "sha256-lOaRTMW7iGkiQ/P3KFnW1hRcsshG6th2BzMHY84/BFM="; 
     };
 
-    vendorHash = null;
+    subPackages = [ "." ];
+
+    proxyVendor = true;
+    postPatch = ''
+      rm -rf vendor
+    '';
+
+    vendorHash = "sha256-AfhAJplWKjQqBJrlQtW84lrEOiNJLBEQ5UdkCMYk7b4="; 
   };
 in
 {
