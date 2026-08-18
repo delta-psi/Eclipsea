@@ -37,6 +37,7 @@ in
     script = ''
       export PORT=2221
       export DATA_DIR=/var/lib/devzat
+      export ADMINS="test,delta"
       cd /var/lib/devzat
       exec ${devzat}/bin/devzat
     '';
