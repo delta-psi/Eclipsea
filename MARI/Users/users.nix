@@ -12,6 +12,7 @@ let
       uid = 1501;
       sshKeys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa5GpCGH6up5jygbM+FddWkhJiB9aRhULRC3n5ktfxT server"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQGuIWmRSw8zxk10g7KB4cuAXoaA7DRvIwMODN/jmap mari-test"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAKCHBqV2INHanoxC3wk05vihdLe+p2mT246taZaikLK skylarkorf@mu-2.local"
       ];
     };
