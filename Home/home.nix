@@ -114,6 +114,7 @@
           hostname = "mari-lab.duckdns.org";
           user = "test";
           port  = 2222;
+          identityFile = "~/.ssh/mu_key";
         };
         "mari-chat" = {
           hostname = "mari-chat.duckdns.org";
