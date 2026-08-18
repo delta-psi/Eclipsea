@@ -111,9 +111,9 @@
           identityFile = "~/.ssh/mu_key";
         }; 
         "mari" = {
-          hostname = "192.168.1.189";
+          hostname = "mari-lab.duckdns.org";
           user = "test";
-
+          port  = 2222;
         };
       };
     };
