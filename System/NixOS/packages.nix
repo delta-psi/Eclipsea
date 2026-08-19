@@ -12,6 +12,8 @@
       smassh
       overskride
       vesktop
+      spotube
+      stoat-desktop
       cava
       wev
       hyprpicker
