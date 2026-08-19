@@ -44,6 +44,9 @@
       # python314
       # R 
       cbqn
+
+      # Misc
+      mupdf
       
       # Fun stuff
 
