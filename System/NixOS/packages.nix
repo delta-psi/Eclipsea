@@ -34,6 +34,11 @@
       elegant-sddm
       inputs.matugen.packages.${stdenv.hostPlatform.system}.default
       inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
+      (inputs.bookokrat.packages.${stdenv.hostPlatform.system}.default.overrideAttrs (oldAttrs: {
+        postPatch = (oldAttrs.postPatch or "") + ''
+          sed -i '/=>/!s/Provider::Arboard/return Provider::Arboard;/' src/clipboard.rs
+        '';
+      }))
       # imagemagick
       awww
       wallust

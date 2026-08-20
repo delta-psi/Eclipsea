@@ -106,6 +106,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Bookokrat 
+    bookokrat = {
+      url = "github:bugzmanov/bookokrat";
+    };
+
     # Caelestia Shell
     # ...
 
@@ -138,6 +143,7 @@
 			zen-browser,
 			firefox-addons, 
 			noctalia, 
+      bookokrat,
 			... 
     }: 
     let 
