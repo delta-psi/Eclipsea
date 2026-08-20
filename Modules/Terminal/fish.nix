@@ -1,5 +1,5 @@
 
-{ machine, isDarwin, ... }:
+{ lib, machine, isDarwin, ... }:
 
 {
 
@@ -53,8 +53,9 @@
       # Projects & misc
       magpy = "cd ~/Projects/Magpy";
 
+    } // lib.optionalAttrs isDarwin {
       # MARI Server
-      restart-chat = (if isDarwin then "sudo launchctl unload /Library/LaunchDaemons/org.nixos.devzat.plist && sudo launchctl load /Library/LaunchDaemons/org.nixos.devzat.plist" else "");
+      restart-chat = "sudo launchctl unload /Library/LaunchDaemons/org.nixos.devzat.plist && sudo launchctl load /Library/LaunchDaemons/org.nixos.devzat.plist";
     };
 
   };
