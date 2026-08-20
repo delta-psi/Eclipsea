@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../Modules/Terminal 
+    # ../Modules/Terminal 
     ../Modules/Darwin/Terminal
     ../Modules/Darwin/Editors/neovim.nix
   ];

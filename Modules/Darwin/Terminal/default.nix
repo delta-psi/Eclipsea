@@ -1,7 +1,7 @@
 
 {
   imports = [
-    # ./kitty.nix
+    ./kitty.nix
     # ./fish.nix
     ./starship.nix
     # ./fastfetch.nix
