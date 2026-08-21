@@ -5,6 +5,7 @@
     # ../Modules/Terminal 
     ../Modules/Darwin/Terminal
     ../Modules/Darwin/Editors/neovim.nix
+    ../Modules/Terminal/fish.nix
   ];
 
   # users.users.delta = {

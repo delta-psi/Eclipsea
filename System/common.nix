@@ -1,5 +1,5 @@
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 with pkgs; [
   
@@ -35,6 +35,12 @@ with pkgs; [
   # meowpdf
   imagemagick
   starship
+  (inputs.bookokrat.packages.${stdenv.hostPlatform.system}.default.overrideAttrs (oldAttrs: {
+    postPatch = (oldAttrs.postPatch or "") + ''
+      sed -i '/=>/!s/Provider::Arboard/return Provider::Arboard;/' src/clipboard.rs
+    '';
+  }))
+
 
   # Shells 
   nushell

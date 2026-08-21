@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, inputs, ... }: 
 
 {
   imports = [
@@ -24,7 +24,7 @@
 
   # List packages installed in system profile. 
   environment = {
-    systemPackages = (import ../../System/common.nix { inherit pkgs; }) ++ (with pkgs; [
+    systemPackages = (import ../../System/common.nix { inherit pkgs inputs; }) ++ (with pkgs; [
       
       # Personal/Mac stuff
       aerospace
