@@ -39,9 +39,9 @@ let
     };    
     kayla = {
       uid = 1505;
-      # sshKeys = [
-      #
-      # ];
+      sshKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF0ydCkibi2oylUpFK0AZVerXDHHbIaOM8a971sI+Ilv kayla@localhostssh-ed25519"
+      ];
     };    
     alex = {
       uid = 1506;
