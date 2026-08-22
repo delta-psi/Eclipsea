@@ -1,5 +1,5 @@
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports =
@@ -222,7 +222,7 @@
   # };
   #
   environment = {
-    systemPackages = (import ../../System/common.nix { inherit pkgs; }) ++ (with pkgs; [
+    systemPackages = (import ../../System/common.nix { inherit pkgs inputs; }) ++ (with pkgs; [
 
       # kitty
       # fish
