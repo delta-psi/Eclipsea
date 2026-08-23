@@ -19,9 +19,9 @@
       kitty.extraConfig = ''
         include ~/.config/kitty/themes/noctalia.conf
       '';
-      foot.settings.main = {
-        include = "~/.config/foot/themes/noctalia";
-      };
+      # foot.settings.main = {
+      #   include = "~/.config/foot/themes/noctalia";
+      # };
       # starship.settings = {
       #   palette = "noctalia";
       # };
@@ -31,9 +31,16 @@
       cava.settings = {
         theme = "noctalia";
       };
-      zathura.extraConfig = ''
-        include ~/.config/zathura/noctaliarc
-      '';
+      zathura = {
+        enable = true;
+        options = {
+          recolor = true;
+          recolor-keephue = false;
+        };
+        extraConfig = ''
+          include ./noctaliarc
+        '';
+      };
 
       # vscodium.userSettings = {
       #   "workbench.colorTheme" = "Noctalia Dynamic";
