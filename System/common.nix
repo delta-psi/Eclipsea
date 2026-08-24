@@ -40,6 +40,7 @@ with pkgs; [
       sed -i '/=>/!s/Provider::Arboard/return Provider::Arboard;/' src/clipboard.rs
     '';
   }))
+  calcure
 
 
   # Shells 
