@@ -12,6 +12,7 @@
     (import ./gitsigns.nix)
     (import ./hardtime.nix)
     (import ./image.nix)
+    (import ./leetcode.nix)
     (import ./lint.nix)
     (import ./lsp.nix { inherit pkgs; })
     (import ./lualine.nix)
