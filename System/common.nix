@@ -1,5 +1,6 @@
 
 { pkgs, inputs, ... }:
+#pagebreak()
 
 with pkgs; [
   
@@ -41,6 +42,9 @@ with pkgs; [
     '';
   }))
   calcure
+  typst
+  pandoc
+  # poppler-utils
 
 
   # Shells 

@@ -75,17 +75,25 @@
     "WildMenu"                  = { bg = "NONE"; };
     "WinBar"                    = { bg = "NONE"; };
     "WinBarNC"                  = { bg = "NONE"; };
+    "BlinkCmpMenu"              = { bg = "NONE"; };
+    "BlinkCmpMenuBorder"        = { bg = "NONE"; };
+
 
     # Render-Latex
     "Conceal"                   = { bg = "NONE"; };
     "Special"                   = { fg = "#ff7eb6"; };
+    # "RenderLatexMath"           = { fg = "None"; };
+    # "RenderLatexInline"         = { fg = "None"; };
+    # "@markup.math.latex"        = { fg = "NONE"; }; 
+    "@markup.math".link         = "Normal";
+  
 
-    "GitGutterAdd"               = { bg = "NONE"; };
-    "GitGutterChange"            = { bg = "NONE"; };
-    "GitGutterDelete"            = { bg = "NONE"; };
-    "GitGutterChangedelete"      = { bg = "NONE"; };
-    "GitGutterTopdelete"         = { bg = "NONE"; };
-    "GitGutterUntracked"         = { bg = "NONE"; };
+    "GitGutterAdd"              = { bg = "NONE"; };
+    "GitGutterChange"           = { bg = "NONE"; };
+    "GitGutterDelete"           = { bg = "NONE"; };
+    "GitGutterChangedelete"     = { bg = "NONE"; };
+    "GitGutterTopdelete"        = { bg = "NONE"; };
+    "GitGutterUntracked"        = { bg = "NONE"; };
 
     # End of buffer
     "EndOfBuffer"               = { bg = "NONE"; };

@@ -1,8 +1,13 @@
 
-{ ... }:
+{ pkgs, ... }:
 
+let 
+  bellSound = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/bell.oga";
+  bellScript = pkgs.writeShellScript "kitty-bell" ''
+    ${pkgs.pipewire}/bin/pw-play "${bellSound}" &>/dev/null &
+  '';
+in
 {
-
   programs.kitty = {
     enable = true;
     extraConfig = ''
@@ -21,6 +26,7 @@
     settings = {
       confirm_os_window_close = 0;
       enable_audio_bell = "yes";
+      command_on_bell = "${bellScript}";
       cursor_shape = "beam";
       cursor_beam_thickness = "1.5";
       # cursor = "#7F00FF";
@@ -36,6 +42,11 @@
       input_delay = "3";
       background_opacity = 1.0;
       dynamic_background_opacity = "yes";
+      allow_remote_control = "socket-only";
+      listen_on = "unix:@mykitty";
+      enabled_layouts = "Splits, Horizontal, Grid";
+      tab_bar_style = "powerline";
+      tab_powerline_style = "round";
     };
     keybindings = {
       "ctrl+shift+t" = "set_background_opacity 0.1";

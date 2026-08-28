@@ -132,5 +132,35 @@
 		 action = "<cmd>lua vim.diagnostic.open_float()<cr>";
 		 options.desc = "Show Diagnostic";
 		}
+    # {
+    #   mode = "n";
+    #   key = "<leader>tr";
+    #   action.__raw = ''function() require("typst-preview").refresh() end'';
+    #   options.desc = "Typst: Refresh Preview";
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<leader>ts";
+    #   action.__raw = ''function() require("typst-preview").start() end'';
+    #   options.desc = "Typst: Start Preview";
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<leader>tq";
+    #   action.__raw = ''function() require("typst-preview").stop() end'';
+    #   options.desc = "Typst: Stop Preview";
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<leader>tn";
+    #   action.__raw = ''function() require("typst-preview").next_page() end'';
+    #   options.desc = "Typst: Next Page";
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<leader>tn";
+    #   action.__raw = ''function() require("typst-preview").prev_page() end'';
+    #   options.desc = "Typst: Previous Page";
+    # }
   ];
 }

@@ -53,6 +53,9 @@
         };
         list_items.enable = true;
         checkboxes.enable = true;
+        block_quotes.wrap = false;
+        headings.org_indent_wrap = false;
+        list_items.wrap = false;
       };
       latex = {
         enable = false;

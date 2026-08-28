@@ -10,7 +10,7 @@
     (import ./cord.nix)
     (import ./direnv.nix)
     (import ./gitsigns.nix)
-    (import ./hardtime.nix)
+    # (import ./hardtime.nix)
     (import ./image.nix)
     (import ./leetcode.nix)
     (import ./lint.nix)

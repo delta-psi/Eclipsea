@@ -20,6 +20,24 @@
         enable = true;
         package = pkgs.qt6.qtdeclarative;
       };
+      tinymist = {
+        enable = true;
+        package = pkgs.tinymist;
+        extraOptions = {
+          formatterMode = "typstyle";
+          exportPdf = "onType";
+          semanticTokens = "disable";
+        };
+      };
+      # ltex_plus = {
+      #   enable = true;
+      #   package = pkgs.ltex-ls;
+      #   # filetypes = [ "tex" "latex" "markdown" "text" "plaintext" ];
+      #   settings = {
+      #     language = "en-US";
+      #     # dictionary = {};
+      #   };
+      # };
     };
     keymaps.lspBuf = {
       "K" = "hover";
