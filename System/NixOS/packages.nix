@@ -26,7 +26,9 @@
       vlc
       meowpdf
       spotdl
+      yt-dlp
       rmpc
+      mpd
 
       sweet-nova
       # sweet # Deprecated because of a dead dependency
