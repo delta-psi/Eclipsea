@@ -63,6 +63,7 @@
     # Matugen
     matugen = {
       url = "github:/InioX/Matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Sops-nix (secrets)
@@ -109,6 +110,7 @@
     # Bookokrat 
     bookokrat = {
       url = "github:bugzmanov/bookokrat";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Caelestia Shell

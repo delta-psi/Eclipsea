@@ -56,6 +56,7 @@ with pkgs; [
 
   # Misc 
   tailscale
+  cacert
 
   # Fun stuff
   pokemon-colorscripts

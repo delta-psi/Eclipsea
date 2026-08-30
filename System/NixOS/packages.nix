@@ -28,8 +28,9 @@
       spotdl
       yt-dlp
       rmpc
-      mpd
+      # mpd
       mpc
+      deno
 
       sweet-nova
       # sweet # Deprecated because of a dead dependency
