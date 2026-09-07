@@ -44,6 +44,7 @@ with pkgs; [
   calcure
   typst
   pandoc
+  soft-serve
   # poppler-utils
 
 
@@ -53,6 +54,7 @@ with pkgs; [
   # Languages
   texliveFull
   python314
+  pipx
 
   # Misc 
   tailscale

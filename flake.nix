@@ -107,14 +107,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Bookokrat 
     bookokrat = {
       url = "github:bugzmanov/bookokrat";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Caelestia Shell
-    # ...
 
     # quickshell = {
     #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";

@@ -4,6 +4,12 @@
     enable = true;
     settings = {
       preview = {
+        filetypes = [
+          "markdown"
+          "markdown_inline"
+          "quarto"
+          "rmd"
+        ];
         conceallevel = 2;
         icon_provider = "devicons";
         hybrid_mode = {

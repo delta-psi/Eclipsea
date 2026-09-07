@@ -9,8 +9,8 @@
     #   wl-copy.enable = pkgs.stdenv.isLinux;
     # };
     providers = lib.mkMerge [
-      (lib.mkIf pkgs.stdenv.isDarwin {pbcopy.enable = true; })
-      (lib.mkIf pkgs.stdenv.isLinux {wl-copy.enable = true; })
+      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {pbcopy.enable = true; })
+      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {wl-copy.enable = true; })
     ];
   }; 
 }

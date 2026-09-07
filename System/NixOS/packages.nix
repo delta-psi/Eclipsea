@@ -26,11 +26,13 @@
       vlc
       meowpdf
       spotdl
+      python313Packages.spotipyfree
       yt-dlp
       rmpc
       # mpd
       mpc
       deno
+      ani-cli
 
       sweet-nova
       # sweet # Deprecated because of a dead dependency

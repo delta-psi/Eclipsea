@@ -86,7 +86,7 @@
     }
     {
       event = [ "FileType" ];
-      pattern = [ "markdown" "text" "latex" "tex" "gitcommit" ];
+      pattern = [ "markdown" "text" "latex" "tex" "gitcommit" "typst" ];
       callback.__raw = ''
         function()
           vim.opt_local.spell = true

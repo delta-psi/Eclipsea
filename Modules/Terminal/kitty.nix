@@ -51,6 +51,7 @@ in
     keybindings = {
       "ctrl+shift+t" = "set_background_opacity 0.1";
       "ctrl+shift+o" = "set_background_opacity 1.0";
+      "ctrl+alt+t" = "new_tab";
     };
   };
 

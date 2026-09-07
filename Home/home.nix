@@ -11,6 +11,7 @@
     ../Modules/Music
     ../Modules/Browser
     ../Modules/Noctalia/noctalia.nix
+    ../Modules/Caelestia/caelestia.nix
   ];
 
   home = {
@@ -18,6 +19,7 @@
     homeDirectory = "/home/delta";
     stateVersion = "25.05";
     pointerCursor = {
+      enable = true;
       gtk.enable = true;
       package = pkgs.sweet-nova;
       name = "Sweet-cursors";
