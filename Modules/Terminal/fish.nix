@@ -27,6 +27,9 @@
 
       # Integrade zoxide
       zoxide init fish | source
+
+      # Integrate pay-respects
+      pay-respects fish | source
     '';
     shellAliases = {
       ls = "nu -c ls";
@@ -39,6 +42,7 @@
       build = "nh os boot . -H ${machine}";
       # build = "sudo nixos-rebuild build --flake .#nu";
       clean = "nh clean all --keep 5 --keep-since 7d --optimise";
+      # f = "$(pay-respects fish)";
 
       # Git
       gf = "git fetch";
