@@ -147,6 +147,7 @@
 			zen-browser,
 			firefox-addons, 
 			noctalia, 
+      caelestia-shell,
       bookokrat,
 			... 
     }: 

@@ -1,7 +1,12 @@
 
-{ isLaptop, ... }:
+{ inputs, isLaptop, ... }:
 
 {
+  imports = [
+    inputs.caelestia-shell.homeManagerModules.default
+  ];
+
+
   programs.caelestia = {
     enable = isLaptop;
     systemd = {

@@ -33,6 +33,7 @@
       mpc
       deno
       ani-cli
+      youtube-tui
 
       sweet-nova
       # sweet # Deprecated because of a dead dependency
@@ -42,6 +43,7 @@
       elegant-sddm
       inputs.matugen.packages.${stdenv.hostPlatform.system}.default
       inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
+      inputs.caelestia-shell.packages.${stdenv.hostPlatform.system}.with-cli
       awww
       wallust
       quickshell

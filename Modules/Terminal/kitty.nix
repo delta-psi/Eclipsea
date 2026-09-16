@@ -26,7 +26,7 @@ in
     settings = {
       confirm_os_window_close = 0;
       enable_audio_bell = "yes";
-      command_on_bell = "${bellScript}";
+      # command_on_bell = "${bellScript}";
       cursor_shape = "beam";
       cursor_beam_thickness = "1.5";
       # cursor = "#7F00FF";

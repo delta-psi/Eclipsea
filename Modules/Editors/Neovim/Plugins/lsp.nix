@@ -6,7 +6,18 @@
     enable = true;
     servers = {
       pyright.enable = true;
-      clangd.enable = true;
+      clangd = {
+        enable = true;
+        extraOptions = {
+          cmd = [
+            "clangd"
+            "--background-index"
+            "--clang-tidy"
+            "--header-insertion=iwyu"
+            "--completion-style=detailed"
+          ];
+        };
+      };
       r_language_server = {
         enable = true;
         package = null;

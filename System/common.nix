@@ -55,6 +55,11 @@ with pkgs; [
   texliveFull
   python314
   pipx
+  uv
+  clang
+  clang-tools
+  gnumake
+  # bear
 
   # Misc 
   tailscale
