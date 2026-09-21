@@ -13,14 +13,14 @@
           '';
         };
       };
-      scroll = {
-        enable = true;
-        timing = {
-          __raw = ''
-            require("mini.animate").gen_timing.linear({ duration = 5 })
-          '';
-        };
-      };
+      # scroll = {
+      #   enable = true;
+      #   timing = {
+      #     __raw = ''
+      #       require("mini.animate").gen_timing.linear({ duration = 5 })
+      #     '';
+      #   };
+      # };
     };
   };
 }

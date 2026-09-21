@@ -1,0 +1,7 @@
+
+{
+  dap-ui = {
+    enable = true;
+
+  };
+}
