@@ -14,6 +14,7 @@
     ./environment.nix
     ./programs.nix
     ./sops.nix # { inherit config; }
+    ./sunshine.nix
     ./packages.nix
     ./fonts.nix
     ./users.nix

@@ -13,12 +13,14 @@
     - [ ] SSH File Sharing for MARI 
     - [ ] Git server (Personal & MARI)
 - [ ] Finish Neovim Config 
+    - [ ] Remove snacks indent line for markdown files
     - [ ] Snacks ecosystem
     - [ ] Set up neorg for notes 
         - [ ] Full obsidian replacement with graph view 
         - [ ] Organize notes vault
     - [ ] Fix inline math for markdown & neorg notes
-    - [ ] LaTeX workflow 
+    - [X] LaTeX workflow
+    - [X] Typst workflow
     - [ ] Data Science workflow
         - [ ] R, Python, Julia 
         - [ ] Jupyter Notebooks 
