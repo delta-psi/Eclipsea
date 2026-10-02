@@ -53,6 +53,26 @@ in
     # })
   ];
 
+  # extraConfigLuaPre = ''
+  #   do
+  #     local uv = vim.uv or vim.loop
+  #     local function log(what, args)
+  #       local s = tostring(what) .. " " .. table.concat(args or {}, " ")
+  #       if s:find("typst", 1, true) then
+  #         local f = io.open("/tmp/typst-spawn.log", "a")
+  #         if f then f:write(os.date("%T "), s, "\n", debug.traceback(), "\n\n") f:close() end
+  #       end
+  #     end
+  #     local spawn = uv.spawn
+  #     uv.spawn = function(cmd, opts, ...) log(cmd, opts and opts.args) return spawn(cmd, opts, ...) end
+  #     local jobstart = vim.fn.jobstart
+  #     vim.fn.jobstart = function(cmd, opts)
+  #       log(type(cmd) == "table" and table.concat(cmd, " ") or cmd)
+  #       return jobstart(cmd, opts)
+  #     end
+  #   end
+  # '';
+
   extraConfigLua = ''
 
     
@@ -66,7 +86,7 @@ in
         typst_write_timer:close()
       end
       typst_write_timer = (vim.uv or vim.loop).new_timer()
-      typst_write_timer:start(400, 0, vim.schedule_wrap(function()
+      typst_write_timer:start(800, 0, vim.schedule_wrap(function()
         if vim.bo.filetype == "typst" and vim.bo.modified then
           vim.cmd("silent! noautocmd update")
         end
@@ -84,11 +104,16 @@ in
     --    bookokrat's file-watching toggle automatically.
     local function open_typst_preview()
       -- only meaningful if Neovim itself is running inside kitty
-      if vim.env.KITTY_WINDOW_ID == nil then
-        return
-      end
-      -- don't relaunch a pane every time you re-enter the buffer
-      if vim.b.typst_preview_started then
+      -- if vim.env.KITTY_WINDOW_ID == nil then
+      --   return
+      -- end
+      -- -- don't relaunch a pane every time you re-enter the buffer
+      -- if vim.b.typst_preview_started then
+      --   return
+      -- end
+      -- vim.b.typst_preview_started = true
+      local sock = vim.env.KITTY_LISTEN_ON
+      if sock == nil or vim.b.typst_preview_started then
         return
       end
       vim.b.typst_preview_started = true
@@ -99,29 +124,40 @@ in
       local log = "/tmp/typst-watch-" .. vim.fn.fnamemodify(pdf, ":t:r") .. ".log"
 
       local inner_cmd = string.format(
-        "typst watch %s %s >%s 2>&1 & sleep 0.3; exec bookokrat %s",
+        "typst watch %s %s >%s 2>&1 & sleep 0.3; exec bookokrat --zen-mode %s",
         vim.fn.shellescape(file), vim.fn.shellescape(pdf),
         vim.fn.shellescape(log), vim.fn.shellescape(pdf)
       )
 
       -- run synchronously (near-instant) so we get the new window's id back
-      local wid = vim.trim(vim.fn.system({
-        "kitten", "@", "launch",
-        "--location=vsplit",
-        "--cwd", dir,
-        "--keep-focus",
-        "--title", "typst-preview",
-        "sh", "-c", inner_cmd,
-      }))
-
+      -- local wid = vim.trim(vim.fn.system({
+      --   "kitten", "@", "launch",
+      --   "--location=vsplit",
+      --   "--cwd", dir,
+      --   "--keep-focus",
+      --   "--title", "typst-preview",
+      --   "sh", "-c", inner_cmd,
+      -- }))
+      --
       -- give bookokrat a moment to load the PDF, then toggle file watching on
       -- (Space+w) so you don't have to press it by hand every time.
       -- Bump the delay if it doesn't reliably land on larger PDFs.
-      vim.defer_fn(function()
-        vim.fn.jobstart({
-          "kitten", "@", "send-text", "--match", "id:" .. wid, " w",
-        }, { detach = true })
-      end, 1500)
+      -- vim.defer_fn(function()
+      --   vim.fn.jobstart({
+      --     "kitten", "@", "send-text", "--match", "id:" .. wid, " w",
+      --   }, { detach = true })
+      -- end, 1500)
+      vim.system({
+        "kitten", "@", "--to", sock, "launch",
+        "--location=vsplit", "--cwd", dir, "--keep-focus",
+        "--title", "typst-preview", "sh", "-c", inner_cmd,
+      }, { text = true }, function(res)
+        local wid = vim.trim(res.stdout or "")
+        if res.code ~= 0 or wid == "" then return end
+        vim.defer_fn(function()
+          vim.system({ "kitten", "@", "--to", sock, "send-text", "--match", "id:" .. wid, " w" })
+        end, 1500)
+      end)
     end
 
     vim.api.nvim_create_autocmd("FileType", {

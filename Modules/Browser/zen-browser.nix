@@ -220,6 +220,10 @@ in {
           ublock-origin
           dearrow
           proton-pass
+          darkreader
+          privacy-badger
+          clearurls
+          vimium
           # vimium-ff
         ];
 

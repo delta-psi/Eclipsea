@@ -35,55 +35,55 @@
     #     end
     #   '';
     # }
-    {
-      event = [ "FileType" ];
-      pattern = [ "typst" ];
-      callback.__raw = ''
-        function(args)
-          local buf = args.buf
-          local file = vim.api.nvim_buf_get_name(buf)
-
-          if file == "" then return end
-
-          local pdf_file = file:gsub("%.typ$", ".pdf")
-
-          local function compile_now()
-            local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-            local job = vim.fn.jobstart({"typst", "compile", "-", pdf_file}, {
-              writer = lines,
-              stdout_buffered = true,
-              stderr_buffered = true,
-            })
-          end
-          
-          compile_now()
-
-          if not vim.b[buf].bookokrat_started then
-            vim.b[buf].bookokrat_started = true
-            vim.defer_fn(function()
-              local cmd = string.format("kitty @ launch --location=vsplit --no-response bookokrat '%s;", pdf_file)
-              vim.fn.system(cmd)
-            end, 200)
-          end
-
-          local group = vim.api.nvim_create_augroup("TypstLivePreview_" .. buf, { clear = true })
-
-          vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
-            group = group,
-            buffer = buf,
-            callback = function()
-              if vim.b[buf].compile_timer then
-                vim.fn.timer_stop(vim.b[buf].compile_timer)
-              end
-
-              vim.b[buf].compile_timer = vim.fn.timer_start(50, function()
-                compile_now()
-              end)
-            end,
-          })
-        end
-      '';
-    }
+    # {
+    #   event = [ "FileType" ];
+    #   pattern = [ "typst" ];
+    #   callback.__raw = ''
+    #     function(args)
+    #       local buf = args.buf
+    #       local file = vim.api.nvim_buf_get_name(buf)
+    #
+    #       if file == "" then return end
+    #
+    #       local pdf_file = file:gsub("%.typ$", ".pdf")
+    #
+    #       local function compile_now()
+    #         local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+    #         local job = vim.fn.jobstart({"typst", "compile", "-", pdf_file}, {
+    #           writer = lines,
+    #           stdout_buffered = true,
+    #           stderr_buffered = true,
+    #         })
+    #       end
+    #
+    #       compile_now()
+    #
+    #       if not vim.b[buf].bookokrat_started then
+    #         vim.b[buf].bookokrat_started = true
+    #         vim.defer_fn(function()
+    #           local cmd = string.format("kitty @ launch --location=vsplit --no-response bookokrat '%s;", pdf_file)
+    #           vim.fn.system(cmd)
+    #         end, 200)
+    #       end
+    #
+    #       local group = vim.api.nvim_create_augroup("TypstLivePreview_" .. buf, { clear = true })
+    #
+    #       vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
+    #         group = group,
+    #         buffer = buf,
+    #         callback = function()
+    #           if vim.b[buf].compile_timer then
+    #             vim.fn.timer_stop(vim.b[buf].compile_timer)
+    #           end
+    #
+    #           vim.b[buf].compile_timer = vim.fn.timer_start(50, function()
+    #             compile_now()
+    #           end)
+    #         end,
+    #       })
+    #     end
+    #   '';
+    # }
     {
       event = [ "FileType" ];
       pattern = [ "markdown" "text" "latex" "tex" "gitcommit" "typst" ];

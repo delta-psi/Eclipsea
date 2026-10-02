@@ -43,6 +43,7 @@ with pkgs; [
   }))
   calcure
   typst
+  typstPackages.tdtr
   pandoc
   soft-serve
   bat

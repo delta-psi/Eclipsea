@@ -1,12 +1,12 @@
 
-{ pkgs, ... }:
+{ ... }:
 
-let 
-  bellSound = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/bell.oga";
-  bellScript = pkgs.writeShellScript "kitty-bell" ''
-    ${pkgs.pipewire}/bin/pw-play "${bellSound}" &>/dev/null &
-  '';
-in
+# let 
+#   bellSound = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/bell.oga";
+#   bellScript = pkgs.writeShellScript "kitty-bell" ''
+#     ${pkgs.pipewire}/bin/pw-play "${bellSound}" &>/dev/null &
+#   '';
+# in
 {
   programs.kitty = {
     enable = true;
@@ -43,7 +43,8 @@ in
       background_opacity = 1.0;
       dynamic_background_opacity = "yes";
       allow_remote_control = "socket-only";
-      listen_on = "unix:@mykitty";
+      # listen_on = "unix:@mykitty";
+      listen_on = "unix:/tmp/kitty-{kitty_pid}";
       enabled_layouts = "Splits, Horizontal, Grid";
       tab_bar_style = "powerline";
       tab_powerline_style = "round";
