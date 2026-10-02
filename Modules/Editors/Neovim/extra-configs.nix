@@ -86,7 +86,7 @@ in
         typst_write_timer:close()
       end
       typst_write_timer = (vim.uv or vim.loop).new_timer()
-      typst_write_timer:start(800, 0, vim.schedule_wrap(function()
+      typst_write_timer:start(400, 0, vim.schedule_wrap(function()
         if vim.bo.filetype == "typst" and vim.bo.modified then
           vim.cmd("silent! noautocmd update")
         end
