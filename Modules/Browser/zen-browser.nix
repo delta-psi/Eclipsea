@@ -224,6 +224,7 @@ in {
           privacy-badger
           clearurls
           vimium
+          transparent-zen
           # vimium-ff
         ];
 

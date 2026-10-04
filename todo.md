@@ -1,4 +1,17 @@
 # To Do 
+- [ ] Figure out matugen color palette from noctalia shell v4
+- [ ] Create templates and apply color palette from wallpaper for: 
+    - [ ] Hyprland
+    - [ ] Kitty 
+    - [ ] Neovim 
+    - [ ] Quickshell 
+    - [ ] Zen Browser 
+    - [ ] Vesktop 
+    - [ ] Spicetify 
+    - [ ] All the TUIs 
+        - yazi, rmpc, television/fzf, bat, tealdeer/tldr, bottom/btop, etc. 
+
+
 - [X] Migrate Hyprland to Lua config 
     - [X] Finish Hyprland Config 
 - [ ] Configure Apps:

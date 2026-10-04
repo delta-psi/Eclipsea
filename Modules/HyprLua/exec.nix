@@ -18,7 +18,7 @@ in
     (if isLaptop then
       (mkExec "hyprland.start" [
         "noctalia-shell -d"
-        "vesktop -m"
+        # "vesktop -m"
       ])
     else
       (mkExec "hyprland.start" [
