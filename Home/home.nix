@@ -10,8 +10,8 @@
     ../Modules/Editors
     ../Modules/Music
     ../Modules/Browser
-    ../Modules/Noctalia/noctalia.nix
-    ../Modules/Caelestia/caelestia.nix
+    # ../Modules/Noctalia/noctalia.nix
+    # ../Modules/Caelestia/caelestia.nix
   ];
 
   home = {
