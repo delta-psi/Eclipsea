@@ -10,12 +10,11 @@
     "matugen/templates/kitty.conf".text = builtins.readFile ./Templates/kitty.conf;
     "matugen/templates/hypr.lua".text = builtins.readFile ./Templates/hypr.lua;
     "matugen/templates/starship.toml".text = builtins.readFile ./Templates/starship.toml;
-    "matugen/templates/colors.json".text = builtins.readFile ./Templates/colors.json;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
       type = "scheme-vibrant"
-      contrast = 0
+      contrast = 0.1
 
       # [templates.btop]
       # input_path = 'path/to/template'
