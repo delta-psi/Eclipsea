@@ -34,6 +34,8 @@
       deno
       ani-cli
       youtube-tui
+      bluetui
+      impala
 
       sweet-nova
       # sweet # Deprecated because of a dead dependency
