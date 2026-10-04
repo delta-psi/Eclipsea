@@ -21,7 +21,7 @@ in
         # "vesktop -m"
         "awww-daemon"
         "awww restore"
-        "qs -d -c ~/Projects/Eclipsea-Shell"
+        "qs -d -c Eclipsea-Shell"
       ])
     else
       (mkExec "hyprland.start" [
