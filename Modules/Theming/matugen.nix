@@ -14,7 +14,68 @@
       [config]
       variant = "dark"
       type = "scheme-vibrant"
-      contrast = 0.1
+      contrast = 0.5
+      reload_apps = true
+
+      [custom_colors]
+      surface = "{{ colors.surface.default.hex | saturate: 20 | darken: 5 }}"
+      surface_dim = "{{ colors.surface_dim.default.hex | saturate: 20 | darken: 5 }}"
+      surface_bright = "{{ colors.surface_bright.default.hex | saturate: 15 }}"
+      surface_container_lowest = "{{ colors.surface_container_lowest.default.hex | saturate: 25 | darken: 8 }}"
+      surface_container_low = "{{ colors.surface_container_low.default.hex | saturate: 20 | darken: 4 }}"
+      surface_container = "{{ colors.surface_container.default.hex | saturate: 18 }}"
+      surface_container_high = "{{ colors.surface_container_high.default.hex | saturate: 15 | lighten: 3 }}"
+      surface_container_highest = "{{ colors.surface_container_highest.default.hex | saturate: 12 | lighten: 6 }}"
+      surface_variant = "{{ colors.surface_variant.default.hex | saturate: 15 }}"
+
+      primary = "{{ colors.primary.default.hex | saturate: 30 }}"
+      on_primary = "{{ colors.on_primary.default.hex }}"
+      primary_container = "{{ colors.primary_container.default.hex | saturate: 25 }}"
+      on_primary_container = "{{ colors.on_primary_container.default.hex }}"
+
+      secondary = "{{ colors.secondary.default.hex | saturate: 25 }}"
+      on_secondary = "{{ colors.on_secondary.default.hex }}"
+      secondary_container = "{{ colors.secondary_container.default.hex | saturate: 20 }}"
+      on_secondary_container = "{{ colors.on_secondary_container.default.hex }}"
+
+      tertiary = "{{ colors.tertiary.default.hex | saturate: 35 }}"
+      on_tertiary = "{{ colors.on_tertiary.default.hex }}"
+      tertiary_container = "{{ colors.tertiary_container.default.hex | saturate: 30 }}"
+      on_tertiary_container = "{{ colors.on_tertiary_container.default.hex }}"
+
+      on_surface = "{{ colors.on_surface.default.hex }}"
+      on_surface_variant = "{{ colors.on_surface_variant.default.hex }}"
+      inverse_on_surface = "{{ colors.inverse_on_surface.default.hex }}"
+
+      outline = "{{ colors.outline.default.hex | saturate: 10 }}"
+      outline_variant = "{{ colors.outline_variant.default.hex | saturate: 10 }}"
+      shadow = "{{ colors.shadow.default.hex }}"
+      scrim = "{{ colors.scrim.default.hex }}"
+      inverse_surface = "{{ colors.inverse_surface.default.hex }}"
+      inverse_primary = "{{ colors.inverse_primary.default.hex | saturate: 25 }}"
+      error = "{{ colors.error.default.hex }}"
+      on_error = "{{ colors.on_error.default.hex }}"
+      error_container = "{{ colors.error_container.default.hex }}"
+      on_error_container = "{{ colors.on_error_container.default.hex }}"
+
+      black = "{{ colors.surface_container_lowest.default.hex | saturate: 10 }}"
+      red = "{{ colors.error.default.hex }}"
+      green = "{{ colors.tertiary.default.hex | saturate: 30 }}"
+      yellow = "{{ colors.secondary.default.hex | saturate: 25 }}"
+      blue = "{{ colors.primary.default.hex | saturate: 30 }}"
+      magenta = "{{ colors.inverse_primary.default.hex | saturate: 25 }}"
+      cyan = "{{ colors.tertiary_container.default.hex | saturate: 30 }}"
+      white = "{{ colors.on_surface.default.hex }}"
+
+      bright_black = "{{ colors.outline.default.hex }}"
+      bright_red = "{{ colors.error_container.default.hex }}"
+      bright_green = "{{ colors.tertiary_container.default.hex | saturate: 25 }}"
+      bright_yellow = "{{ colors.secondary_container.default.hex | saturate: 20 }}"
+      bright_blue = "{{ colors.primary_container.default.hex | saturate: 25 }}"
+      bright_magenta = "{{ colors.primary.default.hex | saturate: 35 }}"
+      bright_cyan = "{{ colors.outline_variant.default.hex }}"
+      bright_white = "{{ colors.on_surface_variant.default.hex }}"
+
 
       # [templates.btop]
       # input_path = 'path/to/template'
