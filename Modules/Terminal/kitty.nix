@@ -43,8 +43,9 @@
       background_opacity = 1.0;
       dynamic_background_opacity = "yes";
       allow_remote_control = "socket-only";
+      listen_on = "unix:@kitty";
       # listen_on = "unix:@mykitty";
-      listen_on = "unix:/tmp/kitty-{kitty_pid}";
+      # listen_on = "unix:/tmp/kitty-{kitty_pid}";
       enabled_layouts = "Splits, Horizontal, Grid";
       tab_bar_style = "powerline";
       tab_powerline_style = "round";

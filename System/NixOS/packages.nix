@@ -36,6 +36,7 @@
       youtube-tui
       bluetui
       impala
+      wiremix
 
       sweet-nova
       # sweet # Deprecated because of a dead dependency

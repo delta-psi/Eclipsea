@@ -10,6 +10,7 @@
     "matugen/templates/kitty.conf".text = builtins.readFile ./Templates/kitty.conf;
     "matugen/templates/hypr.lua".text = builtins.readFile ./Templates/hypr.lua;
     "matugen/templates/starship.toml".text = builtins.readFile ./Templates/starship.toml;
+    "matugen/templates/colors.json".text = builtins.readFile ./Templates/colors.json;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -43,7 +44,8 @@
       [templates.kitty]
       input_path = '${config.xdg.configHome}/matugen/templates/kitty.conf'
       output_path = '${config.xdg.configHome}/kitty/themes/matugen.conf'
-      post_hook = 'kitty +kitten themes --dump-theme=yes --reload-in=all matugen'
+      # post_hook = 'kitty +kitten themes --dump-theme=yes --reload-in=all matugen'
+      post_hook = 'kitty @ --to=unix:@kitty set-colors -a ${config.xdg.configHome}/kitty/themes/matugen.conf'
 
       # [templates.nvim]
       # input_path = 'path/to/templates/nvim-colors.vim'
