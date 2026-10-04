@@ -57,12 +57,12 @@ in
           format = "  {2}"; 
           keyColor = "magenta";
         }
-        {
-          type = "packages";
-          key = "  󰏗 Packages  ";
-          format = "  {1}";
-          keyColor = "magenta";
-        }
+        # {
+        #   type = "packages";
+        #   key = "  󰏗 Packages  ";
+        #   format = "  {1}";
+        #   keyColor = "magenta";
+        # }
         {
           type = "display";
           key = "  󰍹 Display   ";
