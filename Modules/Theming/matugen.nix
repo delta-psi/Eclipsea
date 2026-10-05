@@ -7,6 +7,7 @@
   ];
 
   xdg.configFile = {
+    "matugen/templates/cava.ini".text = builtins.readFile ./Templates/cava.ini;
     "matugen/templates/kitty.conf".text = builtins.readFile ./Templates/kitty.conf;
     "matugen/templates/hypr.lua".text = builtins.readFile ./Templates/hypr.lua;
     "matugen/templates/starship.toml".text = builtins.readFile ./Templates/starship.toml;
@@ -23,10 +24,10 @@
       # output_path = '~/.config/btop/themes/matugen.theme'
       # post_hook = 'pkill -USR2 btop || true'
 
-      # [templates.cava]
-      # input_path = '~/.config/matugen/templates/cava-colors.ini'
-      # output_path = '~/.config/cava/themes/your-theme'
-      # post_hook = 'pkill -USR1 cava'
+      [templates.cava]
+      input_path = '${config.xdg.configHome}/matugen/templates/cava.ini'
+      output_path = '~/.config/cava/themes/matugen.ini'
+      post_hook = 'pkill -USR1 cava'
 
       # [templates.gtk3]
       # input_path = 'path/to/template'

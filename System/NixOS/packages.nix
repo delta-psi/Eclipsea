@@ -14,7 +14,7 @@
       vesktop
       spotube
       stoat-desktop
-      cava
+      # cava
       wev
       hyprpicker
       playerctl

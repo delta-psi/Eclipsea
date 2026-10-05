@@ -16,31 +16,31 @@
   config = lib.mkIf isLaptop {
     programs = {
       noctalia-shell.enable = isLaptop;
-      kitty.extraConfig = ''
-        include ~/.config/kitty/themes/noctalia.conf
-      '';
+      # kitty.extraConfig = ''
+      #   include ~/.config/kitty/themes/noctalia.conf
+      # '';
       # foot.settings.main = {
       #   include = "~/.config/foot/themes/noctalia";
       # };
       # starship.settings = {
       #   palette = "noctalia";
       # };
-      btop.settings = {
-        color_theme = "~/.config/btop/themes/noctalia.theme";
-      };
-      cava.settings = {
-        theme = "noctalia";
-      };
-      zathura = {
-        enable = true;
-        options = {
-          recolor = true;
-          recolor-keephue = false;
-        };
-        extraConfig = ''
-          include ./noctaliarc
-        '';
-      };
+      # btop.settings = {
+      #   color_theme = "~/.config/btop/themes/noctalia.theme";
+      # };
+      # cava.settings = {
+      #   theme = "noctalia";
+      # };
+      # zathura = {
+      #   enable = true;
+      #   options = {
+      #     recolor = true;
+      #     recolor-keephue = false;
+      #   };
+      #   extraConfig = ''
+      #     include ./noctaliarc
+      #   '';
+      # };
 
       # vscodium.userSettings = {
       #   "workbench.colorTheme" = "Noctalia Dynamic";
