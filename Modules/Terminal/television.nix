@@ -8,6 +8,9 @@
     # themes = {};
     settings = {
       use_nerd_font_icons = true;
+      ui = {
+        theme = "matugen";
+      };
     };
     channels = {
       tldr = {

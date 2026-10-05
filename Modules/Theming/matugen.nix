@@ -11,6 +11,7 @@
     "matugen/templates/hypr.lua".text = builtins.readFile ./Templates/hypr.lua;
     "matugen/templates/starship.toml".text = builtins.readFile ./Templates/starship.toml;
     "matugen/templates/yazi.toml".text = builtins.readFile ./Templates/yazi.toml;
+    "matugen/templates/television.toml".text = builtins.readFile ./Templates/television.toml;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -74,9 +75,14 @@
       input_path = '${config.xdg.configHome}/matugen/templates/starship.toml'
       output_path = '${config.xdg.configHome}/starship.toml'
 
-      # [templates.yazi]
-      # input_path = '${config.xdg.configHome}/matugen/templates/yazi.toml'
-      # output_path = '~/.config/yazi/theme.toml'
+      [templates.television]
+      input_path = '${config.xdg.configHome}/matugen/templates/television.toml'
+      output_path = '~/.config/television/themes/matugen.toml'
+
+      [templates.yazi]
+      input_path = '${config.xdg.configHome}/matugen/templates/yazi.toml'
+      output_path = '~/.config/yazi/theme.toml'
+      post_hook = 'ya emit-to 0 app:theme'
 
       # [templates.zathura]
       # input_path = 'path/to/template'
