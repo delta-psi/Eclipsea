@@ -6,5 +6,6 @@
     ./starship.nix
     ./fastfetch.nix
     ./television.nix
+    ./yazi.nix
   ];
 }

@@ -6,7 +6,31 @@
     enable = true;
     enableFishIntegration = true;
     # themes = {};
-    # settings = {};
-    # channels = {};
+    settings = {
+      use_nerd_font_icons = true;
+    };
+    channels = {
+      tldr = {
+        metadata = {
+          name = "tldr";
+          description = "Browse & preivew TLDR help pages";
+          requirements = [ "tldr" ];
+        };
+        preview = {
+          command = "tldr '{}'";
+        };
+        source = {
+          command = "tldr --list";
+        };
+        keybindings = {
+          "ctrl-e" = "actions:open";
+        };
+        actions.open = {
+          description = "Open TLDR page in pager";
+          command = "tldr '{}' | less";
+          mode = "fork";
+        };
+      };
+    };
   };
 }

@@ -18,7 +18,7 @@ with pkgs; [
   fzf
   git
   zoxide
-  yazi
+  # yazi
   fastfetch
   jq
   ripgrep
