@@ -10,6 +10,7 @@
     "matugen/templates/kitty.conf".text = builtins.readFile ./Templates/kitty.conf;
     "matugen/templates/hypr.lua".text = builtins.readFile ./Templates/hypr.lua;
     "matugen/templates/starship.toml".text = builtins.readFile ./Templates/starship.toml;
+    "matugen/templates/yazi.toml".text = builtins.readFile ./Templates/yazi.toml;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -74,7 +75,7 @@
       output_path = '${config.xdg.configHome}/starship.toml'
 
       # [templates.yazi]
-      # input_path = 'path/to/template'
+      # input_path = '${config.xdg.configHome}/matugen/templates/yazi.toml'
       # output_path = '~/.config/yazi/theme.toml'
 
       # [templates.zathura]
