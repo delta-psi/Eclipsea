@@ -17,7 +17,7 @@
         metadata = {
           name = "tldr";
           description = "Browse & preivew TLDR help pages";
-          requirements = [ "tldr" ];
+          requirements = [ "tealdeer" ];
         };
         preview = {
           command = "tldr '{}'";
