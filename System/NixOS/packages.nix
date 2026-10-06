@@ -37,6 +37,7 @@
       bluetui
       wiremix
       wifitui
+      
 
       sweet-nova
       # sweet # Deprecated because of a dead dependency

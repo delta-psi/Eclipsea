@@ -47,7 +47,7 @@ with pkgs; [
   pandoc
   soft-serve
   bat
-  tldr
+  # tldr
   # poppler-utils
 
 
