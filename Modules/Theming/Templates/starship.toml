@@ -173,6 +173,9 @@ vimcmd_symbol = '[❮](bold fg:primary)'
 vimcmd_replace_one_symbol = '[❮](bold fg:tertiary)'
 vimcmd_replace_symbol = '[❮](bold fg:tertiary)'
 vimcmd_visual_symbol = '[❮](bold fg:tertiary2)'
+# success_symbol = "[🞈](tertiary bold)"
+# error_symbol = "[🞈](@{error})"
+# vicmd_symbol = "[🞈](tertiary2)"
 
 [cmd_duration]
 show_milliseconds = true
@@ -183,6 +186,15 @@ show_notifications = true
 min_time_to_notify = 45000
 
 [palettes.matugen]
+# tertiary2 = '{{colors.primary_fixed_dim.default.hex}}' # color1
+# primary2 = '{{colors.on_primary.default.hex}}' # tcolor2
+# color3 = '{{colors.on_surface_variant.default.hex}}' # tcolor3 
+# mantle = '{{colors.surface_container.default.hex}}' # tcolor4
+# color5 = '{{colors.on_primary.default.hex}}' # tcolor5 
+# crust = '{{colors.surface_dim.default.hex}}' # tcolor6
+# color7 = '{{colors.surface.default.hex}}' # tcolor7 
+# primary = '{{colors.primary.default.hex}}' # tcolor8
+# tertiary = '{{colors.tertiary.default.hex}}' # tcolor9
 crust = "{{colors.surface_dim.dark.hex}}"
 mantle = "{{colors.surface_container_lowest.dark.hex}}"
 base = "{{colors.surface_container_low.dark.hex}}"

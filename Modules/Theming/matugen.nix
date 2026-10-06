@@ -15,6 +15,7 @@
     "matugen/templates/television.toml".text = builtins.readFile ./Templates/television.toml;
     "matugen/templates/wifitui.toml".text = builtins.readFile ./Templates/wifitui.toml;
     "matugen/templates/era.json".text = builtins.readFile ./Templates/era.json;
+    "matugen/templates/spotify.ini".text = builtins.readFile ./Templates/spotify.ini;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -77,6 +78,11 @@
       # input_path = 'path/to/template'
       # output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
       # post_hook = 'spicetify watch -s 2>&1 | sed "/Reloaded Spotify/q"'
+
+      [templates.spotify]
+      input_path = '${config.xdg.configHome}/matugen/templates/spotify.ini'
+      output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
+      post_hook = 'pgrep -x spicetify > /dev/null || spicetify apply -n'
 
       [templates.starship]
       input_path = '${config.xdg.configHome}/matugen/templates/starship.toml'

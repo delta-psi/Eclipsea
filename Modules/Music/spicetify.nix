@@ -16,8 +16,10 @@ in {
       hidePodcasts
       shuffle
     ];
-    theme = spicePkgs.themes.comfy;
-    colorScheme = "catppuccin-macchiato";
+    # theme = spicePkgs.themes.comfy;
+    theme = spicePkgs.themes.sleek;
+    colorScheme = "matugen";
+    # colorScheme = "catppuccin-macchiato";
     
     # colorScheme = "rose-pine-moon";
     # theme = spicePkgs.themes.hazy;
