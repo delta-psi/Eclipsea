@@ -24,7 +24,7 @@
     logitech = {
       wireless = {
         enable = true;
-        enableGraphical = true;
+        # enableGraphical = true;
       };
     };
   };

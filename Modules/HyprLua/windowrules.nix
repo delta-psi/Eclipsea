@@ -12,7 +12,7 @@
       match.class = "^(kitty-floating)$";
       float = true;
       center = true;
-      size = "{ 600, 550 }";
+      size = "{600, 550}";
       border_color = "rgba(00eaffff) rgba(a020f0ff) 45deg";
       animation = "emphasizedAccel";
       opacity = "0.90";
@@ -22,8 +22,32 @@
       match.float = true;
       # center = true;
       # size = "1200 800";
-      max_size = "{ 800, 800 }";
-
+      size = "{900, 550}";
+      max_size = "{900, 550}";
+    }
+    {
+      name = "wifitui-float";
+      match.class = "^(wifitui-floating)";
+      float = true;
+      center = true;
+      size = "{900, 550}";
+      max_size = "{900, 550}";
+    }
+    {
+      name = "wiremix-float";
+      match.class = "^(wiremix-floating)";
+      float = true;
+      center = true;
+      size = "{550, 900}";
+      max_size = "{550, 900}";
+    }
+    {
+      name = "wallpaper";
+      match.class = "^(wallpaper-selector)";
+      float = true;
+      center = true;
+      size = "{900, 550}";
+      max_size = "{900, 550}";
     }
   ];
 }

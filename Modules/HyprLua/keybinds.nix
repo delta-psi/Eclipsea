@@ -71,6 +71,10 @@ in
     # (bind "${mod} + ALT + T" (dsp.exec "uwsm app -- kitty -o background_opacity=0"))
     (bind "${mod} + W" (dsp.exec "uwsm app -- ${vars.browser}"))
     (bind "${mod} + E" (dsp.exec "uwsm app -- ${vars.explorer}"))
+    (bind "${mod} + CONTROL + W" (dsp.exec "uwsm app -- ${vars.audiomix}"))
+    (bind "${mod} + ALT + W" (dsp.exec "uwsm app -- ${vars.wifi}"))
+    (bind "${mod} + SHIFT + W" (dsp.exec "uwsm app -- ${vars.wallpaper}"))
+
     
     # Tools 
     (bind "${mod} + ALT + H" (dsp.exec "uwsm app -- hyprpicker --autocopy --format=hex"))

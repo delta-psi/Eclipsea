@@ -4,37 +4,52 @@
 
 # Primary color, used for selection highlights.
 Primary = ["{{colors.primary_container.default.hex}}", "{{colors.on_primary_container.default.hex}}"] # Orange
+# Primary = ["cyan", "bright_cyan"]
 
 # Subtle color, used for less important text.
 Subtle = ["{{colors.outline.default.hex}}", "{{colors.outline_variant.default.hex}}"] # Gray
+# Subtle = ["gray", "gray"]
 
 # Success color, used for active connections.
 Success = ["{{colors.tertiary.default.hex}}", "{{colors.on_tertiary.default.hex}}"] # Green
+# Success = ["green", "bright_green"]
 
 # Error color, used for error messages.
 Error = ["{{colors.error.default.hex}}", "{{colors.on_error.default.hex}}"] # Red
+# Error = ["red", "bright_red"]
 
 # Normal text color.
 Normal = ["{{colors.on_surface.default.hex}}", "{{colors.on_surface_variant.default.hex}}"] # Black/White
+# Normal = ["black", "white"]
 
 # Disabled color, used for hidden or out-of-range networks.
 Disabled = ["{{colors.surface_container_highest.default.hex}}", "{{colors.outline.default.hex}}"] # Lighter/Darker Gray
+# Disabled = ["gray", "gray"]
 
 # Border color for UI elements.
 Border = ["{{colors.outline_variant.default.hex}}", "{{colors.outline.default.hex}}"] # Gray
+# Border = ["cyan", "bright_cyan"]
 
 # Signal color is a gradient from SignalHigh to SignalLow.
 SignalHigh = ["{{colors.tertiary.default.hex}}", "{{colors.primary.default.hex}}"]
+# SignalHigh = ["green", "bright_green"]
 SignalLow = ["{{colors.error.default.hex}}", "{{colors.error_container.default.hex}}"]
+# SignalLow = ["red", "bright_red"]
 
 # Color for saved networks
 Saved = ["{{colors.secondary.default.hex}}", "{{colors.on_secondary.default.hex}}"]
+# Saved = ["magenta", "bright_magenta"]
 
 # Icons
-TitleIcon = "🛜 "
-NetworkSecureIcon = "🔒 "
-NetworkOpenIcon = "🔓 "
+# TitleIcon = "🛜 "
+# NetworkSecureIcon = "🔒 "
+# NetworkOpenIcon = "🔓 "
+# NetworkUnknownIcon = "❓ "
+# NetworkSavedIcon = "💾 "
+# AccessPointIcon = "📡"
+TitleIcon = "  "
+NetworkSecureIcon = "  "
+NetworkOpenIcon = "  "
+NetworkSavedIcon = "  "
 NetworkUnknownIcon = "❓ "
-NetworkSavedIcon = "💾 "
-AccessPointIcon = "📡"
-
+AccessPointIcon = "󰀃 "

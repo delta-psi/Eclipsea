@@ -1,1 +1,1 @@
-{"interval":100,"frequency":40,"rain1":"│","rain2":" ","timecolor":"{{colors.tertiary.default.hex}}","raincolor":"{{colors.primary.default.hex}}"}
+{"interval":100,"frequency":40,"rain1":"│","rain2":" ","timecolor":"magenta","raincolor":"cyan"}
