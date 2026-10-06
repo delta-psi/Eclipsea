@@ -13,6 +13,7 @@
     "matugen/templates/starship.toml".text = builtins.readFile ./Templates/starship.toml;
     "matugen/templates/yazi.toml".text = builtins.readFile ./Templates/yazi.toml;
     "matugen/templates/television.toml".text = builtins.readFile ./Templates/television.toml;
+    "matugen/templates/wifitui.toml".text = builtins.readFile ./Templates/wifitui.toml;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -26,7 +27,7 @@
 
       [templates.cava]
       input_path = '${config.xdg.configHome}/matugen/templates/cava.ini'
-      output_path = '~/.config/cava/themes/matugen.ini'
+      output_path = '${config.xdg.configHome}/cava/themes/matugen'
       post_hook = 'pkill -USR1 cava'
 
       # [templates.gtk3]
@@ -78,11 +79,12 @@
 
       [templates.television]
       input_path = '${config.xdg.configHome}/matugen/templates/television.toml'
-      output_path = '~/.config/television/themes/matugen.toml'
+      output_path = '${config.xdg.configHome}/television/themes/matugen.toml'
+
 
       [templates.yazi]
       input_path = '${config.xdg.configHome}/matugen/templates/yazi.toml'
-      output_path = '~/.config/yazi/theme.toml'
+      output_path = '${config.xdg.configHome}/yazi/theme.toml'
       post_hook = 'ya emit-to 0 app:theme'
 
       # [templates.zathura]
@@ -101,6 +103,10 @@
       # [templates.obsidian]
       # input_path = 'path/to/template'
       # output_path = 'yourOwnPath/to/obsidianVault/.obsidian/snippets/matugen.css'
+
+      [templates.wifitui]
+      input_path = '${config.xdg.configHome}/matugen/templates/wifitui.toml'
+      output_path = '${config.xdg.configHome}/wifitui/matugen.toml'
 
     '';
   };

@@ -35,8 +35,8 @@
       ani-cli
       youtube-tui
       bluetui
-      impala
       wiremix
+      wifitui
 
       sweet-nova
       # sweet # Deprecated because of a dead dependency
