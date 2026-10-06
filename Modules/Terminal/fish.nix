@@ -1,5 +1,5 @@
 
-{ lib, machine, isDarwin, ... }:
+{ lib, machine, isDarwin, config, ... }:
 
 {
 
@@ -43,6 +43,8 @@
       # build = "sudo nixos-rebuild build --flake .#nu";
       clean = "nh clean all --keep 5 --keep-since 7d --optimise";
       # f = "$(pay-respects fish)";
+      wifi = "wifitui --theme=${config.xdg.configHome}/wifitui/matugen.toml";
+      ww = "z Wallpapers && y";
 
       # Git
       gf = "git fetch";

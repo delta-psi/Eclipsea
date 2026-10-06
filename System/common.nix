@@ -73,7 +73,7 @@ with pkgs; [
   fortune
   figlet
   tmatrix
-  era
+  era #tenki when customization added ?
   asciiquarium
   tukai
   sl 

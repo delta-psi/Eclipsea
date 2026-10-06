@@ -14,6 +14,7 @@
     "matugen/templates/yazi.toml".text = builtins.readFile ./Templates/yazi.toml;
     "matugen/templates/television.toml".text = builtins.readFile ./Templates/television.toml;
     "matugen/templates/wifitui.toml".text = builtins.readFile ./Templates/wifitui.toml;
+    "matugen/templates/era.json".text = builtins.readFile ./Templates/era.json;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -29,6 +30,10 @@
       input_path = '${config.xdg.configHome}/matugen/templates/cava.ini'
       output_path = '${config.xdg.configHome}/cava/themes/matugen'
       post_hook = 'pkill -USR1 cava'
+
+      [templates.era]
+      input_path = '${config.xdg.configHome}/matugen/templates/era.json'
+      output_path = '${config.xdg.configHome}/era/config.json'
 
       # [templates.gtk3]
       # input_path = 'path/to/template'
