@@ -54,6 +54,11 @@
       url = "github:hyprwm/Hyprland";
     };
 
+    hyprgrass = {
+      url = "github:horriblename/hyprgrass";
+      inputs.hyprland.follows = "hyprland"; # IMPORTANT
+    };
+
     # Nixvim
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -138,6 +143,7 @@
 			home-manager,
 			nix-cachyos-kernel,
       hyprland, 
+      hyprgrass, 
 			nixvim,
 			matugen,
 			sops-nix,

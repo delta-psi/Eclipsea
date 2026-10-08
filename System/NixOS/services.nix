@@ -39,7 +39,11 @@
         layout = "us";
         variant = "";
       };
+      wacom.enable = true;
     };
+
+    # Ensures libinput & wacom modules handle touch and stylus events
+    libinput.enable = true;
 
     # Bluetooth
     blueman = {

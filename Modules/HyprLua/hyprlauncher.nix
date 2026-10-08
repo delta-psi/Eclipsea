@@ -16,7 +16,7 @@
         grab_focus = true;
       };
       ui = {
-        window_size = "400 260";
+        window_size = "500 300";
       };
     };
   };

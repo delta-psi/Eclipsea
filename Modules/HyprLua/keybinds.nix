@@ -75,6 +75,8 @@ in
     (bind "${mod} + ALT + W" (dsp.exec "uwsm app -- ${vars.wifi}"))
     (bind "${mod} + SHIFT + W" (dsp.exec "uwsm app -- ${vars.wallpaper}"))
 
+    (bind "${mod} + SUPER_R" (dsp.exec "hyprlauncher"))
+
     
     # Tools 
     (bind "${mod} + ALT + H" (dsp.exec "uwsm app -- hyprpicker --autocopy --format=hex"))

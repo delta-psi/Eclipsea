@@ -31,6 +31,7 @@ let
     ./layers.nix
     ./windowrules.nix
     ./workspaces.nix
+    ./devices.nix
   ]);
 in 
 {
@@ -50,6 +51,10 @@ in
       # portalPackage = null;
       systemd.enable = false;
       xwayland.enable = true;
+
+      # plugins = [
+      #   inputs.hyprgrass.packages.${pkgs.system}.default
+      # ];
 
       extraConfig = ''
         require("colors")
