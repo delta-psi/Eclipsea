@@ -84,6 +84,7 @@
       output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
       post_hook = 'pgrep -x spicetify > /dev/null || spicetify apply -n'
 
+
       [templates.starship]
       input_path = '${config.xdg.configHome}/matugen/templates/starship.toml'
       output_path = '${config.xdg.configHome}/starship.toml'

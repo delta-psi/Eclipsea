@@ -1,5 +1,5 @@
 
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 
 let 
   # spicetify = spicetify-nix.lib.mkSpicetify pkgs {
@@ -7,6 +7,12 @@ let
 
   # };
 in {
+  xdg.configFile."${config.xdg.configHome}/spicetify/config-xpui.ini".text = ''
+    color_scheme = matugen
+    current_theme = Sleek
+    # spotify_path = /nix/store/yxvg9k92rbcjc84va82hd9ji6hi6gsm7-user-environment/bin/spotify
+    spotify_path = /nix/store/1ji0mcpbrj4fv7q9i6p73y56bp0yj9yr-spicetify-Sleek/share/spotify
+  '';
   programs.spicetify = {
     enable = true;
     wayland = true;
@@ -18,7 +24,8 @@ in {
     ];
     # theme = spicePkgs.themes.comfy;
     theme = spicePkgs.themes.sleek;
-    colorScheme = "matugen";
+    # colorScheme = "custom";
+    # customColorScheme = "matugen";
     # colorScheme = "catppuccin-macchiato";
     
     # colorScheme = "rose-pine-moon";

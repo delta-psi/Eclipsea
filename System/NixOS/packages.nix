@@ -37,6 +37,8 @@
       bluetui
       wiremix
       wifitui
+      spicetify-cli
+      rnote
       
 
       sweet-nova
