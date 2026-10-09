@@ -39,7 +39,6 @@
       wifitui
       spicetify-cli
       rnote
-      wacomtablet
       
 
       sweet-nova

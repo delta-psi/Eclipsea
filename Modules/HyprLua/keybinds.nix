@@ -83,6 +83,7 @@ in
 
     # Quickshell Commands
     (bind "${mod} + CONTROL + B" (dsp.exec "${vars.shellToggle}"))
+    (bindOpts "SUPER_L" (dsp.exec "${vars.shellLauncherToggle}") {release = true; })
 
     # Noctalia Shell Commands (Laptop)
     # (if )

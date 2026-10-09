@@ -16,6 +16,7 @@
     "matugen/templates/wifitui.toml".text = builtins.readFile ./Templates/wifitui.toml;
     "matugen/templates/era.json".text = builtins.readFile ./Templates/era.json;
     "matugen/templates/spotify.ini".text = builtins.readFile ./Templates/spotify.ini;
+    "matugen/templates/quickshell.qml".text = builtins.readFile ./Templates/quickshell.qml;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -69,11 +70,11 @@
       # [templates.qt6ct]
       # input_path = 'path/to/template'
       # output_path = '~/.config/qt6ct/colors/matugen.conf'
-      #
-      # [templates.quickshell]
-      # input_path = 'path/to/template'
-      # output_path = '~/.local/state/quickshell/generated/colors.json'
-      #
+
+      [templates.quickshell]
+      input_path = '${config.xdg.configHome}/matugen/templates/quickshell.qml'
+      output_path = '~/.local/state/quickshell/generated/colors.json'
+
       # [templates.spotify]
       # input_path = 'path/to/template'
       # output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
