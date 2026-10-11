@@ -18,6 +18,7 @@
     "matugen/templates/spotify.ini".text = builtins.readFile ./Templates/spotify.ini;
     "matugen/templates/quickshell.json".text = builtins.readFile ./Templates/quickshell.json;
     "matugen/templates/btop.theme".text = builtins.readFile ./Templates/btop.theme;
+    "matugen/templates/vesktop.css".text = builtins.readFile ./Templates/vesktop.css;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -76,16 +77,10 @@
       input_path = '${config.xdg.configHome}/matugen/templates/quickshell.json'
       output_path = '~/.local/state/quickshell/generated/colors.json'
 
-      # [templates.spotify]
-      # input_path = 'path/to/template'
-      # output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
-      # post_hook = 'spicetify watch -s 2>&1 | sed "/Reloaded Spotify/q"'
-
       [templates.spotify]
       input_path = '${config.xdg.configHome}/matugen/templates/spotify.ini'
       output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
       post_hook = 'pgrep -x spicetify > /dev/null || spicetify apply -n'
-
 
       [templates.starship]
       input_path = '${config.xdg.configHome}/matugen/templates/starship.toml'
@@ -95,6 +90,9 @@
       input_path = '${config.xdg.configHome}/matugen/templates/television.toml'
       output_path = '${config.xdg.configHome}/television/themes/matugen.toml'
 
+      [templates.vesktop]
+      input_path = '${config.xdg.configHome}/matugen/templates/vesktop.css'
+      output_path = '${config.xdg.configHome}/vesktop/themes/midnight-discord.css'
 
       [templates.yazi]
       input_path = '${config.xdg.configHome}/matugen/templates/yazi.toml'

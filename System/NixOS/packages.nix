@@ -11,7 +11,7 @@
       wl-clipboard
       smassh
       overskride
-      vesktop
+      # vesktop
       spotube
       stoat-desktop
       # cava

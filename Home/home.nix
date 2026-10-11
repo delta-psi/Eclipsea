@@ -10,6 +10,7 @@
     ../Modules/Editors
     ../Modules/Music
     ../Modules/Browser
+    ../Modules/Communication
     # ../Modules/Noctalia/noctalia.nix
     # ../Modules/Caelestia/caelestia.nix
   ];
