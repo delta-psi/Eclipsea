@@ -19,6 +19,7 @@
     "matugen/templates/quickshell.json".text = builtins.readFile ./Templates/quickshell.json;
     "matugen/templates/btop.theme".text = builtins.readFile ./Templates/btop.theme;
     "matugen/templates/vesktop.css".text = builtins.readFile ./Templates/vesktop.css;
+    "matugen/templates/gtk.css".text = builtins.readFile ./Templates/gtk.css;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -39,15 +40,16 @@
       input_path = '${config.xdg.configHome}/matugen/templates/era.json'
       output_path = '${config.xdg.configHome}/era/config.json'
 
-      # [templates.gtk3]
-      # input_path = 'path/to/template'
-      # output_path = '~/.config/gtk-3.0/colors.css'
-      # post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
-      #
-      # [templates.gtk4]
-      # input_path = 'path/to/template'
-      # output_path = '~/.config/gtk-4.0/colors.css'
-      
+      [templates.gtk3]
+      input_path = '${config.xdg.configHome}/matugen/templates/gtk.css'
+      output_path = '${config.xdg.configHome}/gtk-3.0/colors.css'
+      post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+
+      [templates.gtk4]
+      input_path = '${config.xdg.configHome}/matugen/templates/gtk.css'
+      output_path = '${config.xdg.configHome}/gtk-4.0/colors.css'
+      post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh'
+     
       [templates.hyprland]
       input_path = '${config.xdg.configHome}/matugen/templates/hypr.lua'
       output_path = '${config.xdg.configHome}/hypr/colors.lua'

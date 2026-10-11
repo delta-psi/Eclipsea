@@ -1,5 +1,5 @@
 
-{ ... }:
+{ config, ... }:
 
 {
   programs.vesktop = {
@@ -20,10 +20,6 @@
       discordBranch = "stable";
     };
     vencord = {
-      # themes = "midnight-discord";
-      # themes = ''
-      #   @import url("file://${config.xdg.configHome}/vesktop/themes/matugen.theme.css");
-      # '';
       settings = {
         enabledThemes = [ "midnight-discord.css" ];
         autoUpdate = false;
@@ -40,9 +36,21 @@
           };
           oneko.enabled = true;
           AlwaysAnimate.enabled = true;
+          WhoReacted.enabled = true;
         };
         useQuickCss = true;
       };
+      extraQuickCss = ''
+        /* Target the home/DM list item wrapper directly to strip the stock discord SVG logo */
+        .listItem_e41849 [data-list-item-id="guildsnav___home"] svg:not(.midnight-moon, [class*="moon"], [class*="custom"]) {
+          display: none !important;
+        }
+
+        /* Fallback generic child wrapper icon purge for the home button */
+        #app-mount .guilds_a4daf0 [data-list-item-id="guildsnav___home"] .childWrapper_a6ce15 svg {
+          display: none !important;
+        }
+      '';
     };
   };
 }

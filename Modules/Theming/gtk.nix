@@ -20,8 +20,14 @@
       size = 12;
     };
 
+    gtk3 = {
+      theme = null;
+      extraCss = "@import 'colors.css';";
+    };
+
     gtk4 = {
       theme = null;
+      extraCss = "@import 'colors.css';";
     };
   };
 
