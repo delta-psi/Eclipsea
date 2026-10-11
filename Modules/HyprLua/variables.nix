@@ -17,6 +17,7 @@ in
   shellToggle = "qs -c Eclipsea-Shell ipc call togglePanels barBezelToggle";
   shellCurveToggle = "qs -c Eclipsea-Shell ipc call layout toggleSquareMode";
   shellLauncherToggle = "qs -c Eclipsea-Shell ipc call applauncher toggle";
+  shellOpacityToggle = "qs -c Eclipsea-Shell ipc call opacity toggle";
   noctaliaBarToggle = "noctalia ipc call bar toggle";
   # shellToggle = if isLaptop then "hl.dispatch(hl.dsp.exec_cmd('${customShellToggle}'))" else "hl.dispatch(hl.dsp.exec_cmd('${noctaliaBarToggle}))"
   audiomix = "kitty --class wiremix-floating ${utilsize} wiremix";

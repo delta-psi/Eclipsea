@@ -16,17 +16,18 @@
     "matugen/templates/wifitui.toml".text = builtins.readFile ./Templates/wifitui.toml;
     "matugen/templates/era.json".text = builtins.readFile ./Templates/era.json;
     "matugen/templates/spotify.ini".text = builtins.readFile ./Templates/spotify.ini;
-    "matugen/templates/quickshell.qml".text = builtins.readFile ./Templates/quickshell.qml;
+    "matugen/templates/quickshell.json".text = builtins.readFile ./Templates/quickshell.json;
+    "matugen/templates/btop.theme".text = builtins.readFile ./Templates/btop.theme;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
       type = "scheme-vibrant"
       # contrast = 0.5
 
-      # [templates.btop]
-      # input_path = 'path/to/template'
-      # output_path = '~/.config/btop/themes/matugen.theme'
-      # post_hook = 'pkill -USR2 btop || true'
+      [templates.btop]
+      input_path = 'path/to/template'
+      output_path = '${config.xdg.configHome}/btop/themes/matugen.theme'
+      post_hook = 'pkill -USR2 btop || true'
 
       [templates.cava]
       input_path = '${config.xdg.configHome}/matugen/templates/cava.ini'
@@ -72,7 +73,7 @@
       # output_path = '~/.config/qt6ct/colors/matugen.conf'
 
       [templates.quickshell]
-      input_path = '${config.xdg.configHome}/matugen/templates/quickshell.qml'
+      input_path = '${config.xdg.configHome}/matugen/templates/quickshell.json'
       output_path = '~/.local/state/quickshell/generated/colors.json'
 
       # [templates.spotify]

@@ -12,8 +12,8 @@
 
     blur = {
       enabled = true;
-      size = 7; 
-      passes = 2; 
+      size = 1; # 7; 
+      passes = 1; # 2; 
       ignore_opacity = true;
       new_optimizations = true;
       xray = true;

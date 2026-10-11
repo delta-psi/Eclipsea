@@ -96,7 +96,8 @@ in
     (bind "${mod} + ALT + F" modes.frostMode)
     (bind "${mod} + ALT + S" modes.squareMode)
     (bind "${mod} + ALT + O" modes.opaqueMode)
-    (bind "${mod} + ALT + G" modes.glassMode)
+    # (bind "${mod} + ALT + O" (dsp.exec "qs -c Eclipsea-Shell ipc call opacity toggle"))
+    # (bind "${mod} + ALT + G" modes.glassMode)
 
     # Special Workspaces & Movements
     (bind "${mod} + S" (dsp.toggleSpecial "magic")) 

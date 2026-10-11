@@ -1,9 +1,6 @@
 
 { lua, vars, ... }:
 
-# let 
-#   shellToggle = (if isLaptop then
-#   )
 {
   zenMode = lua ''
     function()
@@ -76,7 +73,8 @@
         hl.config({
           decoration = {
             blur = {
-              passes = 7
+              size = 7,
+              passes = 2
             }
           }
         })
@@ -84,7 +82,8 @@
         hl.config({
           decoration = {
             blur = {
-              passes = 2
+              size = 1,
+              passes = 1
             }
           }
         })
@@ -95,6 +94,7 @@
   opaqueMode = lua ''
     function()
       hyprModes.opaque = not hyprModes.opaque
+      hl.dispatch(hl.dsp.exec_cmd("${vars.shellOpacityToggle}"))
       if hyprModes.opaque then
         hl.config({
           decoration = {
@@ -174,39 +174,4 @@
     end
   '';
 
-  glassMode = lua ''
-    function()
-      hyprModes.glass = not hyprModes.glass
-      if hyprModes.glass then
-        hl.config({
-          decoration = {
-            blur = {
-              size = 1,
-              passes = 1
-            }
-          }
-        })
-      else 
-        if hyprModes.frost then 
-          hl.config({
-            decoration = {
-              blur = {
-                size = 7,
-                passes = 7
-              }
-            }
-          })
-        else 
-          hl.config({
-            decoration = {
-              blur = {
-                size = 7,
-                passes = 2
-              }
-            }
-          })
-        end 
-      end 
-    end
-  '';
 }
