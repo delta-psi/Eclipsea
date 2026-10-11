@@ -20,11 +20,12 @@
       discordBranch = "stable";
     };
     vencord = {
-      themes = {
-        "midnight-discord" = true;
-      };
-      enabledThemes = [ "midnight-discord.css" ];
+      # themes = "midnight-discord";
+      # themes = ''
+      #   @import url("file://${config.xdg.configHome}/vesktop/themes/matugen.theme.css");
+      # '';
       settings = {
+        enabledThemes = [ "midnight-discord.css" ];
         autoUpdate = false;
         autoUpdateNotification = false;
         disableMinSize = true;
@@ -37,6 +38,8 @@
             enabled = true;
             ignoreSelf = true;
           };
+          oneko.enabled = true;
+          AlwaysAnimate.enabled = true;
         };
         useQuickCss = true;
       };

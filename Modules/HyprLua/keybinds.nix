@@ -75,21 +75,12 @@ in
     (bind "${mod} + ALT + W" (dsp.exec "uwsm app -- ${vars.wifi}"))
     (bind "${mod} + SHIFT + W" (dsp.exec "uwsm app -- ${vars.wallpaper}"))
 
-    (bind "${mod} + SUPER_R" (dsp.exec "hyprlauncher"))
-
-    
     # Tools 
     (bind "${mod} + ALT + H" (dsp.exec "uwsm app -- hyprpicker --autocopy --format=hex"))
 
     # Quickshell Commands
     (bind "${mod} + CONTROL + B" (dsp.exec "${vars.shellToggle}"))
     (bindOpts "SUPER_L" (dsp.exec "${vars.shellLauncherToggle}") {release = true; })
-
-    # Noctalia Shell Commands (Laptop)
-    # (if )
-    # (bind "${mod} + SUPER_R" (dsp.exec "noctalia-shell ipc call launcher toggle"))
-    # (bind "${mod} + CONTROL + W" (dsp.exec "noctalia-shell ipc call wallpaper toggle"))
-    # (bind "${mod} + CONTROL + L" (dsp.exec "noctalia-shell ipc call lockScreen lock"))
 
     # Hypr Modes
     (bind "${mod} + Z" modes.zenMode)
