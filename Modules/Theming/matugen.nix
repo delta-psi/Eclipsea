@@ -20,6 +20,7 @@
     "matugen/templates/btop.theme".text = builtins.readFile ./Templates/btop.theme;
     "matugen/templates/vesktop.css".text = builtins.readFile ./Templates/vesktop.css;
     "matugen/templates/gtk.css".text = builtins.readFile ./Templates/gtk.css;
+    "matugen/templates/qtct.conf".text = builtins.readFile ./Templates/qtct.conf;
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -67,13 +68,13 @@
       # output_path = '~/.config/nvim/colors/matugen.vim'
       # post_hook = 'pkill -SIGUSR1 nvim'
 
-      # [templates.qt5ct]
-      # input_path = 'path/to/template'
-      # output_path = '~/.config/qt5ct/colors/matugen.conf'
-      #
-      # [templates.qt6ct]
-      # input_path = 'path/to/template'
-      # output_path = '~/.config/qt6ct/colors/matugen.conf'
+      [templates.qt5ct]
+      input_path = '${config.xdg.configHome}/matugen/templates/qtct.conf'
+      output_path = '~/.config/qt5ct/colors/matugen.conf'
+
+      [templates.qt6ct]
+      input_path = '${config.xdg.configHome}/matugen/templates/qtct.conf'
+      output_path = '~/.config/qt6ct/colors/matugen.conf'
 
       [templates.quickshell]
       input_path = '${config.xdg.configHome}/matugen/templates/quickshell.json'

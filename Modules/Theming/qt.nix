@@ -1,5 +1,5 @@
 
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   qt = {
@@ -19,6 +19,8 @@
     qt5ctSettings = {
       Appearance = {
         # style = "sweet-nova";
+        color_scheme_path = "${config.xdg.configHome}/qt5ct/colors/matugen.conf";
+        custom_palette = true;
         icon_theme = "Sweet-Rainbow";
         standard_dialogs = "xdgdesktopportal";      };
     };
