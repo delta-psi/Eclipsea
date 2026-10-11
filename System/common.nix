@@ -12,7 +12,7 @@ with pkgs; [
   # xdotool
   tree
   tmux 
-  btop
+  # btop
   nh
   gh
   fzf

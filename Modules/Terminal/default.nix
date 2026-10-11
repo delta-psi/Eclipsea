@@ -1,6 +1,7 @@
 
 {
   imports = [
+    ./btop.nix
     ./cava.nix
     ./kitty.nix
     ./fish.nix

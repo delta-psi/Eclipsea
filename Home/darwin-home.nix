@@ -56,6 +56,7 @@
   manual.manpages.enable = false;
 
   programs = {
+    btop.enable = true;
     eza = {
       enable = true;
       git = true;

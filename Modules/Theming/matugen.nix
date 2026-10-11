@@ -25,7 +25,7 @@
       # contrast = 0.5
 
       [templates.btop]
-      input_path = 'path/to/template'
+      input_path = '${config.xdg.configHome}/matugen/templates/btop.theme'
       output_path = '${config.xdg.configHome}/btop/themes/matugen.theme'
       post_hook = 'pkill -USR2 btop || true'
 
