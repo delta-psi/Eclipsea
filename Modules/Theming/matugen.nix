@@ -21,6 +21,19 @@
     "matugen/templates/vesktop.css".text = builtins.readFile ./Templates/vesktop.css;
     "matugen/templates/gtk.css".text = builtins.readFile ./Templates/gtk.css;
     "matugen/templates/qtct.conf".text = builtins.readFile ./Templates/qtct.conf;
+    "matugen/post-hook-scripts/gtk-themes-reload.sh".text = ''
+      #!/usr/bin/env bash
+
+      current=$(gsettings get org.gnome.desktop.interface color-scheme)
+
+      if [[ "$current" == "'prefer-dark'" ]]; then
+          gsettings set org.gnome.desktop.interface color-scheme prefer-light
+          gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+      else
+          gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+          gsettings set org.gnome.desktop.interface color-scheme prefer-light
+      fi
+    '';
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -49,7 +62,7 @@
       [templates.gtk4]
       input_path = '${config.xdg.configHome}/matugen/templates/gtk.css'
       output_path = '${config.xdg.configHome}/gtk-4.0/colors.css'
-      post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh'
+      post_hook = '${config.xdg.configHome}/matugen/post-hook-scripts/gtk-themes-reload.sh'
      
       [templates.hyprland]
       input_path = '${config.xdg.configHome}/matugen/templates/hypr.lua'

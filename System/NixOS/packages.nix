@@ -18,9 +18,11 @@
       wev
       hyprpicker
       playerctl
+      # kdePackages.dolphin
       thunar
       thunar-volman
       thunar-archive-plugin
+      xfconf
       vial
       xdotool
       vlc
@@ -39,6 +41,7 @@
       wifitui
       spicetify-cli
       rnote
+      glow
       
 
       sweet-nova
@@ -47,6 +50,7 @@
       candy-icons
       nwg-look
       elegant-sddm
+      adw-gtk3
       inputs.matugen.packages.${stdenv.hostPlatform.system}.default
       inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
       inputs.caelestia-shell.packages.${stdenv.hostPlatform.system}.with-cli

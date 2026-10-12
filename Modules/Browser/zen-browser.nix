@@ -14,7 +14,7 @@ in {
     setAsDefaultBrowser = true;
 
     env = {
-      GTK_THEME = "Adwaita";
+      GTK_THEME = "Adwaita"; # Adwaita 
     };
 
     policies = {
@@ -218,13 +218,13 @@ in {
 
         extensions.packages = with firefox-addons; [
           ublock-origin
-          dearrow
-          proton-pass
+          # dearrow
+          # proton-pass
           darkreader
-          privacy-badger
+          # privacy-badger
           clearurls
           vimium
-          transparent-zen
+          # transparent-zen
           # vimium-ff
         ];
 

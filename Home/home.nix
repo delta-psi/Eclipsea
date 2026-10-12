@@ -57,6 +57,14 @@
     '';
   };
 
+  services = {
+    udiskie = {
+      enable = true;
+      automount = true;
+      notify = true;
+    };
+  };
+
   programs = {
     eza = {
       enable = true;
@@ -66,11 +74,11 @@
       enableFishIntegration = true;
     };
 
-    fish.enable = true;
+    # fish.enable = true;
 
-    zathura = {
-      enable = true;
-    };
+    # zathura = {
+    #   enable = true;
+    # };
 
     git = {
       enable = true;

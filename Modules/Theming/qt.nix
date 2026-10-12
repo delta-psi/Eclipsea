@@ -11,6 +11,8 @@
     platformTheme.name = "qtct";
     qt6ctSettings = {
       Appearance = {
+        color_scheme_path = "${config.xdg.configHome}/qt5ct/colors/matugen.conf";
+        custom_palette = true;
         # style = "sweet-nova";
         icon_theme = "Sweet-Rainbow";
         standard_dialogs = "xdgdesktopportal";

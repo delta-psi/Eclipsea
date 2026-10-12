@@ -27,7 +27,9 @@
 
     gtk4 = {
       theme = null;
-      extraCss = "@import 'colors.css';";
+      extraCss = ''
+        @import 'colors.css';
+      '';
     };
   };
 

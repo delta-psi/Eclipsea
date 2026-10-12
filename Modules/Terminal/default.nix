@@ -1,6 +1,7 @@
 
 {
   imports = [
+    ./bat.nix
     ./btop.nix
     ./cava.nix
     ./kitty.nix
