@@ -6,8 +6,10 @@
     enable = true;
     
     theme = {
-      package = pkgs.sweet-nova;
-      name = "Sweet-Dark";
+      # package = pkgs.sweet-nova;
+      # name = "Sweet-Dark";
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
     };
 
     iconTheme = {
@@ -22,14 +24,16 @@
 
     gtk3 = {
       theme = null;
-      extraCss = "@import 'colors.css';";
+      extraCss = ''
+        @import url("colors.css");
+      '';
     };
 
     gtk4 = {
       theme = null;
       extraCss = ''
-        @import 'colors.css';
-      '';
+        @import url("colors.css");
+      ''; # @import 'colors.css';
     };
   };
 

@@ -42,6 +42,7 @@
       spicetify-cli
       rnote
       glow
+      libnotify
       
 
       sweet-nova

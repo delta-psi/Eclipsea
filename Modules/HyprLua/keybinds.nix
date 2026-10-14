@@ -81,6 +81,11 @@ in
     # Quickshell Commands
     (bind "${mod} + CONTROL + B" (dsp.exec "${vars.shellToggle}"))
     (bindOpts "SUPER_L" (dsp.exec "${vars.shellLauncherToggle}") {release = true; })
+    (bind "${mod} + CONTROL + N" (dsp.exec "${vars.shellNotifToggleCenter}"))
+    (bind "${mod} + CONTROL + D" (dsp.exec "${vars.shellNotifDismiss}"))
+    (bind "${mod} + CONTROL + C" (dsp.exec "${vars.shellNotifClear}"))
+    (bind "${mod} + CONTROL + L" (dsp.exec "${vars.shellNotifToggleCenter}"))
+
 
     # Hypr Modes
     (bind "${mod} + Z" modes.zenMode)
@@ -169,6 +174,14 @@ in
         end'')
       ];
     }
+    # {
+    #   _args = [
+    #     "shellNotifications"
+    #     (lua ''function()
+    #       hl.bind("")
+    #     end'')
+    #   ];
+    # }
 
   #   {
   #     _args = [

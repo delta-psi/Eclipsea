@@ -19,7 +19,7 @@
 
       # Check if the file exists
       if [ ! -f "$FULL_PATH" ]; then 
-        echo "Error: Wallpaper '$1' not found in $WALL_DIR"
+        notify-send "Theme Switcher" "Error: Wallpaper '$1' not found in $WALL_DIR"
         exit 1
       fi 
 
@@ -50,7 +50,9 @@
         stfu "$HYPR_MODES"
       fi 
 
-      echo "Wallpaper & theme updated successfully!"
+      # echo "Wallpaper & theme updated successfully!"
+      notify-send --icon="$HOME/Configs/Eclipsea/Assets/Icons/theme.png" "Theme Switcher" "Wallpaper & theme updated successfully!"
+
     '')
   ];
 

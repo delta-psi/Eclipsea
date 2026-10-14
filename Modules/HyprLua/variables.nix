@@ -18,7 +18,16 @@ in
   shellCurveToggle = "qs -c Eclipsea-Shell ipc call layout toggleSquareMode";
   shellLauncherToggle = "qs -c Eclipsea-Shell ipc call applauncher toggle";
   shellOpacityToggle = "qs -c Eclipsea-Shell ipc call opacity toggle";
-  noctaliaBarToggle = "noctalia ipc call bar toggle";
+  shellNotifDismiss = "qs -c Eclipsea-Shell ipc call notifications dimiss";
+  shellNotifDismissAll = "qs -c Eclipsea-Shell ipc call notifications dimissAll";
+  shellNotifToggleCenter = "qs -c Eclipsea-Shell ipc call notifications toggleCenter";
+  shellNotifClear = "qs -c Eclipsea-Shell ipc call notifications clear";
+  shellNotifToggleDnd = "qs -c Eclipsea-Shell ipc call notifications toggleDnd";
+
+
+
+
+  # noctaliaBarToggle = "noctalia ipc call bar toggle";
   # shellToggle = if isLaptop then "hl.dispatch(hl.dsp.exec_cmd('${customShellToggle}'))" else "hl.dispatch(hl.dsp.exec_cmd('${noctaliaBarToggle}))"
   audiomix = "kitty --class wiremix-floating ${utilsize} wiremix";
   wifi = "kitty --class wifitui-floating ${utilsize} wifitui --theme=${config.xdg.configHome}/wifitui/matugen.toml";

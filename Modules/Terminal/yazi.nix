@@ -106,6 +106,16 @@ in
           run = "plugin copy-file-contents -- plain";
           desc = "Copy contents of file(s)";
         }
+        {
+          on = ["C-y"];
+          run = "seek -1";
+          desc = "Scroll preview up one line";
+        }
+        {
+          on = ["C-e"];
+          run = "seek 1";
+          desc = "Scroll preview down one line";
+        }
       ];
     };
 
