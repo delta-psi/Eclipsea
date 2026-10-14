@@ -1,7 +1,7 @@
 
 {
   markview = {
-    enable = true;
+    enable = false;
     settings = {
       preview = {
         filetypes = [

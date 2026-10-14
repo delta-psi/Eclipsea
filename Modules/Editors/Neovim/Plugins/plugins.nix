@@ -11,6 +11,7 @@
     (import ./dap-ui.nix)
     (import ./direnv.nix)
     (import ./gitsigns.nix)
+    (import ./glow.nix)
     # (import ./hardtime.nix)
     (import ./image.nix)
     (import ./leetcode.nix)
