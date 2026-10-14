@@ -1,5 +1,0 @@
- {
-   glow = {
-     enable = true;
-   };
- }
