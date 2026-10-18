@@ -1,8 +1,9 @@
 
 {
   imports = [
-    ./spicetify.nix
+    ./beets.nix
     ./mpd.nix
     ./rmpc.nix
+    ./spicetify.nix
   ];
 }

@@ -30,6 +30,7 @@
       spotdl
       python313Packages.spotipyfree
       yt-dlp
+      # beets
       rmpc
       # mpd
       mpc
@@ -53,8 +54,8 @@
       elegant-sddm
       adw-gtk3
       inputs.matugen.packages.${stdenv.hostPlatform.system}.default
-      inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
-      inputs.caelestia-shell.packages.${stdenv.hostPlatform.system}.with-cli
+      # inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
+      # inputs.caelestia-shell.packages.${stdenv.hostPlatform.system}.with-cli
       awww
       wallust
       quickshell
@@ -68,7 +69,10 @@
       kdePackages.qt6ct
       xdg-desktop-portal
       xdg-desktop-portal-wlr
+      gsettings-desktop-schemas
+      glib
       inputs.terminal-rain.packages.${stdenv.hostPlatform.system}.terminal-rain-lightning
+      gtk3
 
     ];
   };

@@ -6,16 +6,16 @@
 
 {
   imports = [
-    inputs.noctalia.homeModules.default
+    # inputs.noctalia.homeModules.default
   ];
 
   # programs.noctalia-shell = {
   #   enable = isLaptop;
   # };
 
-  config = lib.mkIf isLaptop {
-    programs = {
-      noctalia-shell.enable = isLaptop;
+  # config = lib.mkIf isLaptop {
+  #   programs = {
+  #     noctalia-shell.enable = isLaptop;
       # kitty.extraConfig = ''
       #   include ~/.config/kitty/themes/noctalia.conf
       # '';
@@ -50,7 +50,7 @@
       #     };
       #   }; 
       # };
-    };
+    # };
     # xdg.configFile = {
     #   "starship.toml".text = ''
     #     palette = "noctalia"
@@ -58,5 +58,5 @@
     #     "~/.cache/noctalia/starship-palette.toml"
     #   '';
     # };
-  };
+  # };
 }

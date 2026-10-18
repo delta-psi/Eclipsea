@@ -107,15 +107,15 @@
     };
 
     # Noctalia Shell 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia/legacy-v4";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # noctalia = {
+    #   url = "github:noctalia-dev/noctalia/legacy-v4";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    #
+    # caelestia-shell = {
+    #   url = "github:caelestia-dots/shell";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Bookokrat 
     bookokrat = {
@@ -152,8 +152,6 @@
 			spicetify-nix,
 			zen-browser,
 			firefox-addons, 
-			noctalia, 
-      caelestia-shell,
       bookokrat,
 			... 
     }: 

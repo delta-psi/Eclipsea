@@ -12,7 +12,7 @@
       # Auto start Hyprland
       if status is-login
         if test -z "$DISPLAY" -a "XDG_VTNR" = 1
-          exec hyprland
+          exec start-hyprland
         end
       end
 
@@ -24,6 +24,11 @@
         read --prompt "echo 'Commit Message: '" input
         git add . && git commit -m $input
       end 
+
+      function music_download
+        read --prompt "echo 'URL: '" input
+        yt-dlp --cookies-from-browser "firefox:$HOME/.config/zen/$USER" -f "ba/b" -x --audio-format m4a --audio-quality 0 --embed-metadata --embed-thumbnail --parse-metadata "title:%(artist)s - %(title)s" $input
+      end
 
       # Integrade zoxide
       zoxide init fish | source
@@ -45,6 +50,7 @@
       # f = "$(pay-respects fish)";
       wifi = "wifitui --theme=${config.xdg.configHome}/wifitui/matugen.toml";
       ww = "z Wallpapers && y";
+      md = "music_download";
 
       # Git
       gf = "git fetch";

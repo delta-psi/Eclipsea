@@ -9,7 +9,7 @@ $directory\
 [](bg:tertiary2 fg:primary2)\
 $git_branch\
 $git_status\
-[](fg:tertiary2 bg:tertiary)\
+[](fg:tertiary2 bg:tertiary2)\
 $c\
 $rust\
 $golang\

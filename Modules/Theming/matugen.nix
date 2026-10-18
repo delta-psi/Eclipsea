@@ -21,19 +21,22 @@
     "matugen/templates/vesktop.css".text = builtins.readFile ./Templates/vesktop.css;
     "matugen/templates/gtk.css".text = builtins.readFile ./Templates/gtk.css;
     "matugen/templates/qtct.conf".text = builtins.readFile ./Templates/qtct.conf;
-    "matugen/post-hook-scripts/gtk-themes-reload.sh".text = ''
-      #!/usr/bin/env bash
+    "matugen/post-hook-scripts/gtk-themes-reload.sh" = {
+      text = ''
+        #!/usr/bin/env bash
 
-      current=$(gsettings get org.gnome.desktop.interface color-scheme)
+        current=$(gsettings get org.gnome.desktop.interface color-scheme)
 
-      if [[ "$current" == "'prefer-dark'" ]]; then
-          gsettings set org.gnome.desktop.interface color-scheme prefer-light
-          gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-      else
-          gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-          gsettings set org.gnome.desktop.interface color-scheme prefer-light
-      fi
-    '';
+        if [[ "$current" == "'prefer-dark'" ]]; then
+            gsettings set org.gnome.desktop.interface color-scheme prefer-light
+            gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+        else
+            gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+            gsettings set org.gnome.desktop.interface color-scheme prefer-light
+        fi
+      '';
+      executable = true;
+    };
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"

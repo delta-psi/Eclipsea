@@ -1,4 +1,6 @@
 # To Do 
+- [ ] Replace NEOVIM in neovim dashboard with ascii pokemon
+- [ ] Reduce hyprland border glow a smidge
 - [ ] Figure out matugen color palette from noctalia shell v4
 - [ ] Create templates and apply color palette from wallpaper for: 
     - [ ] Hyprland
