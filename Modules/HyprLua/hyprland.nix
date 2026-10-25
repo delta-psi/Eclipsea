@@ -11,7 +11,7 @@
 
 let 
   lua = lib.generators.mkLuaInline;
-  vars = import ./variables.nix { inherit isLaptop config; };
+  vars = import ./variables.nix { inherit isLaptop config lib; };
   # shellToggle = if isLaptop then "hl.dispatch(hl.dsp.exec_cmd('${vars.customShellToggle}'))" else "hl.dispatch(hl.dsp.exec_cmd('${vars.noctaliaBarToggle}))";
 
   args = { inherit lib lua vars isLaptop; };
@@ -56,6 +56,21 @@ in
       #   inputs.hyprgrass.packages.${pkgs.system}.default
       # ];
 
+      # extraLuaFiles."borderVars" = {
+      #   autoLoad = false;
+      #   content = ''
+      #     local colors = require("colors")
+      #
+      #     local borderColorAccent = colors.borderThemeAccented.active_border
+      #     local borderShadowAccent = colors.borderThemeAccented.shadow
+      #     local borderGlowAccent = colors.borderThemeAccented.glow
+      #
+      #     local borderColorSleek = colors.borderThemeSleek.active_border
+      #     local borderShadowSleek = colors.borderThemeSleek.shadow
+      #     local borderGlowSleek = colors.borderThemeSleek.glow
+      #   '';
+      # };
+
       extraConfig = ''
         require("colors")
 
@@ -64,7 +79,9 @@ in
           square = false,
           frost = false,
           opaque = false,
-          glass = false
+          glass = false,
+          borderAccent = true,
+          borderSleek = false
         }
       '';
 

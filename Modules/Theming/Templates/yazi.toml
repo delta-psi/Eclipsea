@@ -20,7 +20,8 @@ count_selected = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.tert
 
 # Border
 border_symbol = "│"
-border_style  = { fg = "{{colors.surface_tint.default.hex}}" }
+# border_style  = { fg = "{{colors.surface_tint.default.hex}}" }
+border_style = { fg = "{{colors.primary.default.hex}}" }
 
 # : ]]]
 

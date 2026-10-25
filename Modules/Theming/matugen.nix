@@ -37,6 +37,19 @@
       '';
       executable = true;
     };
+    "${config.xdg.configHome}/zen/chrome/userContent.css" = {
+      text = ''
+        @import url("${config.xdg.configHome}/zen/zen-userContent.css")
+      '';
+      executable = true;
+    };
+    "${config.xdg.configHome}/zen/chrome/userChrome.css" = {
+      text = ''
+        @import url("${config.xdg.configHome}/zen/zen-userChrome.css")
+      '';
+      executable = true;
+    };
+
     "matugen/config.toml".text = ''
       [config]
       variant = "dark"
@@ -138,6 +151,14 @@
       [templates.wifitui]
       input_path = '${config.xdg.configHome}/matugen/templates/wifitui.toml'
       output_path = '${config.xdg.configHome}/wifitui/matugen.toml'
+
+      [templates.zen-userchrome]
+      input_path = '${config.xdg.configHome}/matugen/templates/zen-userchrome.css'
+      output_path = '${config.xdg.configHome}/zen/zen-userChrome.css'
+
+      [templates.zen-usercontent]
+      input_path = '${config.xdg.configHome}/matugen/templates/zen-usercontent.css'
+      output_path = '${config.xdg.configHome}/zen/zen-userContent.css'
 
     '';
   };

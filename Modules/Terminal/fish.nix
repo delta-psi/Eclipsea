@@ -25,9 +25,17 @@
         git add . && git commit -m $input
       end 
 
+      # function music_download
+      #   read --prompt "echo 'URL: '" input
+      #   yt-dlp --cookies-from-browser "firefox:$HOME/.config/zen/$USER" -f "ba/b" -x --audio-format m4a --audio-quality 0 --embed-metadata --embed-thumbnail --parse-metadata "title:%(artist)s - %(title)s" $input
+      # end
+
       function music_download
-        read --prompt "echo 'URL: '" input
-        yt-dlp --cookies-from-browser "firefox:$HOME/.config/zen/$USER" -f "ba/b" -x --audio-format m4a --audio-quality 0 --embed-metadata --embed-thumbnail --parse-metadata "title:%(artist)s - %(title)s" $input
+        yt-dlp --cookies-from-browser "firefox:$HOME/.config/zen/$USER" -f "ba/b" -x --audio-format m4a --audio-quality 0 --embed-metadata --embed-thumbnail --parse-metadata "title:%(artist)s - %(title)s" $argv[1]
+      end
+
+      function mkcd 
+        mkdir -p $argv[1] && cd $argv[1]
       end
 
       # Integrade zoxide

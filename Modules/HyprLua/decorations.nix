@@ -31,8 +31,8 @@
 
     shadow = {
       enabled = true;
-      range = 6; # 8
-      render_power = 3; # 3
+      range = 4; # 8
+      render_power = 2; # 3
       # sharp = ;
       # color = "rgba(00eaff33)";
       color_inactive = "rgba(ffffff00)";
@@ -41,8 +41,8 @@
     };
     glow = {
       enabled = true;
-      range = 8;
-      render_power = 4;
+      range = 8; # 8
+      render_power = 2; # 4
       # color = "rgba(00eaff33)";
       color_inactive = "rgba(ffffff00)";
     };

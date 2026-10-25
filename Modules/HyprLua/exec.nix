@@ -17,8 +17,6 @@ in
   on = [
     (if isLaptop then
       (mkExec "hyprland.start" [
-        # "noctalia-shell -d"
-        # "vesktop -m"
         "awww-daemon"
         "awww restore"
         "qs -d -c Eclipsea-Shell"

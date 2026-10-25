@@ -2,7 +2,8 @@
 # Generated with Matugen
 
 background = '{{colors.surface_container.default.hex}}'
-border_fg = '{{colors.outline.default.hex}}'
+# border_fg = '{{colors.outline.default.hex}}'
+border_fg = '{{colors.primary.default.hex}}'
 text_fg = '{{colors.on_surface.default.hex}}'
 dimmed_text_fg = '{{colors.on_surface_variant.default.hex}}'
 input_text_fg = '{{colors.secondary.default.hex}}'

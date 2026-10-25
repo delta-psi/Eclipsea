@@ -174,4 +174,41 @@
     end
   '';
 
+  # borderSleek = lua ''
+  #   function()
+  #     hyprModes.borderSleek = not hyprModes.borderSleek
+  #     if hyprModes.borderSleek then 
+  #       hl.config({
+  #         general = {
+  #           ["col.active_border"] = ${vars.activeBorderSleek}
+  #         },
+  #         decoration = {
+  #           shadow = {
+  #             color =   ${vars.shadowColorSleek}
+  #           },
+  #           glow = {
+  #             enabled = false
+  #           }
+  #         }
+  #       })
+  #     else
+  #       hl.config({
+  #         general = {
+  #           ["col.active_border"] = ${vars.activeBorderAccented}
+  #         },
+  #         decoration = {
+  #           shadow = {
+  #             color = ${vars.shadowColorAccented}
+  #           },
+  #           glow = {
+  #             enabled = true,
+  #             color = ${vars.glowColorAccented}
+  #           }
+  #         }
+  #       })
+  #     end
+  #   end
+  # '';
+  #
+
 }

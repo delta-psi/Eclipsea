@@ -2,9 +2,11 @@
 
 {
   # source = [
-  #   "~/.config/hypr/colors.lua"
+    # "~/.config/hypr/colors.lua"
+    # "colors"
+  #   "borderVars"
   # ];
-  extraConfig = ''
-    require("colors")
-  '';
+  # extraConfig = ''
+  #   require("colors")
+  # '';
 }

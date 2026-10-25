@@ -1,8 +1,13 @@
 
-{ config, ... }:
+{ config, lib, ... }:
 
 let
   utilsize = "-o remember_window_size=no -o initial_window_width=900 -o initial_window_height=550";
+  colorsFile = "${config.xdg.configHome}/hypr/colors.lua";
+  borderTheme = theme: key: 
+    lib.generators.mkLuaInline ''
+      dofile("${colorsFile}").${theme}.${key}
+    '';
 in
 {
   mod = "SUPER";
@@ -24,6 +29,13 @@ in
   shellNotifClear = "qs -c Eclipsea-Shell ipc call notifications clear";
   shellNotifToggleDnd = "qs -c Eclipsea-Shell ipc call notifications toggleDnd";
 
+  # activeBorderAccented = borderTheme "borderThemeAccented" "active_border";
+  # shadowColorAccented = borderTheme "borderThemeAccented" "shadow";
+  # glowColorAccented = borderTheme "borderThemeAccented" "glow";
+  #
+  # activeBorderSleek = borderTheme "borderThemeSleek" "active_border";
+  # shadowColorSleek = borderTheme "borderThemeSleek" "shadow";
+  # glowColorSleek = borderTheme "borderThemeSleek" "glow";
 
 
 
