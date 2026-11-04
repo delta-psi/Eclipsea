@@ -16,7 +16,8 @@
       scale = 1;
     }
     {
-      output = "DP-5"; # 6
+      # output = "DP-5"; # 6
+      output = "desc:Dell Inc. DELL U2917W 0PRH46CK469L";
       mode = "2560x1080";
       position = "auto-left";
       scale = 1.0;

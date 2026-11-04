@@ -19,9 +19,9 @@
       hyprpicker
       playerctl
       # kdePackages.dolphin
-      thunar
-      thunar-volman
-      thunar-archive-plugin
+      # thunar
+      # thunar-volman
+      # thunar-archive-plugin
       xfconf
       vial
       xdotool
@@ -44,6 +44,7 @@
       rnote
       glow
       libnotify
+      loaf
       
 
       sweet-nova

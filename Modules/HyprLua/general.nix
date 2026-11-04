@@ -3,7 +3,7 @@
 
 {
   general = {
-    border_size = 4;
+    border_size = 4; # 4
     gaps_in = 8;
     gaps_out = 16;
     "col.inactive_border" = "rgba(ffffff33)"; # 22

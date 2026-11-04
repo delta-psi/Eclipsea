@@ -72,7 +72,9 @@ in
       # };
 
       extraConfig = ''
-        require("colors")
+        colors = require("colors")
+        palettes = colors.palettes
+        palette = palette or "candy"
 
         hyprModes = {
           zen = false,
@@ -80,9 +82,23 @@ in
           frost = false,
           opaque = false,
           glass = false,
-          borderAccent = true,
-          borderSleek = false
+          border = true,
         }
+
+        function apply_palette(name)
+          local p = palettes[name]
+          hl.config({
+            general = { ["col.active_border"] = p.border },
+            decoration = {
+              glow = { color = p.glow },
+              shadow = { color = p.shadow },
+            },
+          })
+          palette = name
+        end
+
+        apply_palette(palette)
+
       '';
 
       settings = lib.mkMerge [

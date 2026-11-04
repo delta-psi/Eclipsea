@@ -21,6 +21,8 @@
     "matugen/templates/vesktop.css".text = builtins.readFile ./Templates/vesktop.css;
     "matugen/templates/gtk.css".text = builtins.readFile ./Templates/gtk.css;
     "matugen/templates/qtct.conf".text = builtins.readFile ./Templates/qtct.conf;
+    "matugen/templates/zen-userContent.css".text = builtins.readFile ./Templates/zen-userContent.css;
+    "matugen/templates/zen-userChrome.css".text = builtins.readFile ./Templates/zen-userChrome.css;
     "matugen/post-hook-scripts/gtk-themes-reload.sh" = {
       text = ''
         #!/usr/bin/env bash
@@ -39,13 +41,13 @@
     };
     "${config.xdg.configHome}/zen/chrome/userContent.css" = {
       text = ''
-        @import url("${config.xdg.configHome}/zen/zen-userContent.css")
+        @import url("/home/delta/.config/zen/chrome/zen-userContent.css")
       '';
       executable = true;
     };
     "${config.xdg.configHome}/zen/chrome/userChrome.css" = {
       text = ''
-        @import url("${config.xdg.configHome}/zen/zen-userChrome.css")
+        @import url("/home/delta/.config/zen/chrome/zen-userChrome.css")
       '';
       executable = true;
     };
@@ -153,12 +155,12 @@
       output_path = '${config.xdg.configHome}/wifitui/matugen.toml'
 
       [templates.zen-userchrome]
-      input_path = '${config.xdg.configHome}/matugen/templates/zen-userchrome.css'
-      output_path = '${config.xdg.configHome}/zen/zen-userChrome.css'
+      input_path = '${config.xdg.configHome}/matugen/templates/zen-userChrome.css'
+      output_path = '${config.xdg.configHome}/zen/chrome/zen-userChrome.css'
 
       [templates.zen-usercontent]
-      input_path = '${config.xdg.configHome}/matugen/templates/zen-usercontent.css'
-      output_path = '${config.xdg.configHome}/zen/zen-userContent.css'
+      input_path = '${config.xdg.configHome}/matugen/templates/zen-userContent.css'
+      output_path = '${config.xdg.configHome}/zen/chrome/zen-userContent.css'
 
     '';
   };

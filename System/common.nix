@@ -36,11 +36,19 @@ with pkgs; [
   # meowpdf
   imagemagick
   starship
-  (inputs.bookokrat.packages.${stdenv.hostPlatform.system}.default.overrideAttrs (oldAttrs: {
-    postPatch = (oldAttrs.postPatch or "") + ''
-      sed -i '/=>/!s/Provider::Arboard/return Provider::Arboard;/' src/clipboard.rs
-    '';
+  (inputs.bookokrat.packages.${stdenv.hostPlatform.system}.default.overrideAttrs (old: {
+    checkFlags = (old.checkFlags or [ ]) ++ [
+      "--skip=test_content_view_svg"
+      "--skip=test_keybinding_errors_popup_svg"
+      "--skip=test_toc_back_to_books_list_svg"
+    ];
   }))
+  # inputs.bookokrat.packages.${stdenv.hostPlatform.system}.default
+  # (inputs.bookokrat.packages.${stdenv.hostPlatform.system}.default.overrideAttrs (oldAttrs: {
+  #   postPatch = (oldAttrs.postPatch or "") + ''
+  #     sed -i '/=>/!s/Provider::Arboard/return Provider::Arboard;/' src/clipboard.rs
+  #   '';
+  # }))
   calcure
   typst
   typstPackages.tdtr

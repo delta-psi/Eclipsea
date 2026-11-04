@@ -1,5 +1,5 @@
 
-{ ... }:
+{ lib, ... }:
 
 # let 
 #   bellSound = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/bell.oga";
@@ -7,6 +7,37 @@
 #     ${pkgs.pipewire}/bin/pw-play "${bellSound}" &>/dev/null &
 #   '';
 # in
+let
+  # Turn a list of kitty actions into one chained keybind
+  combine = actions: "combine : " + lib.concatStringsSep " : " actions;
+
+  workspaces = {
+    music = {
+      key = "ctrl+shift+m";
+      actions = [
+        # New tab; its first window is the left pane running rmpc
+        "launch --type=tab --tab-title=Music rmpc"
+        # Split to the right: plain shell (will become top-right)
+        "launch --location=vsplit"
+        # Split that shell pane horizontally: cava goes on the bottom
+        "launch --location=hsplit cava"
+        # Put focus back on the free shell at the top right
+        # "neighboring_window up"
+        "nth_window 1"
+      ];
+    };
+    study = {
+      key = "ctrl+shift+s";
+      actions = [
+        "launch --type=tab --tab-title=Study fish -C 'z Books && bookokrat'"
+        "launch --location=vsplit fish -C 'z Logic && nvim Notes'"
+      ];
+    };
+  };
+  workspaceBindings = lib.mapAttrs'
+    (_: ws: lib.nameValuePair ws.key (combine ws.actions))
+    workspaces;
+in
 {
   programs.kitty = {
     enable = true;
@@ -47,6 +78,7 @@
       # listen_on = "unix:@mykitty";
       # listen_on = "unix:/tmp/kitty-{kitty_pid}";
       enabled_layouts = "Splits, Horizontal, Grid";
+      remember_window_size = false;
       tab_bar_style = "powerline";
       tab_powerline_style = "round";
     };
@@ -55,7 +87,7 @@
       "ctrl+shift+o" = "set_background_opacity 1.0";
       "ctrl+alt+t" = "new_tab";
       "ctrl+alt+w" = "detach_tab";
-    };
+    } // workspaceBindings;
   };
 
 }

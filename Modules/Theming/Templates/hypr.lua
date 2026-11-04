@@ -14,25 +14,61 @@
 --   }
 -- }
 
-hl.config({
-  general = {
-    ["col.active_border"] = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 }
-    -- ["col.active_border"] = { colors = { "rgba({{colors.surface_container.dark.hex_alpha_stripped}})", "rgba({{colors.surface.dark.hex_alpha_stripped}})" }, angle = 45 }
+local M = {}
 
-  },
-  decoration = {
-    shadow = {
-      -- color = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 }
-      -- color = "rgba({{colors.primary.dark.hex_alpha_stripped}})"
-      color = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 }
-      -- color = { colors = { "rgba({{colors.surface_container.dark.hex_alpha_stripped}})", "rgba({{colors.surface.dark.hex_alpha_stripped}})" }, angle = 45 }
+M.palettes = {
+  candy = {
+    border = {
+      colors = {
+        "rgba({{colors.primary.dark.hex_alpha_stripped}})",
+        "rgba({{colors.tertiary.dark.hex_alpha_stripped}})",
+      },
+    angle = 45,
     },
     glow = {
-      -- color = "rgba({{colors.primary.dark.hex_alpha_stripped}})"
-      color = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 }
-      -- color = { colors = { "rgba({{colors.surface_container.dark.hex_alpha_stripped}})", "rgba({{colors.surface.dark.hex_alpha_stripped}})" }, angle = 45 }
+      colors = {
+        "rgba({{colors.primary.dark.hex_alpha_stripped}})",
+        "rgba({{colors.tertiary.dark.hex_alpha_stripped}})",
+      },
+      angle = 45,
+    },
+    shadow = {
+      colors = {
+        "rgba({{colors.primary.dark.hex_alpha_stripped}})"},
+        "rgba({{colors.tertiary.dark.hex_alpha_stripped}})",
+      },
+    angle = 45,
+    },
+  sleek = {
+    border = "rgba({{colors.surface_container.dark.hex_alpha_stripped}})",
+    glow     = "rgba({{colors.surface_container.dark.hex_alpha_stripped}})",
+    shadow   = "rgba({{colors.surface_container.dark.hex_alpha_stripped}})"
+  },
+}
 
-    }
-  }
-})
+return M
+
+
+-- hl.config({
+--   general = {
+--     ["col.active_border"] = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 }
+--     -- ["col.active_border"] = { colors = { "rgba({{colors.surface_container.dark.hex_alpha_stripped}})", "rgba({{colors.surface.dark.hex_alpha_stripped}})" }, angle = 45 }
+--
+--   },
+--   decoration = {
+--     shadow = {
+--       -- color = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 }
+--       -- color = "rgba({{colors.primary.dark.hex_alpha_stripped}})"
+--       color = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 },
+--       -- color = { colors = { "rgba({{colors.surface_container.dark.hex_alpha_stripped}})", "rgba({{colors.surface.dark.hex_alpha_stripped}})" }, angle = 45 }
+--       -- color_inactive = "rgba({{colors.surface_container.dark.hex_alpha_stripped}})"
+--     },
+--     glow = {
+--       -- color = "rgba({{colors.primary.dark.hex_alpha_stripped}})"
+--       color = { colors = { "rgba({{colors.primary.dark.hex_alpha_stripped}})", "rgba({{colors.tertiary.dark.hex_alpha_stripped}})" }, angle = 45 }
+--       -- color = { colors = { "rgba({{colors.surface_container.dark.hex_alpha_stripped}})", "rgba({{colors.surface.dark.hex_alpha_stripped}})" }, angle = 45 }
+--
+--     }
+--   }
+-- })
 

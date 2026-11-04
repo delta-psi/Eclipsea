@@ -2,6 +2,43 @@
 { lua, vars, ... }:
 
 {
+  borderToggle = lua ''
+    function()
+      hyprModes.border = not hyprModes.border
+      apply_palette(palette == "candy" and "sleek" or "candy")
+
+      if not hyprModes.border then 
+        hl.config({
+          general = {
+            border_size = 0
+          },
+          decoration = {
+            glow = {
+              enabled = false
+            },
+            shadow = {
+              range = 10,
+            }
+          }
+        })
+      else 
+        hl.config({
+          general = {
+            border_size = 4
+          },
+          decoration = {
+            glow = {
+              enabled = true
+            },
+            shadow = {
+              range = 4,
+              render_power = 2
+            }
+          }
+        })
+      end
+    end
+  '';
   zenMode = lua ''
     function()
       hyprModes.zen = not hyprModes.zen

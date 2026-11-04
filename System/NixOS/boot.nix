@@ -41,10 +41,10 @@
       ];
     };
     consoleLogLevel = 3;
-    initrd = {
-      verbose = false;
-      systemd.enable = true;
-    };
+    # initrd = {
+    #   verbose = false;
+    #   systemd.enable = true;
+    # };
     loader.timeout = 0;
   };
 

@@ -133,6 +133,9 @@
     #   url = "github:Infinidoge/nix-minecraft";
     # };
 
+    # Loaf GUI File Explorer
+    loaf.url = "github:m-uvex/loaf-fm";
+
 
   };
 
@@ -153,6 +156,7 @@
 			zen-browser,
 			firefox-addons, 
       bookokrat,
+      loaf, 
 			... 
     }: 
     let 
