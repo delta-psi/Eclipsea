@@ -23,6 +23,7 @@
     "matugen/templates/qtct.conf".text = builtins.readFile ./Templates/qtct.conf;
     "matugen/templates/zen-userContent.css".text = builtins.readFile ./Templates/zen-userContent.css;
     "matugen/templates/zen-userChrome.css".text = builtins.readFile ./Templates/zen-userChrome.css;
+    "matugen/templates/qutebrowser.py".text = builtins.readFile ./Templates/qutebrowser.py;
     "matugen/post-hook-scripts/gtk-themes-reload.sh" = {
       text = ''
         #!/usr/bin/env bash
@@ -110,6 +111,11 @@
       [templates.quickshell]
       input_path = '${config.xdg.configHome}/matugen/templates/quickshell.json'
       output_path = '~/.local/state/quickshell/generated/colors.json'
+
+      [templates.qutebrowser]
+      input_path = '${config.xdg.configHome}/matugen/templates/qutebrowser.py'
+      output_path = '${config.xdg.configHome}/qutebrowser/matugen.py'
+      post_hook = "pgrep -f qutebrowser >/dev/null && qutebrowser ':config-source' || true"
 
       [templates.spotify]
       input_path = '${config.xdg.configHome}/matugen/templates/spotify.ini'
