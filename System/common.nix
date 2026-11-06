@@ -70,6 +70,7 @@ with pkgs; [
   clang
   clang-tools
   gnumake
+  R
   # bear
 
   # Misc 

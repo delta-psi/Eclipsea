@@ -10,8 +10,17 @@
     dim_inactive = true;
     dim_strength = 0.3;
 
+    motion_blur = {
+      enabled = false;
+    };
+
+    wobble = {
+      enabled = true;
+    };
+
     blur = {
       enabled = true;
+      variant = "kawase";
       size = 1; # 7; 
       passes = 1; # 2; 
       ignore_opacity = true;

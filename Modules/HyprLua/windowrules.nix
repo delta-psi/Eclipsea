@@ -49,5 +49,9 @@
       size = "{900, 550}";
       max_size = "{900, 550}";
     }
+    {
+      workspace = "special:comms";
+      match.class = "^(vesktop)";
+    }
   ];
 }

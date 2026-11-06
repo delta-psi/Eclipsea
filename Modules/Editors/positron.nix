@@ -1,0 +1,6 @@
+
+{
+  programs.positron = {
+    enable = true;
+  };
+}

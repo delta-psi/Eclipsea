@@ -1,5 +1,5 @@
 
-c.colors.webpage.bg = "{{colors.surface.default.hex}}"
+c.colors.webpage.bg = "{{colors.surface_container.default.hex}}"
 
 # Tab bar
 c.colors.tabs.bar.bg = "{{colors.surface_container_low.default.hex}}"

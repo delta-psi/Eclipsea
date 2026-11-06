@@ -13,7 +13,8 @@ in
   mod = "SUPER";
   terminal = "kitty";
   explorer = "loaf";
-  browser = "zen-twilight"; 
+  # browser = "zen-twilight"; 
+  browser = "qutebrowser";
   comms = "vesktop";
   music = "spotify";
   miniterm = "kitty --class kitty-floating ${utilsize}";

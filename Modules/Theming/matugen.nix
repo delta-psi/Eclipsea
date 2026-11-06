@@ -115,12 +115,12 @@
       [templates.qutebrowser]
       input_path = '${config.xdg.configHome}/matugen/templates/qutebrowser.py'
       output_path = '${config.xdg.configHome}/qutebrowser/matugen.py'
-      post_hook = "pgrep -f qutebrowser >/dev/null && qutebrowser ':config-source' || true"
+      post_hook = "pgrep -x qutebrowser >/dev/null && qutebrowser ':config-source' || true"
 
       [templates.spotify]
       input_path = '${config.xdg.configHome}/matugen/templates/spotify.ini'
       output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
-      post_hook = 'pgrep -x spicetify > /dev/null || spicetify apply -n'
+      post_hook = 'pgrep -x spicetify >/dev/null || spicetify apply -n'
 
       [templates.starship]
       input_path = '${config.xdg.configHome}/matugen/templates/starship.toml'
