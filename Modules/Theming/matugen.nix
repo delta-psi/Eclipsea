@@ -94,8 +94,6 @@
       [templates.kitty]
       input_path = '${config.xdg.configHome}/matugen/templates/kitty.conf'
       output_path = '${config.xdg.configHome}/kitty/themes/matugen.conf'
-      # post_hook = 'kitty +kitten themes --dump-theme=yes --reload-in=all Matugen'
-      # post_hook = 'kitty @ --to=unix:@kitty set-colors -a ${config.xdg.configHome}/kitty/themes/matugen.conf'
       post_hook = 'pkill -USR1 kitty'
 
       # [templates.nvim]
@@ -105,11 +103,11 @@
 
       [templates.qt5ct]
       input_path = '${config.xdg.configHome}/matugen/templates/qtct.conf'
-      output_path = '~/.config/qt5ct/colors/matugen.conf'
+      output_path = '${config.xdg.configHome}/qt5ct/colors/matugen.conf'
 
       [templates.qt6ct]
       input_path = '${config.xdg.configHome}/matugen/templates/qtct.conf'
-      output_path = '~/.config/qt6ct/colors/matugen.conf'
+      output_path = '${config.xdg.configHome}/qt6ct/colors/matugen.conf'
 
       [templates.quickshell]
       input_path = '${config.xdg.configHome}/matugen/templates/quickshell.json'
@@ -122,7 +120,7 @@
 
       [templates.spotify]
       input_path = '${config.xdg.configHome}/matugen/templates/spotify.ini'
-      output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
+      output_path = '${config.xdg.configHome}/spicetify/Themes/Sleek/color.ini'
       post_hook = 'pgrep -x spicetify >/dev/null || spicetify apply -n'
 
       [templates.starship]
@@ -139,11 +137,15 @@
 
       [templates.vscode-raw]
       input_path = '${config.xdg.configHome}/matugen/templates/vscode-colors'
-      output_path = '~/.cache/matugen/vscode-colors'
+      output_path = '${config.home.homeDirectory}/.cache/matugen/vscode-colors'
 
       [templates.vscode-json]
       input_path = '${config.xdg.configHome}/matugen/templates/vscode-colors.json'
-      output_path = '~/.cache/matugen/vscode-colors.json'
+      output_path = '${config.home.homeDirectory}/.cache/matugen/vscode-colors.json'
+
+      # [templates.positron]
+      # input_path = '${config.xdg.configHome}/matugen/templates/vscode-colors.json'
+      # output_path = '${config.home.homeDirectory}/.positron/extensions/haikalllp.matugen-theme/themes/matugen.json'
 
       [templates.yazi]
       input_path = '${config.xdg.configHome}/matugen/templates/yazi.toml'
