@@ -3,7 +3,7 @@
 
   imports = [
     ./Neovim/neovim.nix
-    ./positron.nix
+    ./ides.nix
   ];
 
 }
