@@ -24,6 +24,9 @@
     "matugen/templates/zen-userContent.css".text = builtins.readFile ./Templates/zen-userContent.css;
     "matugen/templates/zen-userChrome.css".text = builtins.readFile ./Templates/zen-userChrome.css;
     "matugen/templates/qutebrowser.py".text = builtins.readFile ./Templates/qutebrowser.py;
+    "matugen/templates/vscode-colors".text = builtins.readFile ./Templates/vscode-colors;
+    "matugen/templates/vscode-colors.json".text = builtins.readFile ./Templates/vscode-colors.json;
+
     "matugen/post-hook-scripts/gtk-themes-reload.sh" = {
       text = ''
         #!/usr/bin/env bash
@@ -133,6 +136,14 @@
       [templates.vesktop]
       input_path = '${config.xdg.configHome}/matugen/templates/vesktop.css'
       output_path = '${config.xdg.configHome}/vesktop/themes/midnight-discord.css'
+
+      [templates.vscode-raw]
+      input_path = '${config.xdg.configHome}/matugen/templates/vscode-colors'
+      output_path = '~/.cache/matugen/vscode-colors'
+
+      [templates.vscode-json]
+      input_path = '${config.xdg.configHome}/matugen/templates/vscode-colors.json'
+      output_path = '~/.cache/matugen/vscode-colors.json'
 
       [templates.yazi]
       input_path = '${config.xdg.configHome}/matugen/templates/yazi.toml'
