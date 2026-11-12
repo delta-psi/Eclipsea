@@ -4,9 +4,11 @@
   imports = [
 
     # MARI Server
-    ../../MARI/Users/users.nix
+    # ../../MARI/Users/users.nix
     # ../../MARI-Server
-    ../../MARI/devzat.nix
+    # ../../MARI/devzat.nix
+
+
     ../../System/NixOS/sops.nix
 
     # Personal Server
@@ -27,26 +29,26 @@
     systemPackages = (import ../../System/common.nix { inherit pkgs inputs; }) ++ (with pkgs; [
       
       # Personal/Mac stuff
-      aerospace
-      sketchybar
+      # aerospace
+      # sketchybar
       kitty
       tailscale
 
       # Editors
-      vim 
-      emacs
+      # vim 
+      # emacs
 
       # CLIs
-      bfs
+      # bfs
 
       # Languages
       # texliveFull
       # python314
       # R 
-      cbqn
+      # cbqn
 
       # Misc
-      mupdf
+      # mupdf
       
       # Fun stuff
 
@@ -127,6 +129,8 @@
     primaryUser = "delta";
     defaults = {
       screensaver.askForPassword = false;
+      loginwindow.GuestEnabled = false;
+
       NSGlobalDomain = {
         NSAutomaticWindowAnimationsEnabled = false;
         NSWindowResizeTime = 0.001;
@@ -143,6 +147,26 @@
         ShowPathbar = true;
       };
     };
+    activationScripts.postActivation.text = ''
+      /usr/bin/mdutil -a -i off >/dev/null 2>&1 || true      # Spotlight indexing off
+      /bin/launchctl disable system/com.apple.analyticsd 2>/dev/null || true
+    '';
+
+  };
+
+  power = {
+    restartAfterPowerFailure = true;  # boot by itself when power returns
+    restartAfterFreeze = true;
+    sleep.computer = "never";
+  };
+
+
+  # Let the GPU wire more of the 16 GB for local models (resets on reboot,
+  # so a daemon re-applies it at boot). Don't go above ~13 GB.
+  launchd.daemons.gpu-wired-limit.serviceConfig = {
+    Label = "org.nixos.gpu-wired-limit";
+    ProgramArguments = [ "/usr/sbin/sysctl" "iogpu.wired_limit_mb=12288" ];
+    RunAtLoad = true;
   };
 
   system.stateVersion = 7;

@@ -126,8 +126,10 @@ in
     mari-sshd = {
       serviceConfig = {
         Label = "com.mari.sshd";
+
+        # "${pkgs.openssh}/bin/sshd"
         ProgramArguments = [
-          "${pkgs.openssh}/bin/sshd"
+          "/usr/sbin/sshd"
           "-D"
           "-f" "/etc/ssh/mari_sshd_config"
         ];

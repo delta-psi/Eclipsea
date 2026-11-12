@@ -233,8 +233,9 @@
                       # ./Home/home.nix
                       (if isDarwin then ./Home/darwin-home.nix else ./Home/home.nix)
                     ];
-                  } // lib.optionalAttrs isDarwin {
-                    test.imports = [ ./MARI/mari-home.nix ];
+                  # } 
+                    #// lib.optionalAttrs isDarwin {
+                    # test.imports = [ ./MARI/mari-home.nix ];
                   };
                   # (if isDarwin then users.test.imports = [ ./MARI/mari-home.nix ] else null)
                   # users.test.imports = [ ./MARI/mari-home.nix ];

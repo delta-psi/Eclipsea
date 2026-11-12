@@ -6,6 +6,7 @@
     ../Modules/Darwin/Terminal
     ../Modules/Darwin/Editors/neovim.nix
     ../Modules/Terminal/fish.nix
+    ../Modules/Darwin/Agents
   ];
 
   # users.users.delta = {
