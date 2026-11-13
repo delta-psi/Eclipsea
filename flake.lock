@@ -61,11 +61,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778276656,
-        "narHash": "sha256-KU6Aky0yD4v7iZE/0Lbr4vc7lMX6cdDbdWFnz/HO1+o=",
+        "lastModified": 1794151771,
+        "narHash": "sha256-BA6XPUlnAe0hn0Tn8Q80XrrJAwfciNW0rESWVjYdjfY=",
         "owner": "delta-psi",
         "repo": "CalmSDDM",
-        "rev": "7ab444f5fcfca614f5db6f8d3f54e6e5446c961e",
+        "rev": "ca1c80c3aabd6012ef4a0ce1be71810acf162f58",
         "type": "github"
       },
       "original": {

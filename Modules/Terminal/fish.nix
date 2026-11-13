@@ -48,6 +48,8 @@
       ls = "nu -c ls";
       la = "nu -c \"ls -a\"";
       reload = "cd ~ && clear && fastfetch && echo";
+      hr = "hyprctl reload";
+      qr = "qs -c Eclipsea-Shell kill && qs -d -c Eclipsea-Shell";
       ec = "cd ~/Configs/Eclipsea && tree -d";
       # rebuild = "sudo nixos-rebuild switch --flake .#nu";
       # rebuild = "nh os switch . -H ${machine}";

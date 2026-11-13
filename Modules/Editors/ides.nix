@@ -174,6 +174,11 @@ let
     # };
   } // userSettings;
 
+  codiumExtensions = with ext; [
+    theqtcompany.qt-qml
+    theqtcompany.qt-core
+  ];
+
 in
 {
 
@@ -198,7 +203,7 @@ in
 
     profiles = {
       default = {
-        extensions = extensions;
+        extensions = extensions ++ codiumExtensions;
         keybindings = [
           { 
             key = "ctrl+alt+a"; 

@@ -10,10 +10,10 @@
       # nushell
       wl-clipboard
       smassh
-      overskride
+      # overskride
       # vesktop
-      spotube
-      stoat-desktop
+      # spotube
+      # stoat-desktop
       # cava
       wev
       hyprpicker
@@ -45,6 +45,8 @@
       glow
       libnotify
       loaf
+      trash-cli
+      unicode-character-database
       
 
       sweet-nova

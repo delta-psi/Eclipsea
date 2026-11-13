@@ -9,7 +9,9 @@
 
 let 
   mod = "SUPER";
+
   modes = import ./hypr-modes.nix { inherit lua vars; };
+  
   dsp = {
     exec = cmd: lua ''hl.dsp.exec_cmd("${cmd}")'';
     close = lua "hl.dsp.window.close()";
@@ -68,11 +70,13 @@ in
     # Open Applications 
     (bind "${mod} + T" (dsp.exec "uwsm app -- ${vars.terminal}"))
     (bind "${mod} + SHIFT + T" (dsp.exec "uwsm app -- ${vars.miniterm}"))
-    # (bind "${mod} + ALT + T" (dsp.exec "uwsm app -- kitty -o background_opacity=0"))
     (bind "${mod} + W" (dsp.exec "uwsm app -- ${vars.browser}"))
     (bind "${mod} + E" (dsp.exec "uwsm app -- ${vars.explorer}"))
+
+    # Utilities
     (bind "${mod} + CONTROL + W" (dsp.exec "uwsm app -- ${vars.audiomix}"))
     (bind "${mod} + ALT + W" (dsp.exec "uwsm app -- ${vars.wifi}"))
+    (bind "${mod} + SHIFT + B" (dsp.exec "uwsm app -- ${vars.bluetooth}"))
     (bind "${mod} + SHIFT + W" (dsp.exec "uwsm app -- ${vars.wallpaper}"))
 
     # Tools 
@@ -84,7 +88,7 @@ in
     (bind "${mod} + CONTROL + N" (dsp.exec "${vars.shellNotifToggleCenter}"))
     (bind "${mod} + CONTROL + D" (dsp.exec "${vars.shellNotifDismiss}"))
     (bind "${mod} + CONTROL + C" (dsp.exec "${vars.shellNotifClear}"))
-    (bind "${mod} + CONTROL + L" (dsp.exec "${vars.shellNotifToggleCenter}"))
+    (bind "${mod} + CONTROL + L" (dsp.exec "${vars.shellNotifToggleDnd}"))
 
 
     # Hypr Modes
@@ -93,9 +97,10 @@ in
     (bind "${mod} + ALT + S" modes.squareMode)
     (bind "${mod} + ALT + O" modes.opaqueMode)
     (bind "${mod} + ALT + B" modes.borderToggle)
-    # (bind "${mod} + ALT + B" modes.borderSleek)
-    # (bind "${mod} + ALT + O" (dsp.exec "qs -c Eclipsea-Shell ipc call opacity toggle"))
-    # (bind "${mod} + ALT + G" modes.glassMode)
+
+    # Hypr Vibes
+    (bind "${mod} + ALT + D" modes.driftVibe)
+
 
     # Special Workspaces & Movements
     (bind "${mod} + S" (dsp.toggleSpecial "magic")) 
@@ -142,6 +147,8 @@ in
     # Submaps
     (bind "${mod} + R" (dsp.submap "resize"))
     (bind "${mod} + P" (dsp.submap "music"))
+    (bind "${mod} + U" (dsp.submap "utilities"))
+
     # (bind "${mod} + F" (dsp.submap "window"))
     # (bind "${mod} + ALT + M" (dsp.submap "hypr-mode"))
 
@@ -176,6 +183,14 @@ in
         end'')
       ];
     }
+    # {
+    #   _args = [
+    #     "utilities"
+    #     (lua ''function()
+    #       hl.bind("W", hl.dsp.exec_cmd(""))
+    #     end'')
+    #   ];
+    # }
     # {
     #   _args = [
     #     "shellNotifications"

@@ -42,6 +42,14 @@
       max_size = "{550, 900}";
     }
     {
+      name = "bluetui-float";
+      match.class = "^(bluetui-floating)";
+      float = true;
+      center = true;
+      size = "{550, 900}";
+      max_size = "{550, 900}";
+    }
+    {
       name = "wallpaper";
       match.class = "^(wallpaper-selector)";
       float = true;

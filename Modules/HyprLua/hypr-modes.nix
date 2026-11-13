@@ -1,8 +1,16 @@
 
 { lua, vars, ... }:
 
-{
-  borderToggle = lua ''
+let
+  combineModes = modeA: modeB: lua ''
+    function()
+      (${modeA})();
+      (${modeB})();
+    end
+  '';
+
+
+  borderToggleLua = ''
     function()
       hyprModes.border = not hyprModes.border
       apply_palette(palette == "candy" and "sleek" or "candy")
@@ -17,7 +25,8 @@
               enabled = false
             },
             shadow = {
-              range = 10,
+              range = 25,
+              render_power = 2
             }
           }
         })
@@ -31,15 +40,15 @@
               enabled = true
             },
             shadow = {
-              range = 4,
-              render_power = 2
+              range = 10,
+              render_power = 4
             }
           }
         })
       end
     end
   '';
-  zenMode = lua ''
+  zenModeLua = ''
     function()
       hyprModes.zen = not hyprModes.zen
       hl.dispatch(hl.dsp.exec_cmd("${vars.shellToggle}"))
@@ -63,6 +72,13 @@
         })
       else
         if hyprModes.square then 
+          if not hyprModes.borderToggle then 
+            hl.config({
+              general = {
+                border_size = 0
+              }
+            })
+          end
           hl.config({
             general = {
               border_size = 2,
@@ -103,7 +119,7 @@
     end
   '';
 
-  frostMode = lua ''
+  frostModeLua = ''
     function()
       hyprModes.frost = not hyprModes.frost
       if hyprModes.frost then 
@@ -128,7 +144,7 @@
     end
   '';
 
-  opaqueMode = lua ''
+  opaqueModeLua = ''
     function()
       hyprModes.opaque = not hyprModes.opaque
       hl.dispatch(hl.dsp.exec_cmd("${vars.shellOpacityToggle}"))
@@ -150,7 +166,7 @@
     end
   '';
 
-  squareMode = lua ''
+  squareModeLua = ''
     function()
       hyprModes.square = not hyprModes.square
       hl.dispatch(hl.dsp.exec_cmd("${vars.shellCurveToggle}"))
@@ -210,42 +226,15 @@
       end
     end
   '';
-
-  # borderSleek = lua ''
-  #   function()
-  #     hyprModes.borderSleek = not hyprModes.borderSleek
-  #     if hyprModes.borderSleek then 
-  #       hl.config({
-  #         general = {
-  #           ["col.active_border"] = ${vars.activeBorderSleek}
-  #         },
-  #         decoration = {
-  #           shadow = {
-  #             color =   ${vars.shadowColorSleek}
-  #           },
-  #           glow = {
-  #             enabled = false
-  #           }
-  #         }
-  #       })
-  #     else
-  #       hl.config({
-  #         general = {
-  #           ["col.active_border"] = ${vars.activeBorderAccented}
-  #         },
-  #         decoration = {
-  #           shadow = {
-  #             color = ${vars.shadowColorAccented}
-  #           },
-  #           glow = {
-  #             enabled = true,
-  #             color = ${vars.glowColorAccented}
-  #           }
-  #         }
-  #       })
-  #     end
-  #   end
-  # '';
-  #
+in
+{
+  frostMode = lua frostModeLua;
+  zenMode = lua zenModeLua;
+  squareMode = lua squareModeLua;
+  # opaqueMode = lua opaqueModeLua;
+  borderToggle = lua borderToggleLua;
+  opaqueMode = (combineModes opaqueModeLua borderToggleLua);
+  
+  driftVibe = (combineModes frostModeLua borderToggleLua);
 
 }

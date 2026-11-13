@@ -8,10 +8,10 @@
     inactive_opacity = 0.85;
     fullscreen_opacity = 1;
     dim_inactive = true;
-    dim_strength = 0.3;
+    dim_strength = 0.1;
 
     motion_blur = {
-      enabled = false;
+      enabled = true;
     };
 
     wobble = {
@@ -26,11 +26,11 @@
       ignore_opacity = true;
       new_optimizations = true;
       xray = true;
-      noise = 0.0;
-      contrast = 0.90;
-      brightness = 0.80;
-      vibrancy = 0.70;
-      vibrancy_darkness = 0.20;
+      noise = 0.01; # 0.0
+      contrast = 1.0; # 0.90;
+      brightness = 1.0; # 0.80;
+      vibrancy = 0.2; # 0.70;
+      vibrancy_darkness = 0.5; # 0.20;
       special = true;
       popups = true;
       popups_ignorealpha = 0.2;
@@ -40,18 +40,18 @@
 
     shadow = {
       enabled = true;
-      range = 4; # 8
-      render_power = 2; # 2, 3
+      range = 10; # 4; # 8
+      render_power = 4; # 2, 3
       # sharp = ;
       # color = "rgba(00eaff33)";
       color_inactive = "rgba(ffffff00)";
-      # offset = ;
-      # scale = ;
+      offset = " 0, 0 ";
+      scale = 1.0;
     };
     glow = {
       enabled = true;
       range = 4; # 8
-      render_power = 2; # 2, 4
+      render_power = 4; # 2, 4
       # color = "rgba(00eaff33)";
       color_inactive = "rgba(ffffff00)";
     };
