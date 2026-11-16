@@ -16,19 +16,22 @@
         end
       end
 
-      if not set -q NVIM
-        fastfetch && echo
+      # if not set -q NVIM
+      #   fastfetch && echo
+      # end
+      
+      if set -q KITTY_PID; and not set -q NVIM
+        set -l marker "$XDG_RUNTIME_DIR/fastfetch-kitty-pid"
+        if not test -f $marker; or not kill -0 (cat $marker) 2>/dev/null
+          echo $KITTY_PID > $marker
+          fastfetch && echo 
+        end
       end
 
       function git_commit
         read --prompt "echo 'Commit Message: '" input
         git add . && git commit -m $input
       end 
-
-      # function music_download
-      #   read --prompt "echo 'URL: '" input
-      #   yt-dlp --cookies-from-browser "firefox:$HOME/.config/zen/$USER" -f "ba/b" -x --audio-format m4a --audio-quality 0 --embed-metadata --embed-thumbnail --parse-metadata "title:%(artist)s - %(title)s" $input
-      # end
 
       function music_download
         yt-dlp --cookies-from-browser "firefox:$HOME/.config/zen/$USER" -f "ba/b" -x --audio-format m4a --audio-quality 0 --embed-metadata --embed-thumbnail --parse-metadata "title:%(artist)s - %(title)s" $argv[1]

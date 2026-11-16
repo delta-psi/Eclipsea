@@ -11,6 +11,7 @@
     ../Modules/Music
     ../Modules/Browser
     ../Modules/Communication
+    ../Modules/Gaming
     # ../Modules/Noctalia/noctalia.nix
     # ../Modules/Caelestia/caelestia.nix
   ];
@@ -109,7 +110,8 @@
 
     ssh = {
       enable = true;
-      matchBlocks = {
+      enableDefaultConfig = false;
+      settings = {
         "github.com" = {
           hostname = "github.com";
           user = "git";
@@ -121,19 +123,35 @@
           user = "delta";
           identityFile = "~/.ssh/mu_key";
         }; 
-        "mari" = {
-          hostname = "mari-lab.duckdns.org";
-          user = "test";
-          port  = 2222;
-          identityFile = "~/.ssh/mu_key";
+        "osg" = {
+          hostname = "100.75.164.10";
+          user = "Delta";
         };
-        "mari-chat" = {
-          hostname = "mari-chat.duckdns.org";
-          user = "test";
-          port = 2221;
-          identityFile = "~/.ssh/mari_test";
-          identitiesOnly = true;
+        "*" = {
+          ForwardAgent = "no";
+          AddKeysToAgent = "no";
+          Compression = "no";
+          ServerAliveInterval = 0;
+          ServerAliveCountMax = 3;
+          HashKnownHosts = "no";
+          UserKnownHostsFile = "~/.ssh/known_hosts";
+          ControlMaster = "no";
+          ControlPath = "~/.ssh/master-%r@%n:%p";
+          ControlPersist = "no";
         };
+        # "mari" = {
+        #   hostname = "mari-lab.duckdns.org";
+        #   user = "test";
+        #   port  = 2222;
+        #   identityFile = "~/.ssh/mu_key";
+        # };
+        # "mari-chat" = {
+        #   hostname = "mari-chat.duckdns.org";
+        #   user = "test";
+        #   port = 2221;
+        #   identityFile = "~/.ssh/mari_test";
+        #   identitiesOnly = true;
+        # };
       };
     };
 

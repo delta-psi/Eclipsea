@@ -47,6 +47,8 @@
       loaf
       trash-cli
       unicode-character-database
+      wlogout
+      prismlauncher
       
 
       sweet-nova

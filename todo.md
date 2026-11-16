@@ -1,4 +1,8 @@
 # To Do 
+- [ ] Hypridle & Hyprlock 
+- [ ] ReGreeted replacement for SDDM 
+- [ ] Matugen colors for Neovim 
+- [ ] Wlogout with Quickshell menu for session management
 - [ ] Replace NEOVIM in neovim dashboard with ascii pokemon
 - [ ] Reduce hyprland border glow a smidge
 - [ ] Figure out matugen color palette from noctalia shell v4
