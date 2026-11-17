@@ -40,12 +40,15 @@
       # 1. Set wallpaper via awww
       stfu awww img --transition-type wave --transition-step 90 "$FULL_PATH"
 
-      # 2. Run matugen
-      # stfu matugen -q -t scheme-vibrant --prefer darkness image "$FULL_PATH"
-      stfu matugen -q -t scheme-vibrant --prefer saturation --base16-backend wal --source-color-index 0 image "$FULL_PATH" 
-      # stfu wallust run -p saliencedark16 -I background "$FULL_PATH"
+      # 2. Point hyprlock at current wallpaper
+      LOCK_DIR="$HOME/.cache/wallpaper"
+      mkdir -p "$LOCK_DIR"
+      stfu ln -sf "$FULL_PATH" "$LOCK_DIR/lock.png"
 
-      # 3. Re-apply hyprland modes 
+      # 3. Run matugen
+      stfu matugen -q -t scheme-vibrant --prefer saturation --base16-backend wal --source-color-index 0 image "$FULL_PATH" 
+
+      # 4. Re-apply hyprland modes 
       if [ -f "$HYPR_MODES" ]; then 
         stfu "$HYPR_MODES"
       fi 

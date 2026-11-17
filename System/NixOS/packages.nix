@@ -48,7 +48,10 @@
       trash-cli
       unicode-character-database
       wlogout
-      prismlauncher
+      # prismlauncher
+      (pkgs.prismlauncher.override {
+        jdks = [ pkgs.jdk25 pkgs.jdk21 pkgs.jdk17 pkgs.jdk8 ];
+      })
       
 
       sweet-nova

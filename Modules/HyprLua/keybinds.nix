@@ -83,7 +83,7 @@ in
     (bind "${mod} + ALT + H" (dsp.exec "uwsm app -- hyprpicker --autocopy --format=hex"))
 
     # Idle/Lock 
-    (bind "${mod} + L" (dsp.exec "hyprlock"))
+    (bind "${mod} + ALT + L" (dsp.exec "hyprlock"))
 
     # Quickshell Commands
     (bind "${mod} + CONTROL + B" (dsp.exec "${vars.shellToggle}"))

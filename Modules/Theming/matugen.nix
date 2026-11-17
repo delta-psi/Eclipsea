@@ -10,6 +10,7 @@
     "matugen/templates/cava.ini".text = builtins.readFile ./Templates/cava.ini;
     "matugen/templates/kitty.conf".text = builtins.readFile ./Templates/kitty.conf;
     "matugen/templates/hypr.lua".text = builtins.readFile ./Templates/hypr.lua;
+    "matugen/templates/hyprlock-colors.conf".text = builtins.readFile ./Templates/hyprlock-colors.conf;
     "matugen/templates/starship.toml".text = builtins.readFile ./Templates/starship.toml;
     "matugen/templates/yazi.toml".text = builtins.readFile ./Templates/yazi.toml;
     "matugen/templates/television.toml".text = builtins.readFile ./Templates/television.toml;
@@ -90,6 +91,10 @@
       input_path = '${config.xdg.configHome}/matugen/templates/hypr.lua'
       output_path = '${config.xdg.configHome}/hypr/colors.lua'
       post_hook = 'hyprctl reload'
+
+      [templates.hyprlock]
+      input_path  = '${config.xdg.configHome}/matugen/templates/hyprlock-colors.conf'
+      output_path = '${config.xdg.configHome}/hypr/hyprlock-colors.conf'
 
       [templates.kitty]
       input_path = '${config.xdg.configHome}/matugen/templates/kitty.conf'
