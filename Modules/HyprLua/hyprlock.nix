@@ -30,7 +30,6 @@
       background = [
         {
           monitor = "";
-          # path = "screenshot";
           path = "${config.xdg.cacheHome}/wallpaper/lock.png";
           blur_passes = 3;
           blur_size = 8;
@@ -40,27 +39,20 @@
       input-field = [
         {
           size = "200, 50";
-          position = "0, -200";
+          position = "0, -300";
           monitor = "";
           dots_center = true;
           fade_on_empty = false;
-          # font_color = "rgb(202, 211, 245)";
-          # inner_color = "rgb(91, 96, 120)";
-          # inner_color = "rgb(24, 25, 38)";
-          # outer_color = "rgb(24, 25, 38)";
-
-          outer_color = "$lock_primary";
-          inner_color = "$lock_surface_hi";
-          font_color = "$lock_on_surface";
-          check_color = "$lock_primary";
-          fail_color = "$lock_error";
+          outer_color = "$input_outer";
+          inner_color = "$input_inner";
+          font_color = "$input_text";
+          check_color = "$input_check";
+          fail_color = "$input_error";
+          fail_text = "<span foreground='##$failed_input'><b><i> fuck. </i></b></span>";
           outline_thickness = 0;
           placeholder_text = "";
-          # placeholder_text = ''\"<span foreground="##cad3f5">Password...</span>"\'';
-          # placeholder_text = '\'<span foreground="##cad3f5">Password...</span>'\';
-          # placeholder_text = "<i>Password...</i>";
           shadow_passes = 2;
-          shadow_size = 8;
+          shadow_size = 12;
         }
       ];
     };

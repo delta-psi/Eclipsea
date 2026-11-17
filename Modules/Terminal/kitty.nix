@@ -23,7 +23,7 @@ let
         "launch --location=hsplit cava"
         # Put focus back on the free shell at the top right
         # "neighboring_window up"
-        "nth_window 1"
+        "nth_window 0"
       ];
     };
     study = {
@@ -33,6 +33,13 @@ let
         "launch --location=vsplit fish -C 'z Logic && nvim Notes'"
       ];
     };
+    # Find new keybind for this
+    # config = {
+    #   key = "ctrl+shift+c";
+    #   actions = [
+    #     "launch --type=tab --tab-title=Config fish -C 'z Eclipsea && nvim'"
+    #   ];
+    # };
   };
   workspaceBindings = lib.mapAttrs'
     (_: ws: lib.nameValuePair ws.key (combine ws.actions))
