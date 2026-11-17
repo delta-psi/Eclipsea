@@ -150,6 +150,8 @@
     activationScripts.postActivation.text = ''
       /usr/bin/mdutil -a -i off >/dev/null 2>&1 || true      # Spotlight indexing off
       /bin/launchctl disable system/com.apple.analyticsd 2>/dev/null || true
+      /usr/bin/pmset -a sleep 0 displaysleep 0 disksleep 0 autorestart 1 || true
+      /usr/bin/mdutil -a -i off >/dev/null 2>&1 || true
     '';
 
   };
@@ -165,7 +167,7 @@
   # so a daemon re-applies it at boot). Don't go above ~13 GB.
   launchd.daemons.gpu-wired-limit.serviceConfig = {
     Label = "org.nixos.gpu-wired-limit";
-    ProgramArguments = [ "/usr/sbin/sysctl" "iogpu.wired_limit_mb=12288" ];
+    ProgramArguments = [ "/usr/sbin/sysctl" "iogpu.wired_limit_mb=10240" ];
     RunAtLoad = true;
   };
 
