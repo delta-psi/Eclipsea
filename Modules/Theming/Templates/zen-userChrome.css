@@ -13,12 +13,12 @@
 }
 
 #zen-browser-background {
-  --zen-main-browser-background: {{colors.background.default.hex}} !important;
+  --zen-main-browser-background: {{colors.surface_container.default.hex}} !important;
   --zen-background-opacity: 1 !important;
 }
 
 #zen-toolbar-background {
-  --zen-main-browser-background-toolbar: {{colors.background.default.hex}} !important;
+  --zen-main-browser-background-toolbar: {{colors.surface_container.default.hex}} !important;
   --zen-background-opacity: 1 !important;
 }
 
@@ -31,7 +31,7 @@
 }
 
 #TabsToolbar {
-  background-color: {{colors.background.default.hex}} !important;
+  background-color: {{colors.surface_container.default.hex}} !important;
 }
 
 .urlbar-background {
@@ -61,7 +61,7 @@ toolbar .toolbarbutton-1 {
 }
 
 #zen-appcontent-navbar-container {
-  background-color: {{colors.background.default.hex}} !important;
+  background-color: {{colors.surface_container.default.hex}} !important;
 }
 
 #PanelUI-menu-button .toolbarbutton-icon,
