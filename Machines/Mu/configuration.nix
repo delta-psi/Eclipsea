@@ -167,7 +167,7 @@
   # so a daemon re-applies it at boot). Don't go above ~13 GB.
   launchd.daemons.gpu-wired-limit.serviceConfig = {
     Label = "org.nixos.gpu-wired-limit";
-    ProgramArguments = [ "/usr/sbin/sysctl" "iogpu.wired_limit_mb=10240" ];
+    ProgramArguments = [ "/usr/sbin/sysctl" "iogpu.wired_limit_mb=11264" ];
     RunAtLoad = true;
   };
 
