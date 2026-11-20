@@ -15,14 +15,14 @@
     "@string"                   = { fg = "#be95ff"; italic = true; };
     "@number"                   = { fg = "#83cfff"; };
 
-    # Keywords (if they're also showing #d0d0d0) #cdcdd0, #bbb6b4
-    # "@keyword"                    = { fg = "#ff7eb6"; };
-    # "@keyword.function"           = { fg = "#ff7eb6"; };
-    # "@keyword.return"             = { fg = "#ff7eb6"; };
-    # "@keyword.operator"           = { fg = "#ff7eb6"; }; #be95ff
+    ## Keywords (if they're also showing #d0d0d0) #cdcdd0, #bbb6b4
+    ## "@keyword"                    = { fg = "#ff7eb6"; };
+    ## "@keyword.function"           = { fg = "#ff7eb6"; };
+    ## "@keyword.return"             = { fg = "#ff7eb6"; };
+    ## "@keyword.operator"           = { fg = "#ff7eb6"; }; #be95ff
 
     # Nix-specific (since you're in a Nix config)
-    # "@variable.nix"               = { fg = "#78a9ff"; };
+    ## "@variable.nix"               = { fg = "#78a9ff"; };
     "@string.special.path.nix"  = { fg = "#be95ff"; };
 
     # Punctuation

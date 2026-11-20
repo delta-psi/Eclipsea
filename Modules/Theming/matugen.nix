@@ -27,7 +27,8 @@
     "matugen/templates/qutebrowser.py".text = builtins.readFile ./Templates/qutebrowser.py;
     "matugen/templates/vscode-colors".text = builtins.readFile ./Templates/vscode-colors;
     "matugen/templates/vscode-colors.json".text = builtins.readFile ./Templates/vscode-colors.json;
-    "matugen/templates/neovim-colors.lua".text = builtins.readFile ./Templates/neovim-colors.vim;
+    "matugen/templates/neovim-colors.vim".text = builtins.readFile ./Templates/neovim-colors.vim;
+    "matugen/templates/zathurarc-colors".text = builtins.readFile ./Templates/zathurarc-colors;
 
     "matugen/post-hook-scripts/gtk-themes-reload.sh" = {
       text = ''
@@ -158,10 +159,10 @@
       output_path = '${config.xdg.configHome}/yazi/theme.toml'
       post_hook = 'ya emit-to 0 app:theme'
 
-      # [templates.zathura]
-      # input_path = 'path/to/template'
-      # output_path = '~/.config/zathura/zathurarc'
-      #
+      [templates.zathura]
+      input_path = '${config.xdg.configHome}/matugen/templates/zathurarc-colors'
+      output_path = '${config.xdg.configHome}/zathura/zathurarc'
+      
       # [templates.steam]
       # input_path = 'path/to/template'
       # output_path = '~/.config/AdwSteamGtk/custom.css'
