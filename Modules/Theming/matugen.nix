@@ -27,6 +27,7 @@
     "matugen/templates/qutebrowser.py".text = builtins.readFile ./Templates/qutebrowser.py;
     "matugen/templates/vscode-colors".text = builtins.readFile ./Templates/vscode-colors;
     "matugen/templates/vscode-colors.json".text = builtins.readFile ./Templates/vscode-colors.json;
+    "matugen/templates/neovim-colors.lua".text = builtins.readFile ./Templates/neovim-colors.vim;
 
     "matugen/post-hook-scripts/gtk-themes-reload.sh" = {
       text = ''
@@ -177,6 +178,11 @@
       [templates.wifitui]
       input_path = '${config.xdg.configHome}/matugen/templates/wifitui.toml'
       output_path = '${config.xdg.configHome}/wifitui/matugen.toml'
+
+      [templates.nvim]
+      input_path = '${config.xdg.configHome}/matugen/templates/neovim-colors.vim'
+      output_path = '${config.xdg.configHome}/nvim/colors/matugen.vim'
+      post_hook = 'pkill -SIGUSR1 nvim'
 
       [templates.zen-userchrome]
       input_path = '${config.xdg.configHome}/matugen/templates/zen-userChrome.css'

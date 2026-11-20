@@ -1,17 +1,64 @@
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
+let
+  unicodeList = pkgs.writeShellScript "tv-unicode-list" ''
+    ${pkgs.gawk}/bin/awk -F';' '$2 !~ /^</ { print $1 "|" $2 }' \
+      ${pkgs.unicode-character-database}/share/unicode/UnicodeData.txt \
+    | ${pkgs.perl}/bin/perl -CS -F'\|' -lane '
+        $char = chr(hex($F[0]));
+        print "U+$F[0]|$char|$F[1]" if $char =~ /\p{Print}/;
+      '
+  '';
+in
 {
   programs.television = {
     enable = true;
+    # package = inputs.television.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableFishIntegration = true;
     settings = {
+      default_channel = "channels";
       use_nerd_font_icons = true;
       ui = {
         theme = "matugen";
+        input_bar.border_type = "rounded";
+        results_panel.border_type = "rounded";
+        preview_panel.border_type = "rounded";
       };
     };
     channels = {
+      channels = {
+        metadata = {
+          name = "channels";
+          description = "Select a television channel";
+          requirements = [ "tv" "bat" ];
+        };
+        source = {
+          command = [ "tv list-channels" ];
+        };
+        preview = {
+          command = "bat -pn --color always \${TELEVISION_CONFIG:-\${XDG_CONFIG_HOME:-$HOME/.config}/television}/cable/{}.toml";
+          shell = "bash";
+        };
+        keybindings = {
+          enter = "actions:channel-enter";
+        };
+        actions.channel-enter = {
+          description = "Enter a television channel";
+          command = "tv {}";
+          mode = "execute";
+        };
+      };
+
+      # docs = {
+      #   metadata = {
+      #     name = "documentation";
+      #     description = "Explore full documentation";
+      #     requirements = [ "mandible" ];
+      #   };
+      #   preview = {}
+      #
+      # };
 
       tldr = {
         metadata = {
@@ -26,15 +73,19 @@
           command = "tldr --list";
         };
         keybindings = {
-          "ctrl-e" = "actions:open";
+          enter = "actions:open-tldr";
+          ctrl-d = "actions:open-full";
         };
-        # ui = {
-        #   layout = "portrait";
-        # };
-        actions.open = {
+        actions.open-tldr = {
           description = "Open TLDR page in pager";
           # command = "tldr '{}' | less";
           command = "tldr '{0}'";
+          mode = "execute";
+          # mode = "fork";
+        };
+        actions.open-full = {
+          description = "Open full documentation in mandible";
+          command = "mandible '{}'";
           mode = "execute";
           # mode = "fork";
         };
@@ -199,16 +250,19 @@
         source = {
           # command = "set UNICODE_FILE \"/usr/share/unicode/ucd/UnicodeData.txt\"\nawk -F';' '\n  $2 !~ /^</ { print $1 \"|\" $2 }\n' \"$UNICODE_FILE\" | perl -CS -F'\\|' -lane '\n    $code = $F[0];\n    $desc = $F[1];\n    $char = chr(hex($code));\n    print \"U+$code|$char|$desc\" if $char =~ /\\p{Print}/;\n'\n";
           # command = "awk -F';' '$2 !~ /^</ {print $1, $2}' ${pkgs.unicode-character-database}/share/unicode/UnicodeData.txt";
-          command = ''
-            awk -F';' '
-              $2 !~ /^</ { print $1 "|" $2 }
-              ' ${pkgs.unicode-character-database}/share/unicode/UnicodeData.txt | perl -CS -F'\|' -lane '
-              $code = $F[0];
-              $desc = $F[1];
-              $char = chr(hex($code));
-              print "U+$code|$char|$desc" if $char =~ /\p{Print}/;
-            '
-          '';
+
+          command = "${unicodeList}";
+          # command = "set UNICODE_FILE \"${pkgs.unicode-character-database}/share/unicode/UnicodeData.txt\"\nawk -F';' '\n  $2 !~ /^</ { print $1 \"|\" $2 }\n' \"$UNICODE_FILE\" | perl -CS -F'\\|' -lane '\n    $code = $F[0];\n    $desc = $F[1];\n    $char = chr(hex($code));\n    print \"U+$code|$char|$desc\" if $char =~ /\\p{Print}/;\n'\n";
+          # command = ''
+          #   awk -F';' '
+          #     $2 !~ /^</ { print $1 "|" $2 }
+          #     ' ${pkgs.unicode-character-database}/share/unicode/UnicodeData.txt | perl -CS -F'\|' -lane '
+          #     $code = $F[0];
+          #     $desc = $F[1];
+          #     $char = chr(hex($code));
+          #     print "U+$code|$char|$desc" if $char =~ /\p{Print}/;
+          #   '
+          # '';
           display = "{split:|:0}    {split:|:1}    {split:|:2}";
           output = "{split:|:1}";
         };

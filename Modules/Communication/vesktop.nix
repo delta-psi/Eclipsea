@@ -39,6 +39,7 @@
           WhoReacted.enabled = true;
         };
         useQuickCss = true;
+        webRTCIPHandlingPolicy = "default_public_and_private_interfaces";
       };
       extraQuickCss = ''
         /* Target the home/DM list item wrapper directly to strip the stock discord SVG logo */

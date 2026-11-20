@@ -47,7 +47,7 @@
       performance.byteCompileLua.enable = true;
     }
     (import ./autocommands.nix)
-    (import ./colorscheme.nix)
+    # (import ./colorscheme.nix)
     (import ./extra-configs.nix { inherit pkgs; })
     (import ./highlight.nix)
     (import ./keymaps.nix)

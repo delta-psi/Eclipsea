@@ -33,13 +33,20 @@ let
         "launch --location=vsplit fish -C 'z Logic && nvim Notes'"
       ];
     };
+    dashboard = {
+      key = "ctrl+shift+d";
+      actions = [
+        "launch --type=tab --tab-title=Dashboard tuido"
+        "launch --location=vsplit calcure"
+      ];
+    };
     # Find new keybind for this
-    # config = {
-    #   key = "ctrl+shift+c";
-    #   actions = [
-    #     "launch --type=tab --tab-title=Config fish -C 'z Eclipsea && nvim'"
-    #   ];
-    # };
+    config = {
+      key = "ctrl+shift+space";
+      actions = [
+        "launch --type=tab --tab-title=Config fish -C 'z Eclipsea && nvim'"
+      ];
+    };
   };
   workspaceBindings = lib.mapAttrs'
     (_: ws: lib.nameValuePair ws.key (combine ws.actions))

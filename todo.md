@@ -1,3 +1,30 @@
+
+# TUIs not in nixpkgs - add to nixpkgs myself?
+- tennis: tabular data 
+- jotter: Jupyter Notebooks
+- clavirio: touch typing tutor 
+- rulc: graphing calculator 
+- tincan: P2P voice and text chat 
+- sauva: unicode previewer
+- chroncal: calendar
+- rwx: file permissions 
+- justray: vpn 
+- mandible: all the clis 
+- papr: tui version of zoterro 
+- panix: nix deployment tool 
+- late.sh: dev clubhouse
+- xytz/yt-x: browse and download youtube 
+- keyward: ssh audit and management 
+- herald: email client 
+- flow: network activity monitor 
+- clin: obsidian but tui 
+- ytm-player: youtube music player
+- keyb: keybind manager 
+- wikid: wikipedia 
+- graf: obsidian graph 
+- tsuzuri: notes, calendar, etc. 
+
+
 # To Do 
 - [ ] Hypridle & Hyprlock 
 - [ ] ReGreeted replacement for SDDM 

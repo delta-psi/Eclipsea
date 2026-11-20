@@ -43,6 +43,7 @@
       spicetify-cli
       rnote
       glow
+      leaf-markdown-viewer # or mdfried 
       libnotify
       loaf
       trash-cli
@@ -52,6 +53,21 @@
       (pkgs.prismlauncher.override {
         jdks = [ pkgs.jdk25 pkgs.jdk21 pkgs.jdk17 pkgs.jdk8 ];
       })
+      inputs.tuido.packages.${system}.default
+      inputs.mandible.packages.${system}.default
+
+      linecast 
+      # myx
+      # alsa-plugins
+      lazyrsync
+      # matcha 
+      dooit # meh
+      dooit-extras
+      slides
+      pomo # or pom
+      mpv
+
+
       
 
       sweet-nova

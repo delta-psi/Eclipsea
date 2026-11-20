@@ -75,6 +75,11 @@ in
 
   extraConfigLua = ''
 
+    vim.cmd("colorscheme matugen")
+    vim.api.nvim_create_autocmd("Signal", {
+        pattern = "SIGUSR1",
+        command = "colorscheme matugen",
+    })
     
     -- 1. Debounced "live write" so typst watch recompiles as you type,
     --    not just when you :w.

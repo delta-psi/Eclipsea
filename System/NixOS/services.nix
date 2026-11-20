@@ -5,10 +5,13 @@
   services = {
     
     # Scheduler
-    scx = {
-      enable = true;
-      scheduler = "scx_rustland";
-    };
+    # scx = {
+    #   enable = true;
+    #   scheduler = "scx_rustland";
+    # };
+    # scx-loader = {
+    #   enable = true;
+    # };
 
     # OpenSSH Daemon
     openssh = {
@@ -60,6 +63,8 @@
         vial
       ];
     };
+
+    pipewire.alsa.enable = true;
 
     # Enable SDDM login
     displayManager = {

@@ -86,6 +86,9 @@
     # terminal-rain-lightning flake
     terminal-rain.url = "github:delta-psi/terminal-rain-lightning-flake";
 
+    # tuido-tui flake 
+    tuido.url = "github:delta-psi/tuido-flake";
+
     # Spicetify-Nix
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -141,6 +144,14 @@
     # Loaf GUI File Explorer
     loaf.url = "github:m-uvex/loaf-fm";
 
+    # Mandible
+    mandible.url = "github:AS-FOSS/mandible";
+
+    # Television
+    # television = {
+    #   url = "github:alexpasmantier/television";
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
   };
 
@@ -157,11 +168,13 @@
 			sops-nix,
 			calmSDDM,
 			terminal-rain,
+      tuido,
 			spicetify-nix,
 			zen-browser,
 			firefox-addons, 
       bookokrat,
       loaf, 
+      mandible,
 			... 
     }: 
     let 
